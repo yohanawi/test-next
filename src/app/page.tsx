@@ -14,9 +14,7 @@ export async function generateMetadata(): Promise<Metadata> {
     });
 
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch SEO data");
-    }
+
 
     const json = await res.json();
     const seo = json?.data?.attributes?.seo || {};
