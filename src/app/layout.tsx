@@ -42,12 +42,13 @@ export default function RootLayout({
 
 
   useEffect(() => {
-    const disableRightClick = (event: any) => {
+    const disableRightClick = (event: MouseEvent) => {
       event.preventDefault();
     };
     document.addEventListener("contextmenu", disableRightClick);
     return () => document.removeEventListener("contextmenu", disableRightClick);
   }, []);
+
 
 
   return (

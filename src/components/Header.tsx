@@ -1,6 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef, useState } from "react";
-import { ChevronDown, Menu } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { GET_HEADER_DATA } from "@/lib/queries";
 import { usePathname } from "next/navigation";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -8,21 +7,20 @@ import { useQuery } from "@apollo/client";
 import Image from "next/image";
 import Link from 'next/link';
 
+interface ServiceItem {
+    link: string;
+    name: string;
+}
+
 export default function Header() {
 
-    const dispatch = useDispatch();
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
-    const [isDropdownOpen3, setIsDropdownOpen3] = useState(false);
     const dropdownRef = useRef<HTMLDivElement | null>(null);
-    const dropdownRef2 = useRef<HTMLDivElement | null>(null);
-    const dropdownRef3 = useRef<HTMLDivElement | null>(null);
-
     const locale = "en";
-    const { loading, error, data } = useQuery(GET_HEADER_DATA, { variables: { locale }, });
+    const { data } = useQuery(GET_HEADER_DATA, { variables: { locale }, });
     const mainHeader = data?.header?.data?.attributes || {};
 
     const defaultService = {
@@ -69,14 +67,14 @@ export default function Header() {
 
     return (
         <header className={`fixed top-0 left-0 w-screen py-5 z-[99] transition duration-300 border-b-8 border-[#D10003] ${isVisible ? "translate-y-0" : "-translate-y-full"} ${isScrolled ? "bg-white" : "bg-white"}`} >
-            <div className="flex items-center lg:mx-36 mx-10 md:mx-24 justify-between">
+            <div className="flex items-center justify-between mx-10 lg:mx-36 md:mx-24">
                 <Link href="/" onClick={() => setIsOpen(false)}>
                     <Image src="/images/Footer logo.png" alt="XESS Events Logo" width={150} height={60} className="h-auto" priority />
                 </Link>
                 <nav className="hidden lg:flex items-center justify-center lg:space-x-6 ps-24 lg:ps-10 text-[16px] text-black 3xl:space-x-14">
                     {serviceList.length > 0 && (
                         <div className="relative group">
-                            <button className="flex items-center space-x-1 relative">
+                            <button className="relative flex items-center space-x-1">
                                 <Link href={service.link}>
                                     <span className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 group-hover:before:w-full hover:text-[#D10003] ${isActive("/exhibition") ? "text-red-600" : "text-black"}`} >
                                         {service.title}
@@ -85,14 +83,13 @@ export default function Header() {
                                 <ChevronDown size={16} />
                             </button>
                             <div className="absolute hidden group-hover:block bg-white text-black p-2 min-w-[250px]">
-                                {serviceList.map(
-                                    (item: { link: any; name: any }, index: any) => (
-                                        <Link key={index} href={item.link} className={`block px-4 py-2 relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-black before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive(item.link) ? "text-[#D10003]" : "text-black"}`} >
-                                            {item.name}
-                                        </Link>
-                                    )
-                                )}
+                                {serviceList.map((item: ServiceItem, index: number) => (
+                                    <Link key={index} href={item.link} className={`block px-4 py-2 relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-black before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive(item.link) ? "text-[#D10003]" : "text-black"}`} >
+                                        {item.name}
+                                    </Link>
+                                ))}
                             </div>
+
                         </div>
                     )}
                     <Link href="/portfolio" className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive("/portfolio") ? "text-red-600" : "text-black"}`}>
@@ -115,18 +112,18 @@ export default function Header() {
                         {mainHeader?.contact || "Contact"}
                     </Link>
                 </nav>
-                <div className="hidden lg:flex gap-5">
+                <div className="hidden gap-5 lg:flex">
                     <div className="relative w-10 h-10 hover:scale-110">
                         <Image src="/images/call-icon.png" alt="call iocn" layout="fill" objectFit="cover" />
                     </div>
                     <div>
-                        <p className="text-gray-400 text-sm">{mainHeader?.CallNow?.lable || "Call Now"}</p>
+                        <p className="text-sm text-gray-400">{mainHeader?.CallNow?.lable || "Call Now"}</p>
                         <Link href={`tel:${mainHeader?.CallNow?.phone}`} className="text-black hover:text-[#D10003]" >
                             {mainHeader?.CallNow?.phone || "+971 55 372 1525"}
                         </Link>
                     </div>
                 </div>
-                <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden z-50 text-2xl text-black">
+                <button onClick={() => setIsOpen(!isOpen)} className="z-50 text-2xl text-black lg:hidden">
                     {isOpen ? <FiX /> : <FiMenu />}
                 </button>
             </div>
@@ -145,15 +142,14 @@ export default function Header() {
                                 </button>
                             </Link>
                             <div className={`overflow-hidden transition-all duration-300 ${isDropdownOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`} >
-                                <div className="mt-2 rounded-md shadow-lg py-2 space-y-2 pl-4">
-                                    {serviceList.map(
-                                        (item: { link: any; name: any }, index: any) => (
-                                            <Link key={index} href={item.link} onClick={() => setIsOpen(false)} className={`block py-2 text-white hover:bg-red-600 hover:text-[#D10003] ${isActive(item.link) ? "text-[#D10003]" : "text-black"}`} >
-                                                {item.name}
-                                            </Link>
-                                        )
-                                    )}
+                                <div className="py-2 pl-4 mt-2 space-y-2 rounded-md shadow-lg">
+                                    {serviceList.map((item: ServiceItem, index: number) => (
+                                        <Link key={index} href={item.link} onClick={() => setIsOpen(false)} className={`block py-2 text-white hover:bg-red-600 hover:text-[#D10003] ${isActive(item.link) ? "text-[#D10003]" : "text-black"}`} >
+                                            {item.name}
+                                        </Link>
+                                    ))}
                                 </div>
+
                             </div>
                         </div>
                     )}

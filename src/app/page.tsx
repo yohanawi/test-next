@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { Metadata } from 'next';
-import Head from "next/head";
 
 const HeroSection = dynamic(() => import("@/components/HeroSection"), { loading: () => <p>Loading...</p>, ssr: true, });
 
