@@ -40,7 +40,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-
   useEffect(() => {
     const disableRightClick = (event: MouseEvent) => {
       event.preventDefault();
@@ -48,8 +47,6 @@ export default function RootLayout({
     document.addEventListener("contextmenu", disableRightClick);
     return () => document.removeEventListener("contextmenu", disableRightClick);
   }, []);
-
-
 
   return (
     <html lang="en">

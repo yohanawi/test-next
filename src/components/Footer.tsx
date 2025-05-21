@@ -26,7 +26,6 @@ interface PartnerClient {
     country?: string;
 }
 
-
 const Footer: React.FC = () => {
     const { locale } = useSelector((state: RootState) => state.locale);
     const { data: footerData, } = useQuery(GET_FOOTER_DATA, { variables: { locale }, });
@@ -228,36 +227,21 @@ const Footer: React.FC = () => {
                                 <div className="flex items-center gap-10 py-5 justify-left">
                                     {mainFooter?.social?.map(
                                         (item: { icon: string; link: string }, index: number) => (
-                                            <Link
-                                                key={index}
-                                                href={item.link || "#"}
-                                                aria-label={item.icon}
-                                                className="hover:text-[#e21f2c]"
-                                            >
+                                            <Link key={index} href={item.link || "#"} aria-label={item.icon} className="hover:text-[#e21f2c]" >
                                                 {socialIconsMap[item.icon] || null}
                                             </Link>
                                         )
                                     )}
                                 </div>
-                                <Link
-                                    href="https://maps.app.goo.gl/QdHJmr21RC4GPJya9"
-                                    className="text-sm leading-relaxed  hover:text-[#e21f2c]"
+                                <Link href="https://maps.app.goo.gl/QdHJmr21RC4GPJya9" className="text-sm leading-relaxed  hover:text-[#e21f2c]"
                                     dangerouslySetInnerHTML={{
-                                        __html:
-                                            mainFooter?.address ||
-                                            "Warehouse No 3, 20 a Street, Marabea Road Al Quoz 1, Dubai, UAE",
+                                        __html: mainFooter?.address || "Warehouse No 3, 20 a Street, Marabea Road Al Quoz 1, Dubai, UAE",
                                     }}
                                 ></Link>
-                                <Link
-                                    href="tel:+971553721525"
-                                    className="text-sm pt-4 hover:text-[#e21f2c]"
-                                >
+                                <Link href="tel:+971553721525" className="text-sm pt-4 hover:text-[#e21f2c]" >
                                     {mainFooter?.mobile_number || "+971 55 372 1525"}
                                 </Link>
-                                <Link
-                                    href="mailto:info@xessevents.com"
-                                    className="text-sm pt-2 hover:text-[#e21f2c]"
-                                >
+                                <Link href="mailto:info@xessevents.com" className="text-sm pt-2 hover:text-[#e21f2c]">
                                     {mainFooter?.email || "info@xessevents.com"}
                                 </Link>
                             </div>
@@ -274,10 +258,7 @@ const Footer: React.FC = () => {
                                 {mainFooter?.footerA?.subList?.map(
                                     (item: { link: string; name: string }, index: number) => (
                                         <li key={index} className="py-0.5">
-                                            <Link
-                                                href={item.link || "#"}
-                                                className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]"
-                                            >
+                                            <Link href={item.link || "#"} className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]" >
                                                 {item.name}
                                             </Link>
                                         </li>
@@ -295,10 +276,7 @@ const Footer: React.FC = () => {
                                 {mainFooter?.footerS?.subList?.map(
                                     (item: { link: string; name: string }, index: number) => (
                                         <li key={index} className="py-0.5">
-                                            <Link
-                                                href={item.link || "#"}
-                                                className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]"
-                                            >
+                                            <Link href={item.link || "#"} className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]" >
                                                 {item.name}
                                             </Link>
                                         </li>
@@ -316,10 +294,7 @@ const Footer: React.FC = () => {
                                 {mainFooter?.footerP?.subList?.map(
                                     (item: { link: string; name: string }, index: number) => (
                                         <li key={index} className="py-0.5">
-                                            <Link
-                                                href={item.link || "#"}
-                                                className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]"
-                                            >
+                                            <Link href={item.link || "#"} className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]" >
                                                 {item.name}
                                             </Link>
                                         </li>
@@ -337,10 +312,7 @@ const Footer: React.FC = () => {
                                 {mainFooter?.footerCty?.subList?.map(
                                     (item: { link: string; name: string }, index: number) => (
                                         <li key={index} className="py-0.5">
-                                            <Link
-                                                href={item.link || "#"}
-                                                className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]"
-                                            >
+                                            <Link href={item.link || "#"} className="hover:underline hover:underline-offset-4 hover:text-[#e21f2c]">
                                                 {item.name}
                                             </Link>
                                         </li>
@@ -362,19 +334,9 @@ const Footer: React.FC = () => {
                                     const altText = client.name || "Partner Logo";
 
                                     return (
-                                        <div
-                                            key={index}
-                                            className="p-2 text-center bg-white rounded-md shadow-md"
-                                        >
+                                        <div key={index} className="p-2 text-center bg-white rounded-md shadow-md" >
                                             <Link href="#">
-                                                <Image
-                                                    src={imageUrl}
-                                                    className="w-auto p-2 mx-auto"
-                                                    alt={altText}
-                                                    width={100}
-                                                    height={100}
-                                                    loading="lazy"
-                                                />
+                                                <Image src={imageUrl} className="w-auto p-2 mx-auto" alt={altText} width={100} height={100} loading="lazy" />
                                             </Link>
                                             <span className="block mt-2 text-gray-700">
                                                 {client?.country}
@@ -391,22 +353,14 @@ const Footer: React.FC = () => {
                             Subscribe to our newsletters
                         </h2>
                         <div className="flex w-full">
-                            <input
-                                type="email"
-                                placeholder="EMAIL*"
-                                className="flex-grow px-4 py-3 text-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500"
-                            />
+                            <input type="email" placeholder="EMAIL*" className="flex-grow px-4 py-3 text-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500" />
                             <button className="px-4 py-3 text-black transition bg-white border border-gray-300 hover:bg-red-600 hover:text-white">
                                 <ChevronRight className="w-5 h-5" />
                             </button>
                         </div>
                     </div>
                     <div className="flex items-start w-full py-2 space-x-2 md:py-8 px-14 md:px-40">
-                        <input
-                            type="checkbox"
-                            id="marketingConsent"
-                            className="w-4 h-4 mt-1 text-red-500 border-gray-300 rounded focus:ring-red-500"
-                        />
+                        <input type="checkbox" id="marketingConsent" className="w-4 h-4 mt-1 text-red-500 border-gray-300 rounded focus:ring-red-500" />
                         <div>
                             <label htmlFor="marketingConsent" className="text-sm">
                                 I agree to receive marketing emails from XESS.

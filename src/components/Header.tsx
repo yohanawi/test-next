@@ -89,7 +89,6 @@ export default function Header() {
                                     </Link>
                                 ))}
                             </div>
-
                         </div>
                     )}
                     <Link href="/portfolio" className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive("/portfolio") ? "text-red-600" : "text-black"}`}>
