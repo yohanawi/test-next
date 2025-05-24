@@ -73,7 +73,7 @@ export default function Home() {
         <section className="relative flex items-center justify-center text-white bg-gray-900">
           <HeroSection />
         </section>
-
+        <h1></h1>
         <HomeSection4 />
         <HomeSection5 />
         <Resources />

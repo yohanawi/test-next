@@ -177,6 +177,5 @@ export default function About() {
                 <ContactForm />
             </section>
         </>
-
     );
 }

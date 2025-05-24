@@ -360,9 +360,9 @@ const Footer: React.FC = () => {
                         </div>
                     </div>
                     <div className="flex items-start w-full py-2 space-x-2 md:py-8 px-14 md:px-40">
-                        <input type="checkbox" id="marketingConsent" className="w-4 h-4 mt-1 text-red-500 border-gray-300 rounded focus:ring-red-500" />
+                        <input type="checkbox" id="marketingConsentM" className="w-4 h-4 mt-1 text-red-500 border-gray-300 rounded focus:ring-red-500" />
                         <div>
-                            <label htmlFor="marketingConsent" className="text-sm">
+                            <label htmlFor="marketingConsentM" className="text-sm">
                                 I agree to receive marketing emails from XESS.
                             </label>
                             <p className="mt-1 text-[8px] text-gray-500 leading-relaxed">

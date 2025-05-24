@@ -10,6 +10,7 @@ import { Provider } from 'react-redux';
 import { store } from '@/redux/store';
 import './globals.css';
 import { useEffect } from "react";
+import Contact from "@/components/Contact";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -54,6 +55,7 @@ export default function RootLayout({
         <Provider store={store}>
           <ApolloWrapper>
             <ClientHeader />
+            <Contact />
             {children}
             <Footer />
           </ApolloWrapper>

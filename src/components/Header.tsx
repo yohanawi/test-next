@@ -95,11 +95,11 @@ export default function Header() {
                         {mainHeader?.trade_show || "Portfolio"}
                     </Link>
 
-                    <Link href="/event-production" className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive("/events-production") ? "text-red-600" : "text-black"}`}>
+                    <Link href="/event-production" className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive("/event-production") ? "text-red-600" : "text-black"}`}>
                         {mainHeader?.project || "Event Services"}
                     </Link>
 
-                    <Link href="/exhibition-calender" className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive("/exhibition-calender") ? "text-red-600" : "text-black"}`}>
+                    <Link href="/exhibition-calendar" className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 hover:before:w-full hover:text-[#D10003] ${isActive("/exhibition-calendar") ? "text-red-600" : "text-black"}`}>
                         {mainHeader?.calendar || "Exhibition Calendar"}
                     </Link>
 
@@ -155,10 +155,10 @@ export default function Header() {
                     <Link href="/portfolio" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/portfolio") ? "text-red-600" : "text-white"}`}>
                         {mainHeader?.trade_show || "Portfolio"}
                     </Link>
-                    <Link href="/events-production" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/events-production") ? "text-red-600" : "text-white"}`} >
+                    <Link href="/event-production" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/event-production") ? "text-red-600" : "text-white"}`} >
                         {mainHeader?.project || "Event Services"}
                     </Link>
-                    <Link href="/exhibition-calender" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/exhibition-calender") ? "text-red-600" : "text-white"}`}>
+                    <Link href="/exhibition-calendar" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/exhibition-calendar") ? "text-red-600" : "text-white"}`}>
                         {mainHeader?.calendar || "Exhibition Calendar"}
                     </Link>
                     <Link href="/about" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/about") ? "text-red-600" : "text-white"}`}>
