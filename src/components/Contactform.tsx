@@ -157,7 +157,7 @@ const ContactForm: React.FC = () => {
                   <input type="tel" id="phone" value={formData.phone} onChange={handleChange} className="bg-[#faf8f8] w-full p-2 mt-2 border-b-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-[#e21f2c]" placeholder={contactSec.contactLbl || "Contact No*"} />
                 </div>
                 <div>
-                  <textarea id="message" value={formData.message} onChange={handleChange} className="bg-[#faf8f8] w-full p-2 mt-2 border-b-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-[#e21f2c]"
+                  <textarea id="message" value={formData.message} onChange={handleChange} aria-label={contactSec.messageLbl || "Your Message"} className="bg-[#faf8f8] w-full p-2 mt-2 border-b-2 border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-[#e21f2c]"
                     placeholder={contactSec.messageLbl || "Type Your Message Here!"} rows={4} />
                 </div>
                 {statusMessage.text && (

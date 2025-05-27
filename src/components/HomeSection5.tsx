@@ -68,7 +68,7 @@ export default function HomeSection5() {
         <div className="bg-[#E5E5E5] bg-opacity-75 mx-5 md:mx-20 lg:mx-40 3xl:mx-64 rounded-3xl ">
           <div className="grid gap-10 p-8 lg:grid-cols-2">
             <div className="max-w-5xl mx-auto">
-              <h2 className="font-sans text-2xl font-bold text-gray-800 underline md:text-4xl">Pricing Guide</h2>
+              <h2 className="font-sans text-2xl font-bold text-gray-800 md:text-4xl">Pricing Guide</h2>
               <p className="mt-4 text-sm text-black md:mt-5 lg:mt-2 3xl:text-base">
                 Our all-inclusive service package covers everything from free design to approval, stand design and construction, installation, and dismantling.
               </p>

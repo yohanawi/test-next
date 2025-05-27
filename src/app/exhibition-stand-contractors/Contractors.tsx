@@ -165,7 +165,7 @@ export default function Contractors() {
                 <div className="grid gap-5 lg:grid-cols-2 lg:gap-32">
                     <div>
                         <h2 className="text-3xl font-bold lg:text-4xl">
-                            Production Processes
+                            {mainExhibitionconstroctor?.productionTitle?.trim() || "Production Processes"}
                         </h2>
                         <h5 className="py-5 text-lg">
                             Our Process to Get Your Booth Ready!

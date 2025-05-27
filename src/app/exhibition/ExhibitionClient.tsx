@@ -130,7 +130,7 @@ export default function Exhibition() {
                 <div className="container px-6 mx-auto">
                     <h2 className="text-xl font-normal text-gray-900 lg:text-4xl md:text-3xl"
                         dangerouslySetInnerHTML={{
-                            __html: mainExhibition?.services?.title || "EXHIBITION <span style='color: #EA2127;'>SERVICES</span>",
+                            __html: mainExhibition?.services?.title.trim() || "EXHIBITION <span style='color: #EA2127;'>SERVICES</span>",
                         }}
                     ></h2>
                     <p className="mx-auto mt-4 text-gray-600 md:max-w-lg lg:max-w-3xl 3xl:text-lg">
