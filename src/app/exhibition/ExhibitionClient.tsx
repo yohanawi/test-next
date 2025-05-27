@@ -34,17 +34,17 @@ export default function Exhibition() {
         {
             image: services?.image01?.data?.attributes?.url ? `${baseUrl}${services.image01.data.attributes.url}` : "/images/exhibition-ser1.png",
             title: services?.label01 || "Exhibition Stand Contractor",
-            link: services?.link1 || "exhibition-stand-contractor",
+            link: services?.link1 || "/exhibition-stand-contractors",
         },
         {
             image: services?.image02?.data?.attributes?.url ? `${baseUrl}${services.image02.data.attributes.url}` : "/images/exhibition-ser2.png",
             title: services?.label02 || "Exhibition Stand Designs",
-            link: services?.link2 || "exhibition-stand-design",
+            link: services?.link2 || "/exhibition-stand-designer",
         },
         {
             image: services?.image03?.data?.attributes?.url ? `${baseUrl}${services.image03.data.attributes.url}` : "/images/exhibition-ser3.png",
             title: services?.label03 || "Exhibition Stand Builders",
-            link: services?.link3 || "#",
+            link: services?.link3 || "/exhibition-stand-builders",
         },
     ];
 
@@ -123,6 +123,7 @@ export default function Exhibition() {
             </section>
 
             <Resources />
+
             <HomeSection3 />
 
             <section className="bg-[#f6f6f6] text-center lg:py-20 md:py-16 py-10">

@@ -377,10 +377,10 @@ const Footer: React.FC = () => {
 
                 <div className="text-white bg-gray-600">
                     <div className="container flex flex-col items-center justify-center gap-3 px-4 py-4 mx-auto text-sm text-center md:flex-row md:gap-8 lg:gap-10">
-                        <Link href="#" className="hover:underline hover:underline-offset-4">
+                        <Link href="/terms" className="hover:underline hover:underline-offset-4">
                             {mainFooter?.terms || "Terms of Service"}
                         </Link>
-                        <Link href="#" className="hover:underline hover:underline-offset-4">
+                        <Link href="/privacy" className="hover:underline hover:underline-offset-4">
                             {mainFooter?.privacy || "Privacy Policy"}
                         </Link>
                         <p> © XESS 2025</p>

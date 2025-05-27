@@ -101,7 +101,7 @@ export default function Testimonial() {
                         {testimonial.authorName || "Anonymous"}
                       </h4>
                       <p className="text-xs text-gray-500">
-                        {testimonial.aboutAuthor || "No position specified"}
+                        {testimonial.aboutAuthor || " "}
                       </p>
                     </div>
                   </div>

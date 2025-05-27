@@ -2099,3 +2099,695 @@ export const GET_TRADESHOW_DATA = gql`
     }
   }
 `;
+
+//Blog Page
+export const GET_ALL_BLOGS = gql`
+  query getAllBlogs($locale: I18NLocaleCode) {
+    blogDetails(locale: $locale) {
+      data {
+        attributes {
+          title
+          slug
+          createdAt
+          HeroSec {
+            bgImage {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export const GET_BLOG_DETAIL = gql`
+  query getBlogDetails($locale: I18NLocaleCode, $slug: String) {
+    blogDetails(locale: $locale, filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          createdAt
+          title
+          description
+          slug
+          HeroSec {
+            title
+            bgImage {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    recentPosts: blogDetails(
+      locale: $locale
+      pagination: { limit: -1 }
+      sort: "createdAt:desc"
+    ) {
+      data {
+        attributes {
+          title
+          slug
+          createdAt
+          HeroSec {
+            bgImage {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+//FitOut Page
+export const GET_FITOUT_DATA = gql`
+  query GetFitOutData($locale: I18NLocaleCode) {
+    fitOutPages(locale: $locale) {
+      data {
+        attributes {
+          FitOutHead {
+            heading
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            breadcrumb {
+              SubHead1
+              link1
+              SubHead2
+              link2
+            }
+          }
+          topic
+          SubTopic
+          description
+          FitOutSec2 {
+            Heading
+            SubHeading
+            Description
+            InterSlider {
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+          FitOutPort {
+            heading
+            SubHeading
+            InterGallery {
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            BtnLabel
+          }
+          FitOutFaq {
+            FaqTitle
+            ConFaq {
+              question
+              answers
+            }
+          }
+          meta_data {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+//Exhibition Citi page
+export const GET_CITY_DETAIL = gql`
+  query getCityDetails($locale: I18NLocaleCode, $slug: String) {
+    cityDetails(locale: $locale, filters: { slug: { eq: $slug } }) {
+      data {
+        attributes {
+          slug
+          HeroSec {
+            title
+            bgImage {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+          }
+          SecondSec {
+            title
+            description
+            description2
+            image1 {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            image2 {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            image3 {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            image4 {
+              data {
+                attributes {
+                  url
+                  alternativeText
+                }
+              }
+            }
+            ExhiList {
+              lable
+            }
+          }
+          ThirdSec {
+            mainTitle
+            subTitle
+            linkLabel
+            link
+            card {
+              title
+              link
+              image {
+                data {
+                  attributes {
+                    url
+                    alternativeText
+                  }
+                }
+              }
+            }
+          }
+          FAQSec {
+            faqList {
+              question
+              answers
+            }
+          }
+          ImgSec {
+            img {
+              image {
+                data {
+                  attributes {
+                    url
+                    alternativeText
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+//Exhibition Builder Page
+export const GET_EXHIBITION_BUILDER_DATA = gql`
+  query getExhibitionBrandingData($locale: I18NLocaleCode) {
+    exhiBuildPage(locale: $locale) {
+      data {
+        attributes {
+          BuildHead {
+            heading
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            breadcrumb {
+              SubHead1
+              link1
+              SubHead2
+              link2
+            }
+          }
+          BuildSec {
+            heading
+            subText
+            description
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          BuildDes {
+            title
+            subTitle
+            description
+          }
+          BuildFaq {
+            FaqTitle
+            ConFaq {
+              question
+              answers
+            }
+          }
+          BuildPort {
+            title
+            SubTitle
+            image1 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image2 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image3 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            button {
+              label
+              link
+            }
+          }
+          meta_data {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+//Top City Page
+export const GET_TOPCITY_DATA = gql`
+  query GetTopCityPage($locale: I18NLocaleCode) {
+    topCityPage(locale: $locale) {
+      data {
+        attributes {
+          CityHead {
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            heading
+            breadcrumb {
+              SubHead1
+              link1
+              SubHead2
+              link2
+            }
+          }
+          CityPort {
+            title
+            SubTitle
+            image1 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image2 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image3 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image4 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image5 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image6 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            button {
+              label
+              link
+            }
+          }
+          cities {
+            Topic
+            SubTopic
+            citylist {
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+              label
+              link
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+
+//Privacy Policy Page
+export const GET_PRIVACY_POLICY = gql`
+  query getPrivacyPolicy($locale: I18NLocaleCode!) {
+    privacyPolicy(locale: $locale) {
+      data {
+        id
+        attributes {
+          title
+          description
+        }
+      }
+    }
+  }
+`;
+
+//Terms and Conditions Page
+export const GET_TERMS_AND_CONDITIONS = gql`
+  query getTermsAndConditions($locale: I18NLocaleCode!) {
+    termsAndCondition(locale: $locale) {
+      data {
+        id
+        attributes {
+          title
+          description
+        }
+      }
+    }
+  }
+`;
+
+//Stages Backdrops Page
+export const GET_BACKDROP_DATA = gql`
+  query GetStageBackdropPage($locale: I18NLocaleCode) {
+    backdropPage(locale: $locale) {
+      data {
+        attributes {
+          BackDropHead {
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            heading
+            breadcrumb {
+              SubHead1
+              link1
+              SubHead2
+              link2
+            }
+          }
+          BackDropSec {
+            heading
+            subText
+            description
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+          Heading
+          SubHeading
+          description
+          BackDropDes {
+            title
+            subTitle
+            description
+          }
+          BackDropPort {
+            title
+            SubTitle
+            image1 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image2 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image3 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image4 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image5 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image6 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            button {
+              label
+              link
+            }
+          }
+          BackDDropFaq {
+            FaqTitle
+            ConFaq {
+              question
+              answers
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+//Recent Clients Page
+export const GET_RECENT_CLIENT_DATA = gql`
+  query GetClientsPage($locale: I18NLocaleCode) {
+    clientsPage(locale: $locale) {
+      data {
+        attributes {
+          ClientsHead {
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            heading
+            breadcrumb {
+              SubHead1
+              link1
+              SubHead2
+              link2
+            }
+          }
+          Heading
+          SubHeading
+          description
+          RecentClients {
+            heading
+            SubHeading
+            ClientList {
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+          ClientProt {
+            title
+            SubTitle
+            image1 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image2 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image3 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image4 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image5 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            image6 {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            button {
+              label
+              link
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
