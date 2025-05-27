@@ -76,7 +76,7 @@ export default function Header() {
                         <div className="relative group">
                             <button className="relative flex items-center space-x-1">
                                 <Link href={service.link}>
-                                    <span className={`relative before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 group-hover:before:w-full hover:text-[#D10003] ${isActive("/exhibition") ? "text-red-600" : "text-black"}`} >
+                                    <span className={`relative items-center flex px-4 py-2 before:absolute before:bottom-0 before:left-0 before:w-0 before:h-[2px] before:bg-white before:transition-all before:duration-300 group-hover:before:w-full hover:text-[#D10003] ${isActive("/exhibition") ? "text-red-600" : "text-black"}`} >
                                         {service.title}
                                     </span>
                                 </Link>

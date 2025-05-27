@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
                         <div className="col-span-4 pt-10 3xl:col-span-3 ms-4 lg:ms-40 3xl:ms-0">
                             <div className="flex flex-col items-start text-left space-y-3 min-h-[300px]">
                                 <div style={{ width: 191, height: 87 }}>
-                                    <Image src="/images/Footer logo.png" width={191} height={87} alt="Footer Logo" quality={80} sizes="(max-width: 768px) 100vw, 191px" />
+                                    <Image src="/images/Footer logo.png" width={191} height={87} alt="Footer Logo" quality={80} sizes="(max-width: 768px) 100vw, 191px" loading="lazy" />
                                 </div>
                                 <div className="flex flex-col pt-5 text-left">
                                     <div className="flex items-center gap-10 py-5 justify-left">
