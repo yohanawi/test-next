@@ -18,6 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
             metadataBase: new URL("https://xessevents.com"),
             alternates: {
                 canonical: seo.canonicalURL || "https://xessevents.com/about-us",
+                languages: {
+                    "en": "https://xessevents.com/about-us",
+                },
             },
             keywords: seo.keywords || [],
             robots: seo.metaRobots || "index, follow",

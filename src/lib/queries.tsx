@@ -972,6 +972,11 @@ export const GET_EXHIBITION_PAGE_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -1060,12 +1065,18 @@ export const GET_PORTFOLIO_PAGE = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
     }
   }
 `;
+
 export const GET_PORTFOLIO_CATEGORY = gql`
   query getPortfolioCatgries($locale: I18NLocaleCode) {
     portfolioCatgries(locale: $locale) {
@@ -1253,6 +1264,11 @@ export const GET_CALENDER = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -1438,9 +1454,14 @@ export const GET_EXHIBITION_CONSTROCTOR_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
-      }         
+      }
     }
   }
 `;
@@ -1556,6 +1577,11 @@ export const GET_EXHIBITION_DESIGN_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -1654,6 +1680,34 @@ export const GET_EXHIBITION_BRANDING_DATA = gql`
               answers
             }
           }  
+          meta_data {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
+          }
         }
       }
     }
