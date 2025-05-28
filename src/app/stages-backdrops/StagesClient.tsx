@@ -55,10 +55,10 @@ export default function StagesClient() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8">
                             <div className="3xl:pt-10">
-                                <h1 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl 3xl:leading-normal" dangerouslySetInnerHTML={{
+                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl 3xl:leading-normal" dangerouslySetInnerHTML={{
                                     __html: mainBackdrop?.BackDropSec?.heading || "Stages and backdrops <span style='color: #EA2127;'>for events</span>",
                                 }}>
-                                </h1>
+                                </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">{mainBackdrop?.BackDropSec?.subText || "No.1 commercial interior design company in Dubai, UAE"}</p>
                                 <div className="lg:py-8 py-5 text-sm text-[#3E444A] 3xl:text-base" dangerouslySetInnerHTML={{
                                     __html: mainBackdrop?.BackDropSec?.description
@@ -78,7 +78,7 @@ export default function StagesClient() {
 
             <section className="bg-[#f6f6f6] text-center lg:py-16 py-10">
                 <div className="container px-6 mx-auto">
-                    <h1 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">{mainBackdrop?.Heading || "GET YOUR OWN"}</h1>
+                    <h2 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">{mainBackdrop?.Heading || "GET YOUR OWN"}</h2>
                     <p className="text-lg text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
                         {mainBackdrop?.SubHeading || "CUSTOM EXHIBITION STAND Builders"}
                     </p>
@@ -90,7 +90,7 @@ export default function StagesClient() {
 
             <section className="py-5 bg-white lg:pb-20 lg:pt-14">
                 <div className="mx-20 text-center md:mx-0">
-                    <h1 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{mainBackdrop?.BackDropPort?.title || "Take a look at some of our work"}</h1>
+                    <h2 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{mainBackdrop?.BackDropPort?.title || "Take a look at some of our work"}</h2>
                     <span className="text-[#E42D39] text-xs md:text-base">{mainBackdrop?.BackDropPort?.SubTitle || "Lorem Ipsum is simply dummy text of the printing"}</span>
                 </div>
                 <div className="grid lg:grid-cols-3 grid-cols-2 gap-4 lg:pt-10 lg:pb-14 md:pb-16 pb-5 pt-5 lg:mx-60 mx-8 md:mx-40 3xl:mx-[18rem]">
@@ -108,9 +108,9 @@ export default function StagesClient() {
             </section>
 
             <section className="pt-5 pb-10 bg-white md:pb-10">
-                <h1 className="lg:text-4xl md:text-2xl text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[17rem] md:mx-32 mx-16 lg:pb-8"
+                <h2 className="lg:text-4xl md:text-2xl text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[17rem] md:mx-32 mx-16 lg:pb-8"
                     dangerouslySetInnerHTML={{ __html: mainBackdrop?.BackDDropFaq?.FaqTitle || "How Can you build <span style='color: #EA2127;'>your stand</span>" }}>
-                </h1>
+                </h2>
                 <div className="flex items-center justify-center py-5 lg:py-0 lg:pb-10 md:py-8">
                     <div className="w-full lg:max-w-6xl md:max-w-xl 3xl:max-w-[85rem] max-w-xs space-y-2">
                         {accordion.map((item: { question: string, answers: string }, index: number) => {

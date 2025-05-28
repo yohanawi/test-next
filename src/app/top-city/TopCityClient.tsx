@@ -68,9 +68,9 @@ export default function TopCityClient() {
             <section className="bg-white">
                 <div className="grid pt-5 md:grid-cols-2 lg:mx-52 3xl:mx-80 md:mx-20 mx-14 md:pt-8 lg:pt-12">
                     <div>
-                        <h1 className="text-[24px] md:text-[28px] lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
+                        <h2 className="text-[24px] md:text-[28px] lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
                             {mainTopCity?.cities?.Topic || "our top cities"}
-                        </h1>
+                        </h2>
                         <p className="text-[18px] lg:text-[18px] text-[#E21F2C] font-sans tracking-wide">{mainTopCity?.cities?.SubTopic || "Complete Exhibition Solutions"}</p>
                     </div>
                     <div className="items-end justify-center hidden md:text-center lg:mt-5 md:mt-2 md:block">
@@ -119,7 +119,7 @@ export default function TopCityClient() {
 
             <section className="py-5 bg-white lg:pb-14">
                 <div className="text-center">
-                    <h1 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{mainTopCity?.CityPort?.title || "Take a look at some of our work"}</h1>
+                    <h2 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{mainTopCity?.CityPort?.title || "Take a look at some of our work"}</h2>
                     <span className="text-[#E42D39] text-xs md:text-base">{mainTopCity?.CityPort?.SubTitle || "Lorem Ipsum is simply dummy text of the printing"}</span>
                 </div>
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 py-10 lg:mx-60 mx-8 md:mx-40 3xl:mx-[18rem]">

@@ -1,38 +1,48 @@
 import { Metadata } from "next";
 import Wedding from "./WeddingClient";
+import { GET_WEDDING_DATA } from "@/lib/queries";
+import client from "@/lib/apolloClient";
 
 export async function generateMetadata(): Promise<Metadata> {
     const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
 
     try {
-        const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
-            next: { revalidate: 60 },
-            cache: "force-cache",
-        });
-
-        const json = await res.json();
-        const seo = json?.data?.attributes?.seo || {};
-
-        const imageUrl = seo?.metaImage?.data?.attributes?.url
-            ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}`
-            : "https://xessevents.com/images/default-og.jpg";
+        const { data } = await client.query({ query: GET_WEDDING_DATA, variables: { locale: "en" }, });
+        const seo = data?.weddingPages?.data?.[0]?.attributes?.meta_data || {};
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+        const structuredDataJson = seo.structuredData || null;
 
         return {
             title: seo.metaTitle || "Wedding | XESS Events",
             description: seo.metaDescription || "Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
+            alternates: {
+                canonical: seo.canonicalURL || "https://xessevents.com/wedding",
+                languages: {
+                    "en": "https://xessevents.com/wedding",
+                },
+            },
+            keywords: seo.keywords || [],
+            robots: seo.metaRobots || "index, follow",
             openGraph: {
                 title: seo.metaTitle || "Wedding | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                url: "https://xessevents.com/wedding",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
+                site: "@xessevents",
                 title: seo.metaTitle || "Wedding | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
                 images: [imageUrl],
+            },
+            viewport: seo.metaViewport || "width=device-width, initial-scale=1",
+            other: {
+                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
+                "author": "Xess Events Team",
+                "publisher": "Xess Events",
             },
         };
     } catch (error) {

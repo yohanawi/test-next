@@ -62,11 +62,11 @@ export default function ContractorsAbuDhabi() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
                             <div>
-                                <h1 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
                                     dangerouslySetInnerHTML={{
                                         __html: mainExhibitionconstroctor?.ConSec?.heading || "Exhibition stand <br /> <span style='color: #EA2127;'>contractors</span>",
                                     }}>
-                                </h1>
+                                </h2>
                                 <p className="pt-2 text-sm font-bold text-black uppercase lg:text-base">
                                     {mainExhibitionconstroctor?.ConSec?.subheading || "Complete Exhibition Solutions Provided Globally"}
                                 </p>
@@ -91,9 +91,9 @@ export default function ContractorsAbuDhabi() {
 
             <section className="bg-[#d4d4d4] text-center lg:py-10 py-8">
                 <div className="container px-6 mx-auto">
-                    <h1 className="text-xl text-center text-black md:text-3xl lg:text-4xl md:mx-20">
+                    <h2 className="text-xl text-center text-black md:text-3xl lg:text-4xl md:mx-20">
                         {mainExhibitionconstroctor?.topic || "Trade Show Booth Rentals to Dominate European Shows"}
-                    </h1>
+                    </h2>
                     <p className="text-[#EA2127] md:text-base py-2 text-xs px-8 uppercase">
                         {mainExhibitionconstroctor?.subTopic || "Complete Exhibition Solutions Provided Globally"}
                     </p>
@@ -108,14 +108,14 @@ export default function ContractorsAbuDhabi() {
             </section>
 
             <section className="bg-[#D8DDE0] py-10">
-                <h1 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1">
+                <h2 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1">
                     FAQ
-                </h1>
+                </h2>
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
-                        <h1 className="text-xl text-black md:text-3xl lg:text-5xl">
+                        <h2 className="text-xl text-black md:text-3xl lg:text-5xl">
                             Partner with the best exhibition stand contractors in Abu Dhabi
-                        </h1>
+                        </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
                         {accordion.map((item: { question: string, answers: string }, index: number) => {

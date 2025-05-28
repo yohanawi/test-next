@@ -87,9 +87,9 @@ export default function Stands() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                             <div>
-                                <h1 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl" dangerouslySetInnerHTML={{ __html: standDetail?.SecondSec?.title }}>
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl" dangerouslySetInnerHTML={{ __html: standDetail?.SecondSec?.title }}>
 
-                                </h1>
+                                </h2>
                                 <div className="lg:py-8 py-5 text-sm text-[#3E444A] 3xl:text-base">
                                     <p>{standDetail?.SecondSec?.description}</p>
                                     <p className="mt-4">{standDetail?.SecondSec?.description2}</p>

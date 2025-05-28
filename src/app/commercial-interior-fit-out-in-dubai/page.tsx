@@ -1,36 +1,49 @@
 import { Metadata } from "next";
 import CommercialInterior from "./CommercialInterior";
+import { GET_FITOUT_DATA } from "@/lib/queries";
+import client from "@/lib/apolloClient";
 
 export async function generateMetadata(): Promise<Metadata> {
     const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
 
     try {
-        const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
-            next: { revalidate: 60 },
-            cache: "force-cache",
-        });
-
-        const json = await res.json();
-        const seo = json?.data?.attributes?.seo || {};
-
+        const { data } = await client.query({ query: GET_FITOUT_DATA, variables: { locale: "en" }, });
+        const seo = data?.fitOutPages?.data?.[0]?.attributes?.meta_data || {};
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+        const structuredDataJson = seo.structuredData || null;
+
 
         return {
             title: seo.metaTitle || "Commercial Interior | XESS Events",
             description: seo.metaDescription || "Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
+            alternates: {
+                canonical: seo.canonicalURL || "https://xessevents.com/commercial-interior-fit-out-in-dubai",
+                languages: {
+                    "en": "https://xessevents.com/commercial-interior-fit-out-in-dubai",
+                },
+            },
+            keywords: seo.keywords || [],
+            robots: seo.metaRobots || "index, follow",
             openGraph: {
                 title: seo.metaTitle || "Commercial Interior | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                url: "https://xessevents.com/commercial-interior-fit-out-in-dubai",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
+                site: "@xessevents",
                 title: seo.metaTitle || "Commercial Interior | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
                 images: [imageUrl],
+            },
+            viewport: seo.metaViewport || "width=device-width, initial-scale=1",
+            other: {
+                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
+                "author": "Xess Events Team",
+                "publisher": "Xess Events",
             },
         };
     } catch (error) {

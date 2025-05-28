@@ -69,11 +69,11 @@ export default function BuilderClient() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8">
                             <div className="3xl:pt-10">
-                                <h1 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
                                     dangerouslySetInnerHTML={{
                                         __html: mainExhibitionbuilder?.BuildSec?.heading || "Exhibition stand  <span style='color: #EA2127;'>builders</span>",
                                     }}>
-                                </h1>
+                                </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">
                                     {mainExhibitionbuilder?.BuildSec?.subText || "Complete Exhibition Solutions Provided Globally"}
                                 </p>
@@ -97,9 +97,9 @@ export default function BuilderClient() {
 
             <section className="bg-[#f6f6f6] text-center lg:py-14 py-8">
                 <div className="container px-6 mx-auto">
-                    <h1 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">
+                    <h2 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">
                         {mainExhibitionbuilder?.BuildDes?.title || "GET YOUR OWN"}
-                    </h1>
+                    </h2>
                     <p className="text-xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
                         {mainExhibitionbuilder?.BuildDes?.subTitle || "CUSTOM 3D EXHIBITION STAND DESIGN"}
                     </p>
@@ -115,9 +115,9 @@ export default function BuilderClient() {
 
             <section className="py-10 bg-white lg:py-10">
                 <div className="text-center">
-                    <h1 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">
+                    <h2 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">
                         {mainExhibitionbuilder?.BuildPort?.title || "Take a look at some of our work"}
-                    </h1>
+                    </h2>
                     <span className="text-[#E42D39] text-xs md:text-base">
                         {mainExhibitionbuilder?.BuildPort?.SubTitle || "Lorem Ipsum is simply dummy text of the printing"}
                     </span>
@@ -137,16 +137,16 @@ export default function BuilderClient() {
             </section>
 
             <section className="bg-[#f6f6f6] py-10">
-                <h1 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1">
+                <h2 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1">
                     FAQ
-                </h1>
+                </h2>
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
-                        <h1 className="text-xl text-black md:text-3xl lg:text-5xl"
+                        <h2 className="text-xl text-black md:text-3xl lg:text-5xl"
                             dangerouslySetInnerHTML={{
                                 __html: mainExhibitionbuilder?.BuildFaq?.FaqTitle || "How Can you <span style='color: #EA2127;'>brand your stand</span>",
                             }}>
-                        </h1>
+                        </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
                         {accordion.map((item: { question: string, answers: string }, index: number) => {

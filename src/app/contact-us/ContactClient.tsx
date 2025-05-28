@@ -116,9 +116,9 @@ export default function Contact() {
             <section className="bg-[#f6f6f6] lg:p-10 md:p-8 p-2 relative" id="contactForm" >
                 <div className="grid grid-cols-1 gap-16 p-5 mx-4 bg-white lg:grid-cols-3 lg:mx-44 rounded-2xl">
                     <div className="lg:col-span-1 flex flex-col bg-[#373946] p-4 rounded-2xl" style={{ fontFamily: "Work Sans, sans-serif" }} >
-                        <h1 className="text-2xl font-extrabold text-white uppercase md:text-4xl">
+                        <h2 className="text-2xl font-extrabold text-white uppercase md:text-4xl">
                             {formSection?.title}
-                        </h1>
+                        </h2>
                         <p className="text-xs leading-relaxed tracking-wide text-white md:mt-4 lg:text-sm md:py-4"
                             dangerouslySetInnerHTML={{
                                 __html: sanitizeHtml(formSection?.description || ""),
@@ -219,9 +219,9 @@ export default function Contact() {
             <section className="bg-[#d8dde0] relative pt-10 lg:pb-40 md:pb-10 pb-8" style={{ fontFamily: "Work Sans, sans-serif" }} >
                 <div className="grid grid-cols-1 mx-12 lg:grid-cols-5 lg:mx-44 md:mx-20 lg:gap-10">
                     <div className="flex flex-col lg:col-span-2">
-                        <h1 className="text-2xl font-bold text-black uppercase md:text-4xl">
+                        <h2 className="text-2xl font-bold text-black uppercase md:text-4xl">
                             {infoSection?.title}
-                        </h1>
+                        </h2>
                         <p className="py-4 mt-4 text-xs text-gray-600 md:text-sm"
                             dangerouslySetInnerHTML={{
                                 __html: sanitizeHtml(infoSection?.description || ""),

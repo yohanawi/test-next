@@ -33,7 +33,7 @@ export default function TermsClient() {
             </section>
             <section className="bg-[#f6f6f6] py-12">
                 <div className="max-w-3xl px-4 mx-auto">
-                    <h1 className="mb-6 text-3xl font-bold text-black">{title || "Terms & Condition"}</h1>
+                    <h2 className="mb-6 text-3xl font-bold text-black">{title || "Terms & Condition"}</h2>
                     <p className="mb-4 font-medium text-black content-styled" dangerouslySetInnerHTML={{ __html: sanitizeHtml(description || ""), }}></p>
                 </div>
             </section>

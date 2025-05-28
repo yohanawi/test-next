@@ -3,14 +3,15 @@
 import ClientHeader from "@/components/ClientHeader";
 import { ApolloWrapper } from "@/lib/ApolloWrapper";
 import { Work_Sans } from "next/font/google";
-import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 import { Inter } from "next/font/google";
+import Footer from "@/components/Footer";
 import { Sora } from "next/font/google";
 import { Provider } from 'react-redux';
 import { store } from '@/redux/store';
-import './globals.css';
+import Chat from "@/components/Chat";
 import { useEffect } from "react";
-import Contact from "@/components/Contact";
+import './globals.css';
 
 const inter = Inter({
   subsets: ["latin"],
@@ -57,6 +58,7 @@ export default function RootLayout({
             <ClientHeader />
             <Contact />
             {children}
+            <div><Chat /></div>
             <Footer />
           </ApolloWrapper>
         </Provider>

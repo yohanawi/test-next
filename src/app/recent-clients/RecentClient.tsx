@@ -65,7 +65,7 @@ export default function RecentClients() {
 
             <section className="py-5 text-center bg-white lg:py-12 md:py-8">
                 <div className="container px-6 mx-auto">
-                    <h1 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">{mainClients?.Heading || "GET YOUR OWN"}</h1>
+                    <h2 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">{mainClients?.Heading || "GET YOUR OWN"}</h2>
                     <p className="text-xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
                         {mainClients?.SubHeading || "CUSTOM EXHIBITION STAND Builders"}
                     </p>
@@ -102,7 +102,7 @@ export default function RecentClients() {
 
             <section className="py-5 bg-white md:py-10">
                 <div className="mx-20 text-center md:mx-0">
-                    <h1 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{mainClients?.ClientProt?.title || "Take a look at some of our work"}</h1>
+                    <h2 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{mainClients?.ClientProt?.title || "Take a look at some of our work"}</h2>
                     <span className="text-[#E42D39] text-xs md:text-base">{mainClients?.ClientProt?.SubTitle || "Lorem Ipsum is simply dummy text of the printing"}</span>
                 </div>
                 <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-4 lg:pt-10 lg:pb-5 md:pb-8 pb-10 pt-10 lg:mx-60 mx-8 md:mx-40 3xl:mx-[18rem]">

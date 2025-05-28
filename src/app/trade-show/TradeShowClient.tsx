@@ -191,16 +191,16 @@ export default function TradeShowClient() {
             </section>
 
             <section className="bg-[#D8DDE0] py-10">
-                <h1 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1"
+                <h2 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1"
                     dangerouslySetInnerHTML={{
                         __html: mainTradeShow?.TradeFaq?.FaqTitle || "FAQ",
                     }}
-                ></h1>
+                ></h2>
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
-                        <h1 className="text-xl text-black md:text-3xl lg:text-5xl">
+                        <h2 className="text-xl text-black md:text-3xl lg:text-5xl">
                             Partner with the best exhibition stand contractors in Dubai
-                        </h1>
+                        </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
                         {accordion.map((item: { question: string, answers: string }, index: number) => {

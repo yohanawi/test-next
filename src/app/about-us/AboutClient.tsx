@@ -106,9 +106,9 @@ export default function About() {
             <section className="bg-[#f6f6f6]">
                 <div className="py-5 md:py-5 lg:py-0">
                     <div className="flex mx-auto justify-center max-w-[300px] md:max-w-[350px] lg:max-w-[700px]">
-                        <h1 className="lg:text-5xl md:text-2xl text-xl text-[#17171B] font-sans font-bold text-center"
+                        <h2 className="lg:text-5xl md:text-2xl text-xl text-[#17171B] font-sans font-bold text-center"
                             dangerouslySetInnerHTML={{ __html: missionSec.title || "Our Story of Innovation", }}>
-                        </h1>
+                        </h2>
                     </div>
                     <div className="flex justify-center pt-5 mx-12 lg:mx-52 md:mx-32 lg:pt-10">
                         <p className="lg:text-xl md:text-[16px] text-sm text-black lg:mx-20 3xl:mx-44 font-normal text-center" style={{ fontFamily: "Sora, sans-serif" }} >
@@ -155,7 +155,7 @@ export default function About() {
                 <div>
                     <div className="bg-[#313131]">
                         <div className="pt-10 mx-16 font-sans 3xl:mx-60 lg:mx-40 md:mx-32 lg:pt-20 lg:pb-10 pb-7">
-                            <h1 className="font-sans text-2xl font-light text-white lg:text-5xl md:text-3xl">{serviceSec?.title || "What We Do"}</h1>
+                            <h2 className="font-sans text-2xl font-light text-white lg:text-5xl md:text-3xl">{serviceSec?.title || "What We Do"}</h2>
                             <span className="text-sm text-white 3xl:text-base" style={{ fontFamily: "Work Sans, sans-serif" }} >
                                 {serviceSec?.description || "Our services help you succeed."}
                             </span>

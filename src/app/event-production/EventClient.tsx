@@ -28,7 +28,7 @@ type EventSection = {
 export default function EventProduction() {
 
     const { locale } = useSelector((state: RootState) => state.locale);
-    const { data: eventProductionData, } = useQuery(GET_EVENT_PRODUCTION_DATA, { variables: { locale }, });    
+    const { data: eventProductionData, } = useQuery(GET_EVENT_PRODUCTION_DATA, { variables: { locale }, });
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const eventProduction = eventProductionData?.eventProductionPages?.data?.[0]?.attributes || {};
     const heroSec = eventProduction?.HeroSec || {};
@@ -51,7 +51,7 @@ export default function EventProduction() {
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href="/" className="px-4 uppercase">Home</Link>
                         /
-                        <Link href="events-production" className="px-4 uppercase">events production</Link>
+                        <Link href="/event-production" className="px-4 uppercase">event production</Link>
                     </div>
                 </div>
             </section>
@@ -61,9 +61,9 @@ export default function EventProduction() {
                     <div className="container mx-auto">
                         <div className="grid items-center grid-cols-1 lg:grid-cols-2 lg:gap-8">
                             <div>
-                                <h1 className="text-2xl font-normal text-black uppercase md:text-3xl lg:text-5xl">
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-3xl lg:text-5xl">
                                     {secndSec?.title || "XESS! SERVICES EVENT PRODUCTION"}
-                                </h1>
+                                </h2>
                                 <div className="lg:py-8 md:py-2 text-sm 3xl:text-base text-[#3E444A]">
                                     <p dangerouslySetInnerHTML={{
                                         __html: sanitizeHtml(secndSec.description || ""),

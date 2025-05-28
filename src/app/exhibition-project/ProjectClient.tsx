@@ -141,9 +141,9 @@ export default function ProjectClient() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                             <div>
-                                <h1 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl">
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl">
                                     {projectPage?.SecondSec?.title}
-                                </h1>
+                                </h2>
                                 <p className="pt-5 text-sm text-black uppercase lg:text-base"> {projectPage?.SecondSec?.subTitle}</p>
                                 <div className="lg:py-8 py-5 text-sm text-[#3E444A]">
                                     <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(projectPage?.SecondSec?.description) }}>
@@ -183,7 +183,7 @@ export default function ProjectClient() {
                 backgroundSize: "cover", backgroundPosition: "center"
             }}>
                 <div className="container px-10 mx-auto">
-                    <h1 className="text-2xl text-center text-white uppercase md:text-3xl lg:text-4xl md:mx-20">{projectPage?.BannerSec?.title}</h1>
+                    <h2 className="text-2xl text-center text-white uppercase md:text-3xl lg:text-4xl md:mx-20">{projectPage?.BannerSec?.title}</h2>
                     <div className="mx-10 lg:mx-32 md:mx-20 3xl:mx-24">
                         <p className="mt-8 text-xs text-white md:text-base" dangerouslySetInnerHTML={{ __html: sanitizeHtml(projectPage?.BannerSec?.description) }}></p>
                     </div>
@@ -193,9 +193,9 @@ export default function ProjectClient() {
             <section className="bg-[#d8dde0]">
                 <div className="grid pt-12 mx-12 md:grid-cols-2 lg:mx-44 md:mx-24 lg:pt-12 3xl:px-28">
                     <div>
-                        <h1 className="md:text-[26px] text-xl lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
+                        <h2 className="md:text-[26px] text-xl lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
                             {featurePrjSec?.title}
-                        </h1>
+                        </h2>
                         <p className="text-[14px] lg:text-[18px] text-[#EA2127] font-sans tracking-wide uppercase mt-3">
                             {featurePrjSec?.subTitle}
                         </p>
@@ -269,7 +269,7 @@ export default function ProjectClient() {
 
             <section className="py-10 bg-white lg:pb-28">
                 <div className="text-center">
-                    <h1 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{projectPage?.GallarySec?.title}</h1>
+                    <h2 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">{projectPage?.GallarySec?.title}</h2>
                     <span className="text-[#E42D39] text-xs md:text-base">{projectPage?.GallarySec?.description}</span>
                 </div>
                 <div className="grid lg:grid-cols-3 gap-4 lg:pt-10 lg:pb-8 pb-10 pt-10 lg:mx-48 mx-8 md:mx-40 3xl:mx-[17rem]">

@@ -99,11 +99,11 @@ export default function CitiesClient() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                             <div>
-                                <h1 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
                                     dangerouslySetInnerHTML={{
                                         __html: cityDetail?.SecondSec?.title || "Exhibition Stand",
                                     }}>
-                                </h1>
+                                </h2>
                                 <div className="lg:py-8 py-5 text-sm text-[#3E444A] 3xl:text-base">
                                     <p>{cityDetail?.SecondSec?.description}</p>
                                     <p className="mt-4">{cityDetail?.SecondSec?.description2}</p>
@@ -142,9 +142,9 @@ export default function CitiesClient() {
 
             <section className="bg-[#d8dde0] py-5 md:py-[70px] lg:py-10">
                 <div className="grid lg:grid-cols-2 lg:mx-44 mx-14 md:mx-32 lg:gap-8 3xl:mx-[17rem]">
-                    <h1 className="text-[20px] md:text-[30px] lg:text-[36px] font-sans font-semibold text-black">
+                    <h2 className="text-[20px] md:text-[30px] lg:text-[36px] font-sans font-semibold text-black">
                         {cityDetail?.ThirdSec?.mainTitle}
-                    </h1>
+                    </h2>
                     <div className="text-black lg:text-right">
                         <p className="text-[18px] lg:text-[18px] hidden lg:block font-sans font-normal">
                             {cityDetail?.ThirdSec?.subTitle}

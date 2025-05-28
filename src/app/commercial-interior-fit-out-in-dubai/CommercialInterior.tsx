@@ -57,7 +57,7 @@ export default function CommercialInterior() {
                             {FitOutHead?.breadcrumb?.SubHead1 || "Home"}
                         </Link>
                         /
-                        <Link href={FitOutHead?.breadcrumb?.link2 || "/fit-out"} className="px-4 uppercase" >
+                        <Link href={FitOutHead?.breadcrumb?.link2 || "/commercial-interior-fit-out-in-dubai"} className="px-4 uppercase" >
                             {FitOutHead?.breadcrumb?.SubHead2 || "Commercial interior fit-out"}
                         </Link>
                     </div>
@@ -69,11 +69,11 @@ export default function CommercialInterior() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                             <div className="3xl:pt-10">
-                                <h1 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl 3xl:leading-normal"
+                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl 3xl:leading-normal"
                                     dangerouslySetInnerHTML={{
                                         __html: mainFitOut?.FitOutSec2?.Heading || "COMMERCIAL <span style='color: #EA2127;'>INTERIORS</span>",
                                     }}>
-                                </h1>
+                                </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">
                                     {mainFitOut?.FitOutSec2?.SubHeading || "No.1 commercial interior design company in Dubai, UAE"}
                                 </p>
@@ -110,9 +110,9 @@ export default function CommercialInterior() {
 
             <section className="bg-[#f6f6f6] text-center lg:py-16 md:py-16 py-10">
                 <div className="container px-6 mx-auto">
-                    <h1 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">
+                    <h2 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">
                         {mainFitOut?.topic || "GET YOUR OWN"}
-                    </h1>
+                    </h2>
                     <p className="text-xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
                         {mainFitOut?.SubTopic || "CUSTOM EXHIBITION STAND Builders"}
                     </p>
@@ -124,9 +124,9 @@ export default function CommercialInterior() {
 
             <section className="py-10 bg-white lg:pb-10 lg:pt-10">
                 <div className="mx-20 text-center md:mx-0">
-                    <h1 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">
+                    <h2 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">
                         {mainFitOut?.FitOutPort?.heading || "Take a look at some of our work"}
-                    </h1>
+                    </h2>
                     <span className="text-[#E42D39] text-xs md:text-base">
                         {mainFitOut?.FitOutPort?.SubHeading || "Lorem Ipsum is simply dummy text of the printing"}
                     </span>
@@ -146,11 +146,11 @@ export default function CommercialInterior() {
             </section>
 
             <section className="pt-5 pb-10 bg-white md:pb-20">
-                <h1 className="lg:text-4xl md:text-3xl text-xl text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[17rem] md:mx-24 mx-14 lg:pb-8"
+                <h2 className="lg:text-4xl md:text-3xl text-xl text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[17rem] md:mx-24 mx-14 lg:pb-8"
                     dangerouslySetInnerHTML={{
                         __html: mainFitOut?.FitOutFaq?.FaqTitle || "How Can you build <span style='color: #EA2127;'>your stand</span>",
                     }}>
-                </h1>
+                </h2>
                 <div className="flex items-center justify-center py-5 lg:py-0 lg:pb-10 md:py-8">
                     <div className="w-full lg:max-w-6xl md:max-w-xl 3xl:max-w-[85rem] max-w-xs space-y-2">
                         {accordion.map((item: { question: string, answers: string }, index: number) => {

@@ -55,7 +55,7 @@ export async function generateMetadata(): Promise<Metadata> {
             openGraph: {
                 title: "Exhibition Calendar | XESS Events",
                 description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                url: "https://xessevents.com/exhibition-calendar",
                 type: "website",
                 images: ["https://xessevents.com/images/default-og.jpg"],
             },

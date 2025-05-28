@@ -531,6 +531,34 @@ export const GET_PROJECT_PAGE = gql`
             }
           }
           createdAt
+          meta_data {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
+          }
         }
       }
     }
@@ -1797,7 +1825,7 @@ export const GET_WEDDING_DATA = gql`
               data {
                 attributes {
                   url
-                } 
+                }
               }
             }
             metaSocial {
@@ -1947,6 +1975,34 @@ export const GET_SERVICE_DATA = gql`
               question
               answers
             }
+          }
+          meta_data {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -2142,7 +2198,7 @@ export const GET_TRADESHOW_DATA = gql`
               data {
                 attributes {
                   url
-                } 
+                }
               }
             }
             metaSocial {
@@ -2326,6 +2382,11 @@ export const GET_FITOUT_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -2530,6 +2591,11 @@ export const GET_EXHIBITION_BUILDER_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -2623,6 +2689,34 @@ export const GET_TOPCITY_DATA = gql`
               label
               link
             }
+          }
+          meta_data {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -2759,6 +2853,34 @@ export const GET_BACKDROP_DATA = gql`
               question
               answers
             }
+          }
+          meta_data {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }

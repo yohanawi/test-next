@@ -122,9 +122,9 @@ export default function Contractors() {
 
             <section className="bg-[#f6f6f6] text-center lg:py-12 md:py-8 py-5">
                 <div className="container px-6 mx-auto">
-                    <h1 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">
+                    <h2 className="text-[#EA2127] text-center text-xl md:text-3xl lg:text-4xl md:mx-20">
                         {mainExhibitionbranding?.BranDescribe?.title || "GET YOUR OWN BRAND"}
-                    </h1>
+                    </h2>
                     <p className="mt-2 text-lg text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
                         {mainExhibitionbranding?.BranDescribe?.subTitle || "CUSTOM 3D EXHIBITION STAND DESIGN"}
                     </p>
@@ -141,11 +141,11 @@ export default function Contractors() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                             <div>
-                                <h1 className="text-lg font-normal text-black uppercase md:text-3xl lg:text-5xl"
+                                <h2 className="text-lg font-normal text-black uppercase md:text-3xl lg:text-5xl"
                                     dangerouslySetInnerHTML={{
                                         __html: mainExhibitionbranding?.BrandSec2?.title || "Brand your<br /> <span style='color: #EA2127;'>EXHIBITION</span>",
                                     }}>
-                                </h1>
+                                </h2>
                                 <div className="lg:py-8 py-5 text-sm text-[#3E444A] 3xl:text-base">
                                     <p>{mainExhibitionbranding?.BrandSec2?.description}</p>
                                     <p className="mt-4">{mainExhibitionbranding?.BrandSec2?.description2}</p>
@@ -178,9 +178,9 @@ export default function Contractors() {
             <section className="bg-[#d8dde0]">
                 <div className="grid pt-12 mx-12 md:grid-cols-2 lg:mx-44 md:mx-24 lg:pt-12 3xl:px-28">
                     <div>
-                        <h1 className="md:text-[26px] text-xl lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
+                        <h2 className="md:text-[26px] text-xl lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
                             {featurePrjSec?.title}
-                        </h1>
+                        </h2>
                         <p className="text-[14px] lg:text-[18px] text-[#EA2127] font-sans tracking-wide uppercase mt-3">
                             {featurePrjSec?.subTitle}
                         </p>
@@ -253,16 +253,16 @@ export default function Contractors() {
             </section>
 
             <section className="bg-[#f6f6f6] py-10">
-                <h1 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1">
+                <h2 className="max-w-[4.2rem] text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1">
                     FAQ
-                </h1>
+                </h2>
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
-                        <h1 className="text-xl text-black md:text-3xl lg:text-5xl"
+                        <h2 className="text-xl text-black md:text-3xl lg:text-5xl"
                             dangerouslySetInnerHTML={{
                                 __html: mainExhibitionbranding?.BrandFaq?.FaqTitle || "How Can you <span style='color: #EA2127;'>brand your stand</span>",
                             }}>
-                        </h1>
+                        </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
                         {accordion.map((item: AccordionItem, index: number) => {

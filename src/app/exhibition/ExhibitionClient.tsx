@@ -88,11 +88,11 @@ export default function Exhibition() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                             <div>
-                                <h1 className="text-xl font-bold text-black uppercase md:text-4xl"
+                                <h2 className="text-xl font-bold text-black uppercase md:text-4xl"
                                     dangerouslySetInnerHTML={{
                                         __html: mainExhibition?.ExhiSec?.title || "#1 Exhibition Stand Design Company <span style='color: #EA2127;'>in Dubai</span>",
-                                    }}
-                                ></h1>
+                                    }}>
+                                </h2>
                                 <div className="lg:py-8 py-5 text-sm md:text-base text-[#3E444A] 3xl:text-base">
                                     <p>{mainExhibition?.ExhiSec?.description}</p>
                                     <p className="mt-4">

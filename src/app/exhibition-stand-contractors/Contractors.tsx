@@ -54,7 +54,7 @@ export default function Contractors() {
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href="/" className="px-4 uppercase">Home</Link>
                         /
-                        <Link href={mainExhibitionconstroctor?.breadcrumb?.link2 || "exhibition-stand-contractor"} className="px-4 uppercase" >
+                        <Link href={mainExhibitionconstroctor?.breadcrumb?.link2 || "/exhibition-stand-contractors"} className="px-4 uppercase" >
                             {Conhead?.breadcrumb?.SubHead2 || "exhibition stand contractors"}
                         </Link>
                     </div>
@@ -66,10 +66,10 @@ export default function Contractors() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
                             <div>
-                                <h1 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl" dangerouslySetInnerHTML={{
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl" dangerouslySetInnerHTML={{
                                     __html: mainExhibitionconstroctor?.ConSec?.heading || "Exhibition stand <br /> <span style='color: #EA2127;'>contractors</span>",
                                 }}>
-                                </h1>
+                                </h2>
                                 <p className="pt-2 text-sm font-bold text-black uppercase lg:text-base">
                                     {mainExhibitionconstroctor?.ConSec?.subheading || "Complete Exhibition Solutions Provided Globally"}
                                 </p>
@@ -95,9 +95,9 @@ export default function Contractors() {
 
             <section className="bg-[#d4d4d4] text-center lg:py-10 py-8">
                 <div className="container px-6 mx-auto">
-                    <h1 className="text-xl text-center text-black md:text-3xl lg:text-4xl md:mx-20">
+                    <h2 className="text-xl text-center text-black md:text-3xl lg:text-4xl md:mx-20">
                         {mainExhibitionconstroctor?.topic || "Trade Show Booth Rentals to Dominate European Shows"}
-                    </h1>
+                    </h2>
                     <p className="text-[#EA2127] md:text-base py-2 text-xs px-8 uppercase">
                         {mainExhibitionconstroctor?.subTopic || "Complete Exhibition Solutions Provided Globally"}
                     </p>
@@ -112,14 +112,14 @@ export default function Contractors() {
             </section>
 
             <section className="bg-[#D8DDE0] py-10">
-                <h1 className="text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1 max-w-[4.2rem]">
+                <h2 className="text-lg text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[19rem] md:mx-32 mx-14 bg-white rounded-full px-4 py-1 max-w-[4.2rem]">
                     FAQ
-                </h1>
+                </h2>
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
-                        <h1 className="text-xl text-black md:text-3xl lg:text-5xl">
+                        <h2 className="text-xl text-black md:text-3xl lg:text-5xl">
                             Partner with the best exhibition stand contractors in Dubai
-                        </h1>
+                        </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
                         {accordion.map((item: AccordionItem, index: number) => {

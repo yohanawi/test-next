@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
             openGraph: {
                 title: seo.metaTitle || "exhibition-stand-designer | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                url: "https://xessevents.com/exhibition-stand-designer",
                 type: "website",
                 images: [imageUrl],
             },

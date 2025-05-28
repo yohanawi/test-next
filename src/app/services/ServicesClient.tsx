@@ -178,9 +178,9 @@ export default function Services() {
                 <div className="h-full gap-4 lg:grid lg:grid-cols-3">
                     <div className="flex items-center justify-center col-span-2 mx-16 lg:mx-0 lg:ms-2 3xl:ms-12">
                         <div>
-                            <h1 className="lg:text-[74px] md:text-[50px] text-[32px] font-bold text-black max-w-[500px] pt-12 lg:pt-0 leading-none"
+                            <h2 className="lg:text-[74px] md:text-[50px] text-[32px] font-bold text-black max-w-[500px] pt-12 lg:pt-0 leading-none"
                                 dangerouslySetInnerHTML={{ __html: secndSec?.title || "Our <span class='text-[#D10003]'>Services</span>" }}>
-                            </h1>
+                            </h2>
                             <p className="text-black font-light lg:text-[24px] md:text-[18px] max-w-[550px] pt-4 lg:pt-0">
                                 {secndSec?.description || "We provide expert branding solutions for exhibition stands and events."}
                             </p>

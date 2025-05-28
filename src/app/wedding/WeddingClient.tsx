@@ -103,11 +103,11 @@ export default function WeddingClient() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
                             <div className="3xl:pt-10">
-                                <h1 className="lg:text-6xl md:text-[50px] text-[32px] font-bold text-black max-w-[800px] pt-12 lg:pt-0 leading-none"
+                                <h2 className="lg:text-6xl md:text-[50px] text-[32px] font-bold text-black max-w-[800px] pt-12 lg:pt-0 leading-none"
                                     dangerouslySetInnerHTML={{
                                         __html: mainWedding?.WeddingSec2?.Heading || "Wedding Event <span style='color: #EA2127;'>Contractors</span>",
                                     }}>
-                                </h1>
+                                </h2>
                                 <p className="text-black font-light lg:text-[24px] md:text-[18px] max-w-[550px] pt-4 lg:pt-0">
                                     {mainWedding?.WeddingSec2?.SubHeading}
                                 </p>
@@ -148,9 +148,9 @@ export default function WeddingClient() {
             <section className="bg-[#d8dde0]">
                 <div className="grid pt-12 mx-12 md:grid-cols-2 lg:mx-52 3xl:mx-64 lg:pt-10 md:pt-16 md:mx-28">
                     <div>
-                        <h1 className="text-[24px] md:text-[36px] text-black font-sans font-bold uppercase">
+                        <h2 className="text-[24px] md:text-[36px] text-black font-sans font-bold uppercase">
                             {WeddingSec3?.Heading || "Our Services"}
-                        </h1>
+                        </h2>
                         <p className="text-[14px] md:text-[20px] text-[#ea2127]">
                             {WeddingSec3?.SubHeading || "Complete Exhibition Solutions Provided Globally"}
                         </p>
@@ -193,9 +193,9 @@ export default function WeddingClient() {
 
             <section className="py-10 bg-white lg:py-14">
                 <div className="text-center">
-                    <h1 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">
+                    <h2 className="pb-2 text-xl text-black lg:text-4xl md:text-3xl">
                         {mainWedding?.WeddingPort?.heading || "Take a look at some of our work"}
-                    </h1>
+                    </h2>
                     <span className="text-[#E42D39] text-xs md:text-base">
                         {mainWedding?.WeddingPort?.SubHeading || "Lorem Ipsum is simply dummy text of the printing"}
                     </span>
@@ -215,9 +215,9 @@ export default function WeddingClient() {
             </section>
 
             <section className="bg-[#d8dde0] py-10">
-                <h1 className="lg:text-4xl md:text-3xl text-xl text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[17rem] md:mx-24 mx-14 lg:pb-8"
+                <h2 className="lg:text-4xl md:text-3xl text-xl text-left font-normal uppercase text-black lg:mx-[12rem] 3xl:mx-[17rem] md:mx-24 mx-14 lg:pb-8"
                     dangerouslySetInnerHTML={{ __html: mainWedding?.WeddingFaq?.FaqTitle || "FAQ's", }}>
-                </h1>
+                </h2>
                 <div className="flex items-center justify-center py-5 lg:py-0 lg:pb-10 md:py-8">
                     <div className="w-full lg:max-w-6xl md:max-w-xl 3xl:max-w-[85rem] max-w-xs space-y-2">
                         {accordion.map((item: AccordionItem, index: number) => {

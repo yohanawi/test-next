@@ -87,9 +87,9 @@ export default function ProjectsClient() {
             <section className="bg-white">
                 <div className="grid mx-12 md:grid-cols-2 lg:mx-44 md:mx-24 lg:pt-10 3xl:px-28">
                     <div>
-                        <h1 className="text-[26px] lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
+                        <h2 className="text-[26px] lg:text-[36px] text-[#17171B] font-sans font-normal uppercase">
                             projects
-                        </h1>
+                        </h2>
                         <p className="text-[14px] lg:text-[18px] text-[#EA2127] font-sans tracking-wide uppercase">complete exhibition solutions </p>
                     </div>
                 </div>
