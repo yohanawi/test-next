@@ -1,3 +1,5 @@
+import { GET_HOME_PAGE_DATA } from "@/lib/queries";
+import client from "@/lib/apolloClient";
 import dynamic from "next/dynamic";
 import { Metadata } from 'next';
 
@@ -16,21 +18,26 @@ export async function generateMetadata(): Promise<Metadata> {
   const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
 
   try {
-    const res = await fetch(`${STRAPI_URL}/api/homePages?populate=seo.metaImage`, {
-      next: { revalidate: 60 },
-      cache: "force-cache",
+    const { data } = await client.query({
+      query: GET_HOME_PAGE_DATA,
+      variables: { locale: "en" },
     });
 
-    const json = await res.json();
-    const seo = json?.data?.attributes?.seo || {};
+    const seo = data?.homePages?.data?.[0]?.attributes?.meta_data || {};
     const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+    const structuredDataJson = seo.structuredData || null;
 
     return {
-      title: seo.metaTitle || "Exhibition Stand Contractors in Dubai | XESS Events",
+      title: seo.metaTitle || "Xess Events | Premier Event Planning & Management | Home",
       description: seo.metaDescription || "Top-rated exhibition stand contractors in Dubai",
       metadataBase: new URL("https://xessevents.com"),
+      alternates: {
+        canonical: seo.canonicalURL || "https://xessevents.com",
+      },
+      keywords: seo.keywords || [],
+      robots: seo.metaRobots || "index, follow",
       openGraph: {
-        title: seo.metaTitle || "Exhibition Stand Contractors in Dubai | XESS Events",
+        title: seo.metaTitle || "Xess Events | Premier Event Planning & Management | Home",
         description: seo.metaDescription || "Top-rated exhibition stand contractors in Dubai",
         url: "https://xessevents.com",
         type: "website",
@@ -38,19 +45,30 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
-        title: seo.metaTitle || "Exhibition Stand Contractors in Dubai | XESS Events",
+        title: seo.metaTitle || "Xess Events | Premier Event Planning & Management | Home",
         description: seo.metaDescription || "Top-rated exhibition stand contractors in Dubai",
         images: [imageUrl],
+      },
+      viewport: seo.metaViewport || "width=device-width, initial-scale=1",
+      other: {
+        ...(structuredDataJson && {
+          "application/ld+json": JSON.stringify(structuredDataJson),
+        }),
       },
     };
   } catch (error) {
     console.error("Metadata error:", error);
     return {
-      title: "Exhibition Stand Contractors in Dubai | XESS Events",
+      title: "Xess Events | Premier Event Planning & Management | Home",
       description: "Top-rated exhibition stand contractors in Dubai",
       metadataBase: new URL("https://xessevents.com"),
+      alternates: {
+        canonical: "https://xessevents.com",
+      },
+      keywords: ["exhibition", "events", "dubai", "xess"],
+      robots: "index, follow",
       openGraph: {
-        title: "Exhibition Stand Contractors in Dubai | XESS Events",
+        title: "Xess Events | Premier Event Planning & Management | Home",
         description: "Top-rated exhibition stand contractors in Dubai",
         url: "https://xessevents.com",
         type: "website",
@@ -58,13 +76,15 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
-        title: "Exhibition Stand Contractors in Dubai | XESS Events",
+        title: "Xess Events | Premier Event Planning & Management | Home",
         description: "Top-rated exhibition stand contractors in Dubai",
         images: ["https://xessevents.com/images/default-og.jpg"],
       },
+      viewport: "width=device-width, initial-scale=1",
     };
   }
 }
+
 
 export default function Home() {
   return (

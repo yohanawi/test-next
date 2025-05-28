@@ -259,6 +259,11 @@ export const GET_HOME_PAGE_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
