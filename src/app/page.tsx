@@ -18,11 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
   const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
 
   try {
-    const { data } = await client.query({
-      query: GET_HOME_PAGE_DATA,
-      variables: { locale: "en" },
-    });
 
+    const { data } = await client.query({ query: GET_HOME_PAGE_DATA, variables: { locale: "en" }, });
     const seo = data?.homePages?.data?.[0]?.attributes?.meta_data || {};
     const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
     const structuredDataJson = seo.structuredData || null;
@@ -45,15 +42,16 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
+        site: "@xessevents",
         title: seo.metaTitle || "Xess Events | Premier Event Planning & Management | Home",
         description: seo.metaDescription || "Top-rated exhibition stand contractors in Dubai",
         images: [imageUrl],
       },
       viewport: seo.metaViewport || "width=device-width, initial-scale=1",
       other: {
-        ...(structuredDataJson && {
-          "application/ld+json": JSON.stringify(structuredDataJson),
-        }),
+        ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
+        "author": "Xess Events Team",
+        "publisher": "Xess Events",
       },
     };
   } catch (error) {
@@ -76,6 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       twitter: {
         card: "summary_large_image",
+        site: "@xessevents",
         title: "Xess Events | Premier Event Planning & Management | Home",
         description: "Top-rated exhibition stand contractors in Dubai",
         images: ["https://xessevents.com/images/default-og.jpg"],
@@ -90,10 +89,10 @@ export default function Home() {
   return (
     <>
       <main>
+        <h1 className="absolute text-transparent">Xess Events</h1>
         <section className="relative flex items-center justify-center text-white bg-gray-900">
           <HeroSection />
         </section>
-        <h1 className="absolute text-transparent">Xess Events</h1>
         <HomeSection4 />
         <HomeSection5 />
         <Resources />

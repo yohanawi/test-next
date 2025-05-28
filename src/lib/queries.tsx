@@ -708,6 +708,11 @@ export const GET_ABOUT_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }
@@ -805,6 +810,11 @@ export const GET_CONTACT_PAGE_DATA = gql`
                 }
               }
             }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
           }
         }
       }

@@ -12,6 +12,20 @@ const nextConfig: NextConfig = {
     locales: ["en"],
     defaultLocale: "en",
   },
+
+  async headers() {
+    return [
+      {
+        source: "/:path*",
+        headers: [
+          {
+            key: "X-Robots_Tag",
+            value: "index, follow",
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;
