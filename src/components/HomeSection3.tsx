@@ -48,9 +48,9 @@ export default function HomeSection3() {
                     <div className="flex flex-col">
                         <div className="lg:mx-20">
                             <p className="md:text-2xl text-[#B6B0B0]">{designResult.subTitle || "A few steps,"}</p>
-                            <h1 className="text-6xl text-white text-center md:text-left uppercase font-extrabold max-w-[500px] leading-tight font-sans">
+                            <h2 className="text-6xl text-white text-center md:text-left uppercase font-extrabold max-w-[500px] leading-tight font-sans">
                                 {designResult.mainTitle || "GREAT RESULTS"}
-                            </h1>
+                            </h2>
                             <p className="text-white text-center md:text-left max-w-[300px]">
                                 {designResult.description || "Experience excellence at every step of your exhibition journey"}
                             </p>
