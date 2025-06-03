@@ -383,6 +383,9 @@ const Footer: React.FC = () => {
                         <Link href="/privacy" className="hover:underline hover:underline-offset-4">
                             {mainFooter?.privacy || "Privacy Policy"}
                         </Link>
+                        <Link href="/sitemap" className="hover:underline hover:underline-offset-4">
+                            Site Map
+                        </Link>
                         <p> © XESS 2025</p>
                     </div>
                 </div>
