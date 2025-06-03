@@ -5,7 +5,7 @@ export async function GET() {
 
   const content = ` 
         User-agent: * ${isProduction ? "Disallow:" : "Disallow: /"}
-        Sitemap: https://test-next-ebon-gamma.vercel.app/sitemap.xml
+        Sitemap: https://test-next-ebon-gamma.vercel.app/sitemap.xml 
     `.trim();
 
   return new Response(content, {
