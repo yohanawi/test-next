@@ -38,7 +38,6 @@ export async function generateMetadata(): Promise<Metadata> {
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
                 images: [imageUrl],
             },
-            viewport: seo.metaViewport || "width=device-width, initial-scale=1",
             other: {
                 ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
                 "author": "Xess Events Team",
@@ -64,7 +63,6 @@ export async function generateMetadata(): Promise<Metadata> {
                 description: "Learn more about XESS Events and our story.",
                 images: ["https://xessevents.com/images/default-og.jpg"],
             },
-            viewport: "width=device-width, initial-scale=1",
         };
     }
 }

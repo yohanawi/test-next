@@ -18,6 +18,10 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
+      cursor: {
+        "zoom-in": "zoom-in",
+        "zoom-out": "zoom-out",
+      },
     },
   },
   plugins: [],

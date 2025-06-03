@@ -51,7 +51,6 @@ export async function generateMetadata(): Promise<Metadata> {
         description: seo.metaDescription || "Top-rated exhibition stand contractors in Dubai",
         images: [imageUrl],
       },
-      viewport: seo.metaViewport || "width=device-width, initial-scale=1",
       other: {
         ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
         "author": "Xess Events Team",
@@ -83,7 +82,6 @@ export async function generateMetadata(): Promise<Metadata> {
         description: "Top-rated exhibition stand contractors in Dubai",
         images: ["https://xessevents.com/images/default-og.jpg"],
       },
-      viewport: "width=device-width, initial-scale=1",
     };
   }
 }

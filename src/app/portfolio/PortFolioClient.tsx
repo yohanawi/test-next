@@ -148,6 +148,28 @@ export default function Portfolio() {
         };
     }, []);
 
+    const [isZoomed, setIsZoomed] = useState(false);
+
+    const toggleZoom = () => {
+        setIsZoomed(!isZoomed);
+    };
+    useEffect(() => {
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (e.key === "ArrowRight") {
+                handleNext();
+            } else if (e.key === "ArrowLeft") {
+                handlePrev();
+            } else if (e.key === "Escape") {
+                setIsZoomed(false);
+            }
+        };
+
+        window.addEventListener("keydown", handleKeyDown);
+        return () => {
+            window.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [currentIndex, currentImageIndex, currentImages]);
+
     return (
         <>
             <section className="relative w-full lg:h-[400px] h-[300px] flex items-center text-center justify-center">
@@ -222,34 +244,38 @@ export default function Portfolio() {
                     {currentImages.length > 0 && (
                         <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-[120] p-4">
                             <div ref={modalRef} className="relative w-full max-w-[40rem] xl:max-w-[50rem] 3xl:max-w-[80rem] 4k:max-w-[150rem] mx-auto flex flex-col items-center" >
-                                <button className="absolute z-50 flex items-center justify-center w-12 h-12 p-2 text-4xl text-white transition-all bg-gray-300 rounded-full shadow-lg top-2 right-2 xl:right-10 3xl:right-40 4k:right-60 bg-opacity-70 hover:bg-gray-700" onClick={closeModal} >
-                                    &times;
-                                </button>
-                                <div className="relative w-full h-[80vh]">
-                                    <Image src={currentImages[currentImageIndex]} alt="Selected" layout="fill" objectFit="contain" className="rounded-lg" />
+                                <div className={`relative  transition-all duration-300 ${isZoomed ? "w-screen h-screen cursor-zoom-out" : "max-h-[80vh] w-full h-[80vh] cursor-zoom-in"}`}>
+                                    <Image src={currentImages[currentImageIndex]} onClick={toggleZoom} alt="Selected" layout="fill" objectFit="contain" className="rounded-lg" />
                                 </div>
-                                {currentImages.length > 1 && (
-                                    <div className="grid grid-cols-4 gap-2 mt-4">
-                                        {currentImages.slice(1).map((subImgUrl, idx) => (
-                                            <div key={idx} className={`relative w-20 h-auto aspect-square cursor-pointer border rounded ${currentImageIndex === idx + 1 ? "border-red-500" : "border-white"}`} onClick={() => setCurrentImageIndex(idx + 1)} >
-                                                <Image src={subImgUrl} alt={`Sub Image ${idx + 1}`} layout="fill" objectFit="cover" className="rounded" />
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                {currentIndex !== null && currentIndex > 0 && (
-                                    <button className="absolute p-2 text-4xl text-white transform -translate-y-1/2 bg-gray-900 bg-opacity-50 rounded-full lg:-left-20 left-1 top-1/2 lg:bg-gray-300 hover:bg-gray-900" onClick={handlePrev} >
-                                        <ChevronLeft className="w-8 h-8" />
-                                    </button>
-                                )}
-
-                                {currentIndex !== null &&
-                                    currentIndex < filteredPortfolio.length - 1 && (
-                                        <button className="absolute p-2 text-4xl text-white transform -translate-y-1/2 bg-gray-900 bg-opacity-50 rounded-full lg:-right-20 right-1 top-1/2 lg:bg-gray-300 hover:bg-gray-900" onClick={handleNext} >
-                                            <ChevronRight className="w-8 h-8" />
+                                {!isZoomed && (
+                                    <>
+                                        <button className="absolute z-50 flex items-center justify-center w-12 h-12 p-2 text-4xl text-white transition-all bg-gray-300 rounded-full shadow-lg top-14 right-2 3xl:right-40 4k:right-60 bg-opacity-70 hover:bg-gray-700" onClick={closeModal} >
+                                            &times;
                                         </button>
-                                    )}
+                                        {currentImages.length > 1 && (
+                                            <div className="grid grid-cols-6 gap-2 mt-4">
+                                                {currentImages.slice(1).map((subImgUrl, idx) => (
+                                                    <div key={idx} className={`relative w-20 h-auto aspect-square cursor-pointer border rounded ${currentImageIndex === idx + 1 ? "border-red-500" : "border-white"}`} onClick={() => setCurrentImageIndex(idx + 1)} >
+                                                        <Image src={subImgUrl} alt={`Sub Image ${idx + 1}`} layout="fill" objectFit="cover" className="rounded" />
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        )}
+
+                                        {currentIndex !== null && currentIndex > 0 && (
+                                            <button className="absolute p-2 text-4xl text-white transform -translate-y-1/2 bg-gray-900 bg-opacity-50 rounded-full lg:-left-20 left-1 top-1/2 lg:bg-gray-300 hover:bg-gray-900" onClick={handlePrev} >
+                                                <ChevronLeft className="w-8 h-8" />
+                                            </button>
+                                        )}
+
+                                        {currentIndex !== null &&
+                                            currentIndex < filteredPortfolio.length - 1 && (
+                                                <button className="absolute p-2 text-4xl text-white transform -translate-y-1/2 bg-gray-900 bg-opacity-50 rounded-full lg:-right-20 right-1 top-1/2 lg:bg-gray-300 hover:bg-gray-900" onClick={handleNext} >
+                                                    <ChevronRight className="w-8 h-8" />
+                                                </button>
+                                            )}
+                                    </>
+                                )}
                             </div>
                         </div>
                     )}
@@ -261,7 +287,7 @@ export default function Portfolio() {
                         </div>
                     )}
                 </div>
-            </section>
+            </section >
 
             <section className="relative hidden w-full lg:block">
                 <ContactForm />
