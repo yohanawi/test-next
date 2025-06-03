@@ -31,12 +31,15 @@ export default function Contact() {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const contactPage = data?.contactPages?.data?.[0]?.attributes;
     const heroTitle = contactPage?.HeroSec?.title || "We'd Love to Talk";
-    const heroBgImage = contactPage?.HeroSec?.bgImage?.data?.attributes?.url || "/images/Banner.jpg";
+    const cmsImagePath = contactPage?.HeroSec?.bgImage?.data?.attributes?.url;
+    const heroBgImage = cmsImagePath ? `${baseUrl}${cmsImagePath}` : "/images/Banner.jpg";
     const formSection = contactPage?.FormSec;
     const formFields = formSection?.form || {};
     const infoSection = contactPage?.InfoSec;
     const addresses = infoSection?.address || [];
     const headquarter = infoSection?.headquarter;
+
+    console.log(heroBgImage);
 
     const sanitizeHtml = (html: string) => {
         return html?.replace(/font-family:[^;"]*;?/gi, "");
@@ -99,7 +102,7 @@ export default function Contact() {
     return (
         <>
             <section className="relative w-full lg:h-[400px] h-[300px] flex items-center text-center justify-center">
-                <Image src={`${baseUrl}${heroBgImage}`} layout="fill" objectFit="cover" alt="Banner" />
+                <Image src={heroBgImage} layout="fill" objectFit="cover" alt="Banner" />
                 <div className="absolute inset-0 bg-[#5a5a5a] opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-3xl font-semibold text-white uppercase lg:text-5xl">

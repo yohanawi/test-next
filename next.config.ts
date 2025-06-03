@@ -39,6 +39,21 @@ const nextConfig: NextConfig = {
         destination: "/services",
         permanent: true,
       },
+      {
+        source: "/audio-visual-and-furniture-rental-for-events-in-dubai",
+        destination: "/event-production",
+        permanent: true,
+      },
+      {
+        source: "/request-free-design",
+        destination: "/free-design",
+        permanent: true,
+      },
+      {
+        source: "/exhibition-stand-builders-in-abu-dubai",
+        destination: "/exhibition-stand-builders-in-abu-dhabi",
+        permanent: true,
+      },
     ];
   },
 };

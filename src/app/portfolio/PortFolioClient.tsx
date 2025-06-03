@@ -71,13 +71,13 @@ export default function Portfolio() {
     const portfolioItems = imgData?.portfolioImgs?.data || [];
     const categories = ["All", ...(categoryData?.portfolioCatgries?.data?.map((cat: Category) => cat.attributes.name) || []),];
     const [activeTab, setActiveTab] = useState("All");
-    const [visibleImages, setVisibleImages] = useState(8);
+    // const [visibleImages, setVisibleImages] = useState(8);
     const filteredPortfolio = portfolioItems.filter((item: PortfolioItem) => {
         const categoryName = item.attributes?.portfolio_catgry?.data?.attributes?.name || "";
         return activeTab === "All" || categoryName === activeTab;
     });
 
-    const loadMoreImages = () => setVisibleImages((prev) => prev + 4);
+    // const loadMoreImages = () => setVisibleImages((prev) => prev + 4);
     const [currentImages, setCurrentImages] = useState<string[]>([]);
     const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
@@ -212,7 +212,7 @@ export default function Portfolio() {
                     </div>
 
                     <div className="grid gap-4 pt-10 mx-4 lg:grid-cols-4 md:grid-cols-2 lg:pt-14 lg:mx-6">
-                        {filteredPortfolio.slice(0, visibleImages).map((item: PortfolioItem, index: number) => {
+                        {filteredPortfolio.slice(0,).map((item: PortfolioItem, index: number) => {
                             const imageUrl = item.attributes?.image?.data?.attributes?.url ? `${baseUrl}${item.attributes.image.data.attributes.url}` : "/images/01.jpg";
                             return (
                                 <div key={index} className="relative group overflow-hidden aspect-[4/3]" onClick={() => openModal(index)} >
@@ -279,13 +279,13 @@ export default function Portfolio() {
                             </div>
                         </div>
                     )}
-                    {visibleImages < filteredPortfolio.length && (
+                    {/* {visibleImages < filteredPortfolio.length && (
                         <div className="flex items-center justify-center pt-10 ">
                             <button onClick={loadMoreImages} className="uppercase text-[#E21F2C] border border-[#E21F2C] text-xs font-sans font-normal lg:px-6 px-4 py-2 rounded-md hover:bg-[#E21F2C] hover:text-white transition" >
                                 View More
                             </button>
                         </div>
-                    )}
+                    )} */}
                 </div>
             </section >
 

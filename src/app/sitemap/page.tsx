@@ -5,10 +5,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
     return {
         title: "Site Map | XESS Events",
-        description: "Learn more about XESS Events and our story.",
+        description: "Site Map Learn more about XESS Events and our story.",
         openGraph: {
             title: "Site Map | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            description: "Site Map Learn more about XESS Events and our story.",
             url: "https://xessevents.com/sitemap",
             type: "website",
             images: "https://xessevents.com/images/default-og.jpg",
@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
         twitter: {
             card: "summary_large_image",
             title: "Site Map | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            description: "Site Map Learn more about XESS Events and our story.",
             images: "https://xessevents.com/images/default-og.jpg",
         },
     };

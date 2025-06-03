@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
         const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
             next: { revalidate: 60 },
             cache: "force-cache",
-        });
+        }); 
 
         const json = await res.json();
         const seo = json?.data?.attributes?.seo || {};
@@ -16,7 +16,7 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "Privacy policy | XESS Events",
+            title: seo.metaTitle || "Privacy policy | XESS Event",
             description: seo.metaDescription || "Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
