@@ -17,7 +17,6 @@ const ContactForm = dynamic(() => import("@/components/Contactform"), { loading:
 export async function generateMetadata(): Promise<Metadata> {
   const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
 
-
   try {
 
     const { data } = await client.query({ query: GET_HOME_PAGE_DATA, variables: { locale: "en" }, });

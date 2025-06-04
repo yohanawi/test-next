@@ -249,7 +249,7 @@ const Footer: React.FC = () => {
                     </div>
                     <div className="grid grid-cols-2 px-12 py-12 md:grid-cols-4 md:px-20">
                         <div>
-                            <Link href="/about">
+                            <Link href="/about-us">
                                 <h3 className="text-[22px] font-semibold hover:text-[#e21f2c]">
                                     {mainFooter?.footerA?.title || "About"}
                                 </h3>
@@ -267,7 +267,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                         <div>
-                            <Link href="/service">
+                            <Link href="/services">
                                 <h3 className="text-[22px] font-semibold hover:text-[#e21f2c]">
                                     {mainFooter?.footerS?.title || "Services"}
                                 </h3>
