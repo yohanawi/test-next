@@ -2,6 +2,7 @@ import { GET_HOME_PAGE_DATA } from "@/lib/queries";
 import client from "@/lib/apolloClient";
 import dynamic from "next/dynamic";
 import { Metadata } from 'next';
+import StructuredData from "@/components/StructuredData";
 
 const HeroSection = dynamic(() => import("@/components/HeroSection"), { loading: () => <p>Loading...</p>, ssr: true, });
 const HomeSection4 = dynamic(() => import("@/components/HomeSection4"), { loading: () => <p>Loading...</p>, ssr: true, });
@@ -86,11 +87,14 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 
-export default function Home() {
+export default async function Home() {
+  const { data } = await client.query({ query: GET_HOME_PAGE_DATA, variables: { locale: "en" }, });
+  const structuredData = data?.homePages?.data?.[0]?.attributes?.meta_data?.structuredData || null;
   return (
     <>
       <main>
         <h1 className="absolute text-transparent">Xess Events</h1>
+        {structuredData && <StructuredData data={structuredData} />}
         <section className="relative flex items-center justify-center text-white bg-gray-900">
           <HeroSection />
         </section>
