@@ -1048,7 +1048,6 @@ export const GET_DESIGNRESULT_DATA = gql`
   }
 `;
 
-
 //PortFolio Page
 export const GET_PORTFOLIO_PAGE = gql`
   query getPortfolioPages($locale: I18NLocaleCode) {
@@ -2010,7 +2009,6 @@ export const GET_SERVICE_DATA = gql`
   }
 `;
 
-
 //Stand Pages
 export const GET_STAND_DETAIL = gql`
   query getStandDetails($locale: I18NLocaleCode, $slug: String) {
@@ -2724,7 +2722,6 @@ export const GET_TOPCITY_DATA = gql`
   }
 `;
 
-
 //Privacy Policy Page
 export const GET_PRIVACY_POLICY = gql`
   query getPrivacyPolicy($locale: I18NLocaleCode!) {
@@ -2981,4 +2978,3 @@ export const GET_RECENT_CLIENT_DATA = gql`
     }
   }
 `;
-
