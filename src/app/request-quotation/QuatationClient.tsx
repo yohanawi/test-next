@@ -4,6 +4,7 @@ import countryList from "react-select-country-list";
 import ContactForm from "@/components/Contactform";
 import Select from "react-select";
 import { useState } from "react";
+import Swal from "sweetalert2";
 import Link from "next/link";
 import axios from "axios";
 
@@ -68,7 +69,6 @@ export default function QuatationClient() {
         setFormData((prev) => ({ ...prev, country: selectedOption.label }));
         setErrors((prev) => ({ ...prev, country: undefined }));
     };
-
 
     const handleFileChange = (
         e: React.ChangeEvent<HTMLInputElement>,
@@ -187,6 +187,17 @@ export default function QuatationClient() {
             });
 
             if (response.status === 200 || response.status === 201) {
+                Swal.fire({
+                    title: "Thank You!",
+                    text: "Your quotation has been submitted successfully.",
+                    icon: "success",
+                    confirmButtonText: "Close",
+                    customClass: {
+                        confirmButton: "bg-[#EA2127] text-white px-4 py-2 rounded",
+                    },
+                    buttonsStyling: false,
+                });
+
                 setStatusMessage({ type: "success", text: "Quotation submitted successfully!" });
                 setFormData({
                     userName: "",
@@ -204,6 +215,8 @@ export default function QuatationClient() {
                     floorDesign: null,
 
                 });
+                setSampleDesign(null);
+                setFloorDesign(null);
                 setTimeout(() => setIsSubmitting(false), 3000);
                 console.log('Response:', response);
             } else {

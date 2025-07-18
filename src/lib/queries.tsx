@@ -440,7 +440,35 @@ export const GET_PROJECT = gql`
           is_featured
           label {
             name
-          }
+          }          
+          metadata {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
+          }  
         }
       }
     }
@@ -2086,6 +2114,34 @@ export const GET_STAND_DETAIL = gql`
               }
             }
           }
+          metadata {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
+          }  
         }
       }
     }
@@ -2486,6 +2542,34 @@ export const GET_CITY_DETAIL = gql`
               }
             }
           }
+          metadata {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
+          }  
         }
       }
     }

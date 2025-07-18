@@ -5,6 +5,7 @@ import ContactForm from "@/components/Contactform";
 import { SingleValue } from "react-select";
 import Select from "react-select";
 import { useState } from "react";
+import Swal from "sweetalert2";
 import Link from "next/link";
 import axios from "axios";
 import Image from "next/image";
@@ -38,7 +39,7 @@ export default function DesignClient() {
         graphicLogo: null,
     });
 
-    const [, setFieldErrors] = useState<FormErrors>({});
+    const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
     const [, setErrorFlags] = useState({
         userName: false,
         companyName: false,
@@ -58,9 +59,18 @@ export default function DesignClient() {
     const [statusMessage, setStatusMessage] = useState({ type: "", text: "" });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData((prev) => ({ ...prev, [name]: value }));
+        const target = e.target as HTMLInputElement;
+        const { name, value, type } = target;
+        if (type === "checkbox") {
+            setFormData((prev) => ({
+                ...prev,
+                meetingArea: target.checked ? value : ""
+            }));
+        } else {
+            setFormData((prev) => ({ ...prev, [name]: value }));
+        }
         setErrorFlags((prev) => ({ ...prev, [name]: false }));
+        setFieldErrors((prev) => ({ ...prev, [name]: "" }));
     };
 
     const handleCountryChange = (
@@ -82,47 +92,7 @@ export default function DesignClient() {
         }
     };
 
-    const validateForm = () => {
-        const errors: FormErrors = {};
-
-        let formIsValid = true;
-
-        if (!formData.companyName) {
-            errors.companyName = "Company Name is required";
-            formIsValid = false;
-        }
-
-        if (!formData.phoneNumber) {
-            errors.phoneNumber = "Phone Number is required";
-            formIsValid = false;
-        }
-
-        if (!formData.userName) {
-            errors.userName = "Contact Person is required";
-            formIsValid = false;
-        }
-
-        if (!formData.emailAddress) {
-            errors.emailAddress = "Email Address is required";
-            formIsValid = false;
-        } else if (!/\S+@\S+\.\S+/.test(formData.emailAddress)) {
-            errors.emailAddress = "Email Address is invalid";
-            formIsValid = false;
-        }
-
-        if (!formData.eventName) {
-            errors.eventName = "Event Name is required";
-            formIsValid = false;
-        }
-
-        if (!formData.country) {
-            errors.country = "Country is required";
-            formIsValid = false;
-        }
-
-        setFieldErrors(errors);
-        return formIsValid;
-    };
+    // Removed unused validateForm function
 
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -130,25 +100,25 @@ export default function DesignClient() {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const validationErrors = {
-            userName: !formData.userName,
-            companyName: !formData.companyName,
-            phoneNumber: !formData.phoneNumber,
-            emailAddress: !formData.emailAddress,
-            eventName: !formData.eventName,
-            country: !formData.country,
-            standSize: !formData.standSize,
-            budget: !formData.budget,
-            length: !formData.length,
-            message: !formData.message,
-            sampleDesign: !formData.sampleDesign,
-            floorDesign: !formData.floorDesign,
-            graphicLogo: !formData.graphicLogo,
-        };
+        const errors: FormErrors = {};
+        if (!formData.companyName) errors.companyName = "Company Name is required";
+        if (!formData.phoneNumber) errors.phoneNumber = "Phone Number is required";
+        if (!formData.userName) errors.userName = "Contact Person is required";
+        if (!formData.emailAddress) errors.emailAddress = "Email Address is required";
+        else if (!/\S+@\S+\.\S+/.test(formData.emailAddress)) errors.emailAddress = "Email Address is invalid";
+        if (!formData.eventName) errors.eventName = "Event Name is required";
+        if (!formData.country) errors.country = "Country is required";
+        if (!formData.budget) errors.budget = "Budget is required";
+        if (!formData.message) errors.message = "Message is required";
 
-        setErrorFlags(validationErrors);
-
-        if (!validateForm()) {
+        setFieldErrors(errors);
+        if (Object.keys(errors).length > 0) {
+            setIsSubmitting(false);
+            Swal.fire({
+                icon: "error",
+                title: "Validation Error",
+                text: "Please fill all required fields correctly.",
+            });
             return;
         }
 
@@ -156,53 +126,49 @@ export default function DesignClient() {
         Object.entries(formData).forEach(([key, value]) => {
             if (value) data.append(key, value.toString());
         });
-
         if (sampleDesign) data.append("files", sampleDesign);
         if (floorDesign) data.append("files", floorDesign);
         if (graphicLogo) data.append("files", graphicLogo);
 
         let uploadedFiles = [];
-
-        if (sampleDesign || floorDesign || graphicLogo) {
-            const uploadRes = await axios.post("https://cms.xessevents.com/api/upload", data);
-
-            if (!uploadRes.data || !Array.isArray(uploadRes.data) || uploadRes.data.length === 0) {
-                throw new Error("File upload failed: No files were uploaded.");
+        try {
+            if (sampleDesign || floorDesign || graphicLogo) {
+                const uploadRes = await axios.post("https://cms.xessevents.com/api/upload", data);
+                if (!uploadRes.data || !Array.isArray(uploadRes.data) || uploadRes.data.length === 0) {
+                    throw new Error("File upload failed: No files were uploaded.");
+                }
+                uploadedFiles = uploadRes.data;
             }
 
-            uploadedFiles = uploadRes.data;
-        }
+            const sampleDesignId = uploadedFiles?.[0]?.id || null;
+            const floorDesignId = uploadedFiles?.[1]?.id || null;
+            const graphicLogoId = uploadedFiles?.[2]?.id || null;
 
-        const sampleDesignId = uploadedFiles?.[0]?.id || null;
-        const floorDesignId = uploadedFiles?.[1]?.id || null;
-        const graphicLogoId = uploadedFiles?.[2]?.id || null;
+            const payload = {
+                data: {
+                    userName: formData.userName,
+                    companyName: formData.companyName,
+                    website: formData.website,
+                    phoneNumber: formData.phoneNumber,
+                    emailAddress: formData.emailAddress,
+                    eventName: formData.eventName,
+                    country: formData.country,
+                    standSize: formData.standSize,
+                    deckerType: formData.deckerType,
+                    spaceType: formData.spaceType,
+                    meetingAreaType: formData.meetingAreaType,
+                    meetingArea: formData.meetingArea,
+                    length: formData.length,
+                    width: formData.width,
+                    area: formData.area,
+                    budget: formData.budget,
+                    message: formData.message,
+                    sampleDesign: sampleDesignId ? [sampleDesignId] : [],
+                    floorDesign: floorDesignId ? [floorDesignId] : [],
+                    graphicsLogo: graphicLogoId ? [graphicLogoId] : [],
+                },
+            };
 
-        const payload = {
-            data: {
-                userName: formData.userName,
-                companyName: formData.companyName,
-                website: formData.website,
-                phoneNumber: formData.phoneNumber,
-                emailAddress: formData.emailAddress,
-                eventName: formData.eventName,
-                country: formData.country,
-                standSize: formData.standSize,
-                deckerType: formData.deckerType,
-                spaceType: formData.spaceType,
-                meetingAreaType: formData.meetingAreaType,
-                meetingArea: formData.meetingArea,
-                length: formData.length,
-                width: formData.width,
-                area: formData.area,
-                budget: formData.budget,
-                message: formData.message,
-                sampleDesign: sampleDesignId ? [sampleDesignId] : [],
-                floorDesign: floorDesignId ? [floorDesignId] : [],
-                graphicsLogo: graphicLogoId ? [graphicLogoId] : [],
-            },
-        };
-
-        try {
             const response = await axios.post("https://cms.xessevents.com/api/free-designs", payload, {
                 headers: {
                     "Authorization": `Bearer ${process.env.NEXT_PUBLIC_STRAPI_API_TOKEN}`,
@@ -235,18 +201,31 @@ export default function DesignClient() {
                     sampleDesign: null,
                     floorDesign: null,
                     graphicLogo: null,
-
                 });
                 setTimeout(() => setIsSubmitting(false), 3000);
-                console.log('Response:', response);
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: "Quotation submitted successfully!",
+                });
             } else {
                 setStatusMessage({ type: "error", text: "Failed to submit. Please try again." });
                 setIsSubmitting(false);
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "Failed to submit. Please try again.",
+                });
             }
         } catch (error: unknown) {
             console.error('Error during form submission:', error);
             setStatusMessage({ type: "error", text: "Something went wrong. Try again later." });
             setIsSubmitting(false);
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "Something went wrong. Try again later.",
+            });
         }
     };
 
@@ -280,10 +259,12 @@ export default function DesignClient() {
                                 <div className="space-y-3">
                                     <label htmlFor="companyName" className="text-black ms-3">Your company name <span className="text-[#EA2127]">*</span></label>
                                     <input id="companyName" type="text" name="companyName" value={formData.companyName} onChange={handleChange} placeholder="Company Name *" className="w-full px-4 py-2 text-black border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    {fieldErrors.companyName && <span className="text-xs text-red-500">{fieldErrors.companyName}</span>}
                                 </div>
                                 <div className="space-y-3 ">
                                     <label htmlFor="phoneNumber" className="text-black ms-3">Phone Number<span className="text-[#EA2127]">*</span></label>
                                     <input id="phoneNumber" type="text" name="phoneNumber" placeholder="Phone Number *" value={formData.phoneNumber} onChange={handleChange} className="w-full px-4 py-2 text-black border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    {fieldErrors.phoneNumber && <span className="text-xs text-red-500">{fieldErrors.phoneNumber}</span>}
                                 </div>
                                 <div className="space-y-3 lg:mt-5">
                                     <label htmlFor="website" className="text-black ms-3">Your Web Site Name</label>
@@ -292,10 +273,12 @@ export default function DesignClient() {
                                 <div className="space-y-3 lg:mt-5">
                                     <label htmlFor="userName" className="text-black ms-3">Contact Person<span className="text-[#EA2127]">*</span></label>
                                     <input id="userName" type="text" name="userName" placeholder="Contact Person *" value={formData.userName} onChange={handleChange} className="w-full px-4 py-2 text-black border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    {fieldErrors.userName && <span className="text-xs text-red-500">{fieldErrors.userName}</span>}
                                 </div>
                                 <div className="space-y-3 lg:mt-5">
                                     <label htmlFor="emailAddress" className="text-black ms-3">Email<span className="text-[#EA2127]">*</span></label>
                                     <input id="emailAddress" type="email" name="emailAddress" placeholder="Email ID" value={formData.emailAddress} onChange={handleChange} className="w-full px-4 py-2 text-black border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    {fieldErrors.emailAddress && <span className="text-xs text-red-500">{fieldErrors.emailAddress}</span>}
                                 </div>
                             </div>
                         </div>
@@ -308,10 +291,12 @@ export default function DesignClient() {
                                 <div className="space-y-3">
                                     <label htmlFor="eventName" className="text-black ms-3">Event Name <span className="text-[#EA2127]">*</span></label>
                                     <input id="eventName" type="text" name="eventName" placeholder="Show Name *" value={formData.eventName} onChange={handleChange} className="w-full px-4 py-2 text-black border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    {fieldErrors.eventName && <span className="text-xs text-red-500">{fieldErrors.eventName}</span>}
                                 </div>
                                 <div className="space-y-3 ">
                                     <label htmlFor="Country" className="text-black ms-3">Select your country<span className="text-[#EA2127]">*</span></label>
                                     <Select options={options} placeholder="Select Country" onChange={handleCountryChange} className="w-full text-black" isSearchable />
+                                    {fieldErrors.country && <span className="text-xs text-red-500">{fieldErrors.country}</span>}
                                 </div>
                             </div>
                         </div>
@@ -461,6 +446,7 @@ export default function DesignClient() {
                                 <div className="space-y-3">
                                     <label htmlFor="budget" className="text-black ms-3">Your approximate Budget (if possible)</label>
                                     <input type="text" name="budget" value={formData.budget} onChange={handleChange} placeholder="Your approximate Budget (if possible)" className="w-full px-4 py-2 text-black border-2 border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                                    {fieldErrors.budget && <span className="text-xs text-red-500">{fieldErrors.budget}</span>}
                                 </div>
                             </div>
                         </div>
@@ -472,6 +458,7 @@ export default function DesignClient() {
                             <div className="mt-5">
                                 <div className="space-y-3">
                                     <textarea name="message" placeholder="Your Message" value={formData.message} onChange={handleChange} className="w-full px-4 py-6 text-black border-2 border-gray-300 resize-none rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500" rows={5}></textarea>
+                                    {fieldErrors.message && <span className="text-xs text-red-500">{fieldErrors.message}</span>}
                                 </div>
                             </div>
                         </div>

@@ -1,21 +1,19 @@
 import { Metadata } from "next";
+import client from "@/lib/apolloClient";
 import StandClient from "./StandClient";
+import { GET_STAND_DETAIL } from "@/lib/queries";
 
-export async function generateMetadata(): Promise<Metadata> {
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(props: unknown): Promise<Metadata> {
     const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+    const params = (props as { params: { stand: string } }).params;
+    const standSlug = params.stand;
 
     try {
-        const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
-            next: { revalidate: 60 },
-            cache: "force-cache",
-        });
-
-        const json = await res.json();
-        const seo = json?.data?.attributes?.seo || {};
-
-        const imageUrl = seo?.metaImage?.data?.attributes?.url
-            ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}`
-            : "https://xessevents.com/images/default-og.jpg";
+        const { data } = await client.query({ query: GET_STAND_DETAIL, variables: { slug: standSlug, locale: "en" }, });
+        const seo = data?.standDetails?.data?.[0]?.attributes?.metadata || {};
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
             title: seo.metaTitle || "Exhibition Stand | XESS Events",

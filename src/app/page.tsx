@@ -53,8 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       other: {
         ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
-        "author": "Xess Events Team",
-        "publisher": "Xess Events",
+       
       },
     };
   } catch (error) {

@@ -1,24 +1,23 @@
 import { Metadata } from "next";
+import client from "@/lib/apolloClient";
 import CitiesClient from "./CitiesClient";
+import { GET_CITY_DETAIL } from "@/lib/queries";
 
-export async function generateMetadata(): Promise<Metadata> {
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata(props: unknown): Promise<Metadata> {
+    const params = (props as { params: { city: string } }).params;
+    const citySlug = params.city;
+
+    console.log(citySlug);
     const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
-
     try {
-        const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
-            next: { revalidate: 60 },
-            cache: "force-cache",
-        });
-
-        const json = await res.json();
-        const seo = json?.data?.attributes?.seo || {};
-
-        const imageUrl = seo?.metaImage?.data?.attributes?.url
-            ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}`
-            : "https://xessevents.com/images/default-og.jpg";
+        const { data } = await client.query({ query: GET_CITY_DETAIL, variables: { slug: citySlug, locale: "en" }, });
+        const seo = data?.cityDetails?.data?.[0]?.attributes?.metadata || {};
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "Exhibition City | XESS Events",
+            title: seo.metaTitle || `Exhibition City | XESS Events`,
             description: seo.metaDescription || "Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {

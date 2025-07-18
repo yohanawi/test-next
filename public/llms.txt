@@ -1,0 +1,35 @@
+# llms.txt - AI Crawling Information for xessevents.com
+
+Site Information
+Site: xessevents.com
+Name: XessEvents
+Description: Premium exhibition stand builders and event production services in Dubai and Abu Dhabi, UAE. We provide comprehensive event management, audio-visual rental, and custom exhibition stands.
+Industry: Event Management, Exhibition Services, Event Production
+Location: Dubai, UAE
+
+Services
+Services: Exhibition Stand Building, Event Production, Audio Visual Rental, Event Management, Exhibition Stand Design, Trade Show Services, Corporate Events
+
+Key Pages
+Pages:
+- /: Homepage - Main landing page
+- /exhibition-stand-builders-in-abu-dhabi: Exhibition stand builders in Abu Dhabi
+- /exhibition-stand-contractors-in-abu-dhabi: Exhibition stand contractors
+- /exhibition-stand-designer-in-abu-dhabi: Exhibition stand designers
+- /exhibition-stand-branding-services: Branding services for exhibitions
+- /event-production: Event production services
+- /free-design: Free design consultation
+
+Contact Information
+Contact: Available through website contact forms
+Business Hours: Standard business hours UAE time
+Service Areas: Dubai, Abu Dhabi, UAE
+
+AI Crawling Instructions
+Crawl-Delay: 1
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+Last Updated
+Last-Modified: 2025-07-11

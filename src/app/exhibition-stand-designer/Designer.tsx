@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Resources from "@/components/Resources";
 
 type AccordionItem = {
     question: string;
@@ -100,6 +101,8 @@ export default function Designer() {
                     </div>
                 </div>
             </section>
+
+            <Resources />
 
             <section className="bg-[#D4D4D4] text-center py-5 md:py-10">
                 <div className="container px-6 mx-auto">

@@ -24,6 +24,7 @@
     "react-select": "^5.10.1",
     "react-select-country-list": "^2.2.3",
     "redux-persist": "^6.0.0",
+    "sweetalert2": "^11.22.2",
     "swiper": "^11.2.7"
   },
   "devDependencies": {
