@@ -17,11 +17,11 @@ export async function generateMetadata(): Promise<Metadata> {
 
         return {
             title: seo.metaTitle || "Exhibition Stand Contractors in Saudi Arabia | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            description: seo.metaDescription || "Discover top exhibition stand contractors in Saudi Arabia. XESS Events delivers innovative booth designs and turnkey solutions for your events.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
                 title: seo.metaTitle || "Exhibition Stand Contractors in Saudi Arabia | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                description: seo.metaDescription || "Discover top exhibition stand contractors in Saudi Arabia. XESS Events delivers innovative booth designs and turnkey solutions for your events.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: [imageUrl],
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
             twitter: {
                 card: "summary_large_image",
                 title: seo.metaTitle || "Exhibition Stand Contractors in Saudi Arabia | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                description: seo.metaDescription || "Discover top exhibition stand contractors in Saudi Arabia. XESS Events delivers innovative booth designs and turnkey solutions for your events.",
                 images: [imageUrl],
             },
         };

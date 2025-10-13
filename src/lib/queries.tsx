@@ -100,7 +100,7 @@ export const GET_PARTNER_DATA = gql`
     }
   }
 `;
-
+ 
 export const GET_HOME_PAGE_DATA = gql`
   query getHomePageData($locale: I18NLocaleCode) {
     homePages(locale: $locale) {
@@ -1370,6 +1370,7 @@ export const GET_CALENDAR_DETAIL = gql`
       data {
         attributes {
           slug
+          Link
           HeroSec {
             title
             bgImage {
@@ -2324,6 +2325,34 @@ export const GET_BLOG_DETAIL = gql`
               }
             }
           }
+          metadata {
+            metaTitle
+            metaDescription
+            metaImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            metaSocial {
+              socialNetwork
+              title
+              description
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+            keywords
+            metaRobots
+            structuredData
+            metaViewport
+            canonicalURL
+          }  
         }
       }
     }

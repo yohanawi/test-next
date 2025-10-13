@@ -16,20 +16,20 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "Exhibition Stand Contractors in Sharjah | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || "Exhibition Stand Contractors in Sharjah | Exhibition Stand Builders",
+            description: seo.metaDescription || "Discover top exhibition stand contractors in Sharjah. XESS Events delivers creative, high-quality exhibition stands for your brand.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: seo.metaTitle || "Exhibition Stand Contractors in Sharjah | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Exhibition Stand Contractors in Sharjah | Exhibition Stand Builders",
+                description: seo.metaDescription || "Discover top exhibition stand contractors in Sharjah. XESS Events delivers creative, high-quality exhibition stands for your brand.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "Exhibition Stand Contractors in Sharjah | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Exhibition Stand Contractors in Sharjah | Exhibition Stand Builders",
+                description: seo.metaDescription || "Discover top exhibition stand contractors in Sharjah. XESS Events delivers creative, high-quality exhibition stands for your brand.",
                 images: [imageUrl],
             },
         };

@@ -1,17 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // App Router already enables SWC minification; explicit swcMinify is deprecated in Next 15.
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ["cms.xessevents.com"],
     minimumCacheTTL: 60 * 60 * 24 * 7,
   },
-
-  i18n: {
-    locales: ["en"],
-    defaultLocale: "en",
-  },
+  // Removed i18n config: single-locale App Router site. If you add more locales, migrate to the App Router i18n pattern.
 
   async headers() {
     return [
@@ -22,6 +18,13 @@ const nextConfig: NextConfig = {
             key: "X-Robots_Tag",
             value: "index, follow",
           },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload",
+          },
+          { key: "X-Frame-Options", value: "DENY" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
         ],
       },
     ];

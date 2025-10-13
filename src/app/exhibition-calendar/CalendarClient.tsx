@@ -170,6 +170,12 @@ export default function Calendar() {
         }
     }, [swiperInstance]);
 
+    // Sort by latest event first
+    const sortedCalendar = [...filteredCalendar].sort(
+        (a: CalendarItem, b: CalendarItem) =>
+            new Date(b.attributes.CalenCrd.startDate).getTime() -
+            new Date(a.attributes.CalenCrd.startDate).getTime()
+    );
 
 
     return (
@@ -285,8 +291,8 @@ export default function Calendar() {
                 <div>
                     <div className="w-full max-w-[75rem] 3xl:max-w-[83rem] lg:mx-auto lg:py-20 hidden lg:block">
                         <Swiper slidesPerView={1} spaceBetween={20} pagination={{ clickable: true }} onSwiper={setSwiperInstance} onSlideChange={(swiper) => setCurrentPage(swiper.realIndex + 1)} modules={[Pagination, Navigation]} className="mySwiper" >
-                            {Array.from({ length: Math.ceil(filteredCalendar.length / 9) }).map((_, slideIndex) => {
-                                const chunk = filteredCalendar.slice(slideIndex * 9, slideIndex * 9 + 9);
+                            {Array.from({ length: Math.ceil(sortedCalendar.length / 9) }).map((_, slideIndex) => {
+                                const chunk = sortedCalendar.slice(slideIndex * 9, slideIndex * 9 + 9);
 
                                 return (
                                     <SwiperSlide key={slideIndex}>
@@ -339,7 +345,7 @@ export default function Calendar() {
                     {/* Mobile Swiper */}
                     <div className="block max-w-5xl p-4 py-16 mx-10 lg:w-full lg:hidden">
                         <Swiper slidesPerView={1} spaceBetween={20} pagination={{ clickable: true }} modules={[Pagination]} className="mySwiper" >
-                            {filteredCalendar.map((item: CalendarItem, index: number) => {
+                            {sortedCalendar.map((item: CalendarItem, index: number) => {
                                 const event = item.attributes.CalenCrd;
                                 const slug = item.attributes.slug;
 
@@ -349,7 +355,7 @@ export default function Calendar() {
                                             <p className="text-sm text-gray-500">
                                                 {new Date(event.startDate).toLocaleDateString()}
                                             </p>
-                                            <Link href={`/calendar/${slug}`}>
+                                            <Link href={`/exhibition-calendar/${slug}`}>
                                                 <h2 className="text-lg font-bold text-black hover:text-red-500">{event.title}</h2>
                                             </Link>
                                             <p className="text-sm text-gray-700">{event.location}</p>

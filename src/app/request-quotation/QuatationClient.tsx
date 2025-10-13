@@ -33,6 +33,20 @@ type FormErrorsType = {
     [K in keyof FormDataType]?: string;
 };
 
+interface DataLayerEvent {
+    event: string;
+    formType: string;
+    email: string;
+    company: string;
+    phone: string;
+}
+
+declare global {
+    interface Window {
+        dataLayer?: DataLayerEvent[];
+    }
+}
+
 export default function QuatationClient() {
 
     const [formData, setFormData] = useState<FormDataType>({
@@ -144,6 +158,17 @@ export default function QuatationClient() {
         if (!validateForm()) {
             return;
         }
+
+        if (typeof window !== "undefined" && window.dataLayer) {
+            window.dataLayer.push({
+                event: "formSubmission",
+                formType: "requestQuotation",
+                email: formData.emailAddress,
+                company: formData.companyName,
+                phone: formData.phoneNumber,
+            });
+        }
+
         const data = new FormData();
         Object.entries(formData).forEach(([key, value]) => {
             if (value) data.append(key, value);

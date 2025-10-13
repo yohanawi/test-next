@@ -16,20 +16,19 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "Exhibition Stand Contractors in Abu Dhabi | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            title: seo.metaTitle || "Exhibition Stand Contractors Abu Dhabi | XESS Events",
+            description: seo.metaDescription || "Discover XESS Events, leading exhibition stand contractors in Abu Dhabi. Learn about our story, expertise, and commitment to excellence.",
             openGraph: {
-                title: seo.metaTitle || "Exhibition Stand Contractors in Abu Dhabi | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Exhibition Stand Contractors Abu Dhabi | XESS Events",
+                description: seo.metaDescription || "Discover XESS Events, leading exhibition stand contractors in Abu Dhabi. Learn about our story, expertise, and commitment to excellence.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "Exhibition Stand Contractors in Abu Dhabi | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Exhibition Stand Contractors Abu Dhabi | XESS Events",
+                description: seo.metaDescription || "Discover XESS Events, leading exhibition stand contractors in Abu Dhabi. Learn about our story, expertise, and commitment to excellence.",
                 images: [imageUrl],
             },
         };

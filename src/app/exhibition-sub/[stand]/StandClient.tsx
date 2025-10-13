@@ -44,17 +44,17 @@ export default function Stands() {
         {
             image: services?.image01?.data?.attributes?.url ? `${baseUrl}${services.image01.data.attributes.url}` : "/images/exhibition-ser1.png",
             title: services?.label01 || "Exhibition Stand Contractor",
-            link: services?.link1 || "exhibition-stand-contractor",
+            link: services?.link1 || "/exhibition-stand-contractors",
         },
         {
             image: services?.image02?.data?.attributes?.url ? `${baseUrl}${services.image02.data.attributes.url}` : "/images/exhibition-ser2.png",
-            title: services?.label02 || "Exhibition Stand Designs",
-            link: services?.link2 || "exhibition-stand-design",
+            title: services?.label02 || "Exhibition Stand Design",
+            link: services?.link2 || "/exhibition-stand-designer",
         },
         {
             image: services?.image03?.data?.attributes?.url ? `${baseUrl}${services.image03.data.attributes.url}` : "/images/exhibition-ser3.png",
             title: services?.label03 || "Exhibition Stand Builders",
-            link: services?.link3 || "#",
+            link: services?.link3 || "/exhibition-stand-builders",
         },
     ];
 

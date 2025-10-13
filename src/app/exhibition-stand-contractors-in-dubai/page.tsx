@@ -17,19 +17,18 @@ export async function generateMetadata(): Promise<Metadata> {
 
         return {
             title: seo.metaTitle || "Exhibition Stand Contractors in Dubai | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            description: seo.metaDescription || "Discover top exhibition stand contractors in Dubai. XESS Events delivers innovative stand design, fabrication, and installation for exhibitions and trade shows.",
             openGraph: {
                 title: seo.metaTitle || "Exhibition Stand Contractors in Dubai | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                description: seo.metaDescription || "Discover top exhibition stand contractors in Dubai. XESS Events delivers innovative stand design, fabrication, and installation for exhibitions and trade shows.",
+                url: "https://xessevents.com/exhibition-stand-contractors-in-dubai",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
                 title: seo.metaTitle || "Exhibition Stand Contractors in Dubai | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                description: seo.metaDescription || "Discover top exhibition stand contractors in Dubai. XESS Events delivers innovative stand design, fabrication, and installation for exhibitions and trade shows.",
                 images: [imageUrl],
             },
         };

@@ -2,14 +2,23 @@ import { Metadata } from "next";
 import client from "@/lib/apolloClient";
 import SingleProject from "./SingleProjectClient";
 import { GET_PROJECT } from "@/lib/queries";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 export async function generateMetadata(props: unknown): Promise<Metadata> {
     const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
     const params = (props as { params: { SingleProject: string } }).params;
+    const slug = params.SingleProject;
+    if (!slug || slug === "undefined") {
+        notFound();
+    }
     const SingleProjectData = params.SingleProject;
- 
+
+    if (!SingleProjectData) {
+        notFound();  
+    }
+    
     try {
         const { data } = await client.query({ query: GET_PROJECT, variables: { slug: SingleProjectData, locale: "en" }, });
         const seo = data?.projects?.data?.[0]?.attributes?.metadata || {};

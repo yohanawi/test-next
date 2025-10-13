@@ -57,8 +57,8 @@ export default function BuilderClient() {
                             {BuildHead?.breadcrumb?.SubHead1 || "Home"}
                         </Link>
                         /
-                        <Link href={mainExhibitionbuilder?.breadcrumb?.link2 || "/exhibition-stand-builder"} className="px-4 uppercase">
-                            {BuildHead?.breadcrumb?.SubHead2 || "exhibition stand builder"}
+                        <Link href={mainExhibitionbuilder?.breadcrumb?.link2 || "/exhibition-stand-builders"} className="px-4 uppercase">
+                            {BuildHead?.breadcrumb?.SubHead2 || "exhibition stand builders"}
                         </Link>
                     </div>
                 </div>

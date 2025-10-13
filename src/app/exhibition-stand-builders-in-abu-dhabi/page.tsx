@@ -16,21 +16,20 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "exhibition-stand-branding-services-in-abu-dhabi | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            title: seo.metaTitle || "exhibition-stand-builders-in-abu-dhabi | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders in Abu Dhabi with XESS Events. Innovative designs, quality construction, and turnkey solutions for your next event.",            
             openGraph: {
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-abu-dhabi | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: [imageUrl],
+            title: seo.metaTitle || "exhibition-stand-builders-in-abu-dhabi | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders in Abu Dhabi with XESS Events. Innovative designs, quality construction, and turnkey solutions for your next event.",
+            url: "https://xessevents.com/exhibition-stand-builders-in-abu-dhabi",
+            type: "website",
+            images: [imageUrl],
             },
             twitter: {
-                card: "summary_large_image",
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-abu-dhabi | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                images: [imageUrl],
+            card: "summary_large_image",
+            title: seo.metaTitle || "exhibition-stand-builders-in-abu-dhabi | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders in Abu Dhabi with XESS Events. Innovative designs, quality construction, and turnkey solutions for your next event.",
+            images: [imageUrl],
             },
         };
     } catch (error) {

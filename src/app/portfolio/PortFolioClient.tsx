@@ -233,7 +233,7 @@ export default function Portfolio() {
                                         </div>
 
                                         <div className="flex justify-center mb-5 pointer-events-auto">
-                                            <Image src="/images/ic_round-plus.png" alt="Expand" width={44} height={44} className="p-2 transition-all duration-300 rounded-full cursor-pointer group-hover:bg-red-600" />
+                                            <img src="/images/plus.png" alt="Expand" width={44} height={44} className="p-2 transition-all duration-300 rounded-full cursor-pointer group-hover:bg-red-600" />
                                         </div>
                                     </div>
                                 </div>

@@ -16,21 +16,21 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "exhibition-stand-branding-services-in-dubai | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders in Dubai. XESS Events delivers innovative, high-quality stand design and build services for your brand.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-dubai | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: [imageUrl],
+            title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders in Dubai. XESS Events delivers innovative, high-quality stand design and build services for your brand.",
+            url: "https://xessevents.com/exhibition-stand-builders-in-dubai",
+            type: "website",
+            images: [imageUrl],
             },
             twitter: {
-                card: "summary_large_image",
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-dubai | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                images: [imageUrl],
+            card: "summary_large_image",
+            title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders in Dubai. XESS Events delivers innovative, high-quality stand design and build services for your brand.",
+            images: [imageUrl],
             },
         };
     } catch (error) {

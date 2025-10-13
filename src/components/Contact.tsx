@@ -15,7 +15,7 @@ export default function Contact() {
         <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden -rotate-90 group lg:top-8">
           <div className="absolute bottom-0 left-0 w-full h-full transition-transform duration-500 ease-in-out transform translate-y-full bg-gray-800 group-hover:translate-y-0">
             <div className="flex flex-col items-center justify-center h-full text-white rotate-90 ">
-              <Link href="contact-us">
+              <Link href="/contact-us">
                 <div className="text-sm font-semibold bg-[#636260] py-3 px-1 uppercase hover:text-[#D10003]">
                   CONTACT
                 </div>

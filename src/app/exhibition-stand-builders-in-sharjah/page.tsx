@@ -16,20 +16,20 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "exhibition-stand-branding-services-in-sharjah | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || "Builders in Sharjah | Exhibition Stand Branding | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders and branding services in Sharjah with XESS Events.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-sharjah | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Builders in Sharjah | Exhibition Stand Branding | XESS Events",
+                description: seo.metaDescription || "Discover top exhibition stand builders and branding services in Sharjah with XESS Events.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-sharjah | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Builders in Sharjah | Exhibition Stand Branding | XESS Events",
+                description: seo.metaDescription || "Discover top exhibition stand builders and branding services in Sharjah with XESS Events.",
                 images: [imageUrl],
             },
         };

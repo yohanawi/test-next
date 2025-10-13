@@ -16,21 +16,21 @@ export async function generateMetadata(props: unknown): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "Exhibition Stand | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || `Stand: ${standSlug} | XESS Events`,
+            description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: seo.metaTitle || "Exhibition Stand | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: [imageUrl],
+            title: seo.metaTitle || `Stand: ${standSlug} | XESS Events`,
+            description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
+            url: `https://xessevents.com/exhibition-sub/${standSlug}`,
+            type: "website",
+            images: [imageUrl],
             },
             twitter: {
-                card: "summary_large_image",
-                title: seo.metaTitle || "Exhibition Stand | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                images: [imageUrl],
+            card: "summary_large_image",
+            title: seo.metaTitle || `Stand: ${standSlug} | XESS Events`,
+            description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
+            images: [imageUrl],
             },
         };
     } catch (error) {

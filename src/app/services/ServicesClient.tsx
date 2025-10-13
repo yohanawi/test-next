@@ -61,13 +61,13 @@ export default function Services() {
         },
         {
             image: services?.image02?.data?.attributes?.url ? `${baseUrl}${services.image02.data.attributes.url}` : "/images/exhibition-ser2.png",
-            title: services?.label02 || "Exhibition Stand Designs",
+            title: services?.label02 || "Exhibition Stand Design",
             link: services?.link2 || "/exhibition-stand-designer",
         },
         {
             image: services?.image03?.data?.attributes?.url ? `${baseUrl}${services.image03.data.attributes.url}` : "/images/exhibition-ser3.png",
             title: services?.label03 || "Exhibition Stand Builders",
-            link: services?.link3 || "/#",
+            link: services?.link3 || "/exhibition-stand-builders",
         },
     ];
 

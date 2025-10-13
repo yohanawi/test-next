@@ -78,7 +78,7 @@ export default function CitiesClient() {
         <>
 
             <section className="relative w-full lg:h-[400px] h-[300px] flex items-center text-center justify-center">
-                <Image src={`${baseUrl}${cityDetail?.HeroSec?.bgImage?.data?.attributes?.url || "/images/default-banner.jpg"}`} layout="fill" objectFit="cover" alt={cityDetail?.HeroSec?.title || "Exhibition Stand"} />
+                <Image src={`${baseUrl}${cityDetail?.HeroSec?.bgImage?.data?.attributes?.url || "/images/Banner.jpg"}`} layout="fill" objectFit="cover" alt={cityDetail?.HeroSec?.title || "Exhibition Stand"} />
                 <div className="absolute inset-0 bg-black opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-2xl font-semibold text-white uppercase lg:text-5xl md:text-3xl">
@@ -87,7 +87,7 @@ export default function CitiesClient() {
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href="/" className="px-4 uppercase">Home</Link>
                         /
-                        <Link href={`/exhibition-sub/${cityDetail?.slug}`} className="px-4 uppercase">
+                        <Link href={`/exhibition-stand/${cityDetail?.slug}`} className="px-4 uppercase">
                             Exhibition Stand in {cityDetail?.HeroSec?.title}
                         </Link>
                     </div>

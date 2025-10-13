@@ -9,25 +9,21 @@ export async function generateMetadata(): Promise<Metadata> {
     try {
         const { data } = await client.query({ query: GET_ALL_BLOGS, variables: { locale: "en" }, });
         const seo = data?.blogDetails?.data?.[0]?.attributes?.meta_data || {};
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/Footer_logo.png";
         const structuredDataJson = seo.structuredData || null;
 
 
         return {
-            title: seo.metaTitle || "Blogs | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            title: seo.metaTitle || "XESS Events Blog | Insights, News & Updates",
+            description: seo.metaDescription || "Explore the latest insights, news, and updates from XESS Events. Stay informed with our expert articles and event highlights.",
             alternates: {
                 canonical: seo.canonicalURL || "https://xessevents.com/blog",
-                languages: {
-                    "en": "https://xessevents.com/blog",
-                },
             },
             keywords: seo.keywords || [],
             robots: seo.metaRobots || "index, follow",
             openGraph: {
-                title: seo.metaTitle || "Blogs | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "XESS Events Blog | Insights, News & Updates",
+                description: seo.metaDescription || "Explore the latest insights, news, and updates from XESS Events. Stay informed with our expert articles and event highlights.",
                 url: "https://xessevents.com/blog",
                 type: "website",
                 images: [imageUrl],
@@ -35,10 +31,10 @@ export async function generateMetadata(): Promise<Metadata> {
             twitter: {
                 card: "summary_large_image",
                 site: "@xessevents",
-                title: seo.metaTitle || "Blogs | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "XESS Events Blog | Insights, News & Updates",
+                description: seo.metaDescription || "Explore the latest insights, news, and updates from XESS Events. Stay informed with our expert articles and event highlights.",
                 images: [imageUrl],
-            },          
+            },
             other: {
                 ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
                 "author": "Xess Events Team",

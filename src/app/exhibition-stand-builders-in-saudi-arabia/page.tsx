@@ -16,20 +16,20 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "exhibition-stand-branding-services-in-saudi-arabia | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || "exhibition-stand-builders-in-saudi-arabia | XESS Events",
+            description: seo.metaDescription || "Discover top exhibition stand builders in Saudi Arabia. XESS Events delivers innovative stand design and build solutions for your brand.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-saudi-arabia | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                title: seo.metaTitle || "exhibition-stand-builders-in-saudi-arabia | XESS Events",
+                description: seo.metaDescription || "Discover top exhibition stand builders in Saudi Arabia. XESS Events delivers innovative stand design and build solutions for your brand.",
+                url: "https://xessevents.com/exhibition-stand-builders-in-saudi-arabia",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "exhibition-stand-branding-services-in-saudi-arabia | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "exhibition-stand-builders-in-saudi-arabia | XESS Events",
+                description: seo.metaDescription || "Discover top exhibition stand builders in Saudi Arabia. XESS Events delivers innovative stand design and build solutions for your brand.",
                 images: [imageUrl],
             },
         };

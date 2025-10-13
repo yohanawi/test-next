@@ -14,6 +14,20 @@ interface FormErrors {
     [key: string]: string;
 }
 
+interface DataLayerEvent {
+    event: string;
+    formType: string;
+    email: string;
+    company: string;
+    phone: string;
+}
+
+declare global {
+    interface Window {
+        dataLayer?: DataLayerEvent[];
+    }
+}
+
 export default function DesignClient() {
 
     const [formData, setFormData] = useState({
@@ -120,6 +134,16 @@ export default function DesignClient() {
                 text: "Please fill all required fields correctly.",
             });
             return;
+        }
+
+        if (typeof window !== "undefined" && window.dataLayer) {
+            window.dataLayer.push({
+                event: "formSubmission",
+                formType: "FreeDesign",
+                email: formData.emailAddress,
+                company: formData.companyName,
+                phone: formData.phoneNumber,
+            });
         }
 
         const data = new FormData();

@@ -16,19 +16,19 @@ export async function generateMetadata(): Promise<Metadata> {
 
         return {
             title: seo.metaTitle || "Free Design | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            description: seo.metaDescription || "Get a free event design consultation from XESS Events. Share your ideas and let our experts create a custom plan for your special occasion.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
                 title: seo.metaTitle || "Free Design | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                description: seo.metaDescription || "Get a free event design consultation from XESS Events. Share your ideas and let our experts create a custom plan for your special occasion.",
+                url: "https://xessevents.com/free-design",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
                 title: seo.metaTitle || "Free Design | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                description: seo.metaDescription || "Get a free event design consultation from XESS Events. Share your ideas and let our experts create a custom plan for your special occasion.",
                 images: [imageUrl],
             },
         };

@@ -17,21 +17,21 @@ export async function generateMetadata(props: unknown): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || `Exhibition City | XESS Events`,
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || `${data?.cityDetails?.data?.[0]?.attributes?.name || citySlug} | Exhibition Stand | XESS Events`,
+            description: seo.metaDescription || `Discover exhibition stands and details for ${data?.cityDetails?.data?.[0]?.attributes?.name || citySlug} at XESS Events.`,
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: seo.metaTitle || "Exhibition City | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: [imageUrl],
+            title: seo.metaTitle || `${data?.cityDetails?.data?.[0]?.attributes?.name || citySlug} | Exhibition Stand | XESS Events`,
+            description: seo.metaDescription || `Discover exhibition stands and details for ${data?.cityDetails?.data?.[0]?.attributes?.name || citySlug} at XESS Events.`,
+            url: `https://xessevents.com/exhibition-stand/${citySlug}`,
+            type: "website",
+            images: [imageUrl],
             },
             twitter: {
-                card: "summary_large_image",
-                title: seo.metaTitle || "Exhibition City | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                images: [imageUrl],
+            card: "summary_large_image",
+            title: seo.metaTitle || `${data?.cityDetails?.data?.[0]?.attributes?.name || citySlug} | Exhibition Stand | XESS Events`,
+            description: seo.metaDescription || `Discover exhibition stands and details for ${data?.cityDetails?.data?.[0]?.attributes?.name || citySlug} at XESS Events.`,
+            images: [imageUrl],
             },
         };
     } catch (error) {

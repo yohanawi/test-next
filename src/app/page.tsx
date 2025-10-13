@@ -30,7 +30,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: seo.metaDescription || "Top-rated exhibition stand contractors in Dubai",
       metadataBase: new URL("https://xessevents.com"),
       alternates: {
-        canonical: seo.canonicalURL || "https://xessevents.com",
+        canonical: "https://xessevents.com/",
         languages: {
           "en": "https://xessevents.com",
         },

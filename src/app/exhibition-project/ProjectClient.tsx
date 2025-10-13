@@ -179,7 +179,7 @@ export default function ProjectClient() {
             </section>
 
             <section className="bg-[#f6f6f6] text-center lg:py-20 md:py-16 py-10  bg-no-repeat" style={{
-                backgroundImage: `url(${baseUrl}${projectPage?.BannerSec?.bgImg?.data?.attributes?.url || "/images/default-banner.jpg"})`,
+                backgroundImage: `url(${baseUrl}${projectPage?.BannerSec?.bgImg?.data?.attributes?.url || "/images/Banner.jpg"})`,
                 backgroundSize: "cover", backgroundPosition: "center"
             }}>
                 <div className="container px-10 mx-auto">

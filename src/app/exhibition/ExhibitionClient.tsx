@@ -24,7 +24,7 @@ export default function Exhibition() {
     const { services } = data?.exhibitionPages?.data?.[0].attributes || {};
     const { ExhiSec } = data?.exhibitionPages?.data?.[0].attributes || {};
     const { HeadSec } = data?.exhibitionPages?.data?.[0].attributes || {};
-    const bannerImage = HeadSec?.image?.data?.attributes?.url ? `${baseUrl}${HeadSec.image.data.attributes.url}` : "/images/default-banner.jpg";
+    const bannerImage = HeadSec?.image?.data?.attributes?.url ? `${baseUrl}${HeadSec.image.data.attributes.url}` : "/images/Banner.jpg";
     const images = [
         ExhiSec?.image1?.data?.attributes?.url ? `${baseUrl}${ExhiSec.image1.data.attributes.url}` : "/images/exhibition1.png",
         ExhiSec?.image2?.data?.attributes?.url ? `${baseUrl}${ExhiSec.image2.data.attributes.url}` : "/images/exhibition2.png",
@@ -103,7 +103,7 @@ export default function Exhibition() {
                                     {mainExhibition?.ExhiSec?.ExhiList?.map(
                                         (item: ExhibitionItem, index: number) => (
                                             <div key={index} className="flex items-center gap-6">
-                                                <Image src="/images/correct-icon.png" alt="Correct Icon" width={17} height={17} />
+                                                <img src="/images/correct-icon.png" alt="Correct Icon" width={17} height={17} />
                                                 {item.lable}
                                             </div>
                                         )
