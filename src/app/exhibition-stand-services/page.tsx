@@ -17,9 +17,9 @@ export async function generateMetadata(): Promise<Metadata> {
             description: seo.metaDescription || "Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
             alternates: {
-                canonical: seo.canonicalURL || "https://xessevents.com/exhibition",
+                canonical: seo.canonicalURL || "https://xessevents.com/exhibition-stand-services",
                 languages: {
-                    "en": "https://xessevents.com/exhibition",
+                    "en": "https://xessevents.com/exhibition-stand-services",
                 },
             },
             keywords: seo.keywords || [],
@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
             openGraph: {
                 title: seo.metaTitle || "Exhibition | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/exhibition",
+                url: "https://xessevents.com/exhibition-stand-services",
                 type: "website",
                 images: [imageUrl],
             },
@@ -53,7 +53,7 @@ export async function generateMetadata(): Promise<Metadata> {
             openGraph: {
                 title: "Exhibition | XESS Events",
                 description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                url: "https://xessevents.com/exhibition-stand-services",
                 type: "website",
                 images: ["https://xessevents.com/images/default-og.jpg"],
             },

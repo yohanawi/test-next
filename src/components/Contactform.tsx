@@ -124,7 +124,7 @@ const ContactForm: React.FC = () => {
                 <p className="text-2xl font-bold text-black ps-4">Let&apos;s talk</p>
               </div>
               <div className="flex gap-5 mt-5 md:mt-0">
-                <a href="https://wa.me/+971553721525" target="_blank" rel="noopener noreferrer" >
+                <a href="https://wa.me/971553721525" target="_blank" rel="noopener noreferrer" >
                   <div className="relative w-8 h-8 mt-2 transition-transform duration-300 ease-in-out md:w-12 md:h-12 md:mt-0 hover:scale-110">
                     <Image src="/images/whatsapp-icon.png" alt="WhatsApp icon" layout="fill" objectFit="cover" priority quality={30} />
                   </div>

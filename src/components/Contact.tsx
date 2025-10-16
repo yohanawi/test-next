@@ -43,9 +43,9 @@ export default function Contact() {
           </div>
         </div>
       </div>
-      <Link href="https://wa.me/+971553721525" target="_blank" rel="noopener noreferrer" className="absolute top-44 right-[114px] bg-[#6c757d] p-5 shadow-lg hover:bg-green-600 transition duration-300 hidden lg:block" >
+      <a href="https://wa.me/971553721525" target="_blank" rel="noopener noreferrer" className="absolute top-44 right-[114px] bg-[#6c757d] p-5 shadow-lg hover:bg-green-600 transition duration-300 hidden lg:block" >
         <Image src="/images/whatsapp.png" alt="WhatsApp" width={40} height={40} className="w-8 h-8 transition-transform duration-300 ease-in-out transform hover:scale-125" />
-      </Link>
+      </a>
     </div>
   );
 }
