@@ -134,7 +134,7 @@ export default function HeroSection() {
           <SwiperSlide key={index}>
             <div className="relative w-full md:h-[800px] lg:h-[570px] 3xl:h-[700px] h-[500px] mt-20 md:mt-28 lg:mt-28">
               {index === 0 ? (
-                <Image src={isMobile ? slide.mobileImage || slide.image : slide.image} alt={`Slide ${index + 1}`} width={1200} height={675} quality={index === 0 ? 40 : 30} loading={index === 0 ? "eager" : "lazy"} priority={index === 0} style={{ objectFit: "cover", width: "100%", height: "auto" }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1000px" />
+                <Image src={isMobile ? slide.mobileImage || slide.image : slide.image} alt={`Slide ${index + 1}`} width={1200} height={675} quality={100} loading={index === 0 ? "eager" : "lazy"} priority={index === 0} style={{ objectFit: "cover", width: "100%", height: "auto" }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1000px" />
               ) : (
                 <Image src={isMobile ? slide.mobileImage || slide.image : slide.image} alt={`Slide ${index + 1}`} fill style={{ objectFit: "cover" }} quality={30} loading="lazy" priority={false} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1000px" />
               )}
