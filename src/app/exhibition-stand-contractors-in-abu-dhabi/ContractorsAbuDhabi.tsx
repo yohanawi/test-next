@@ -23,7 +23,7 @@ export default function ContractorsAbuDhabi() {
     const mainExhibitionconstroctor = data?.constroctorInCity?.data?.attributes || {};
     const { Conhead } = mainExhibitionconstroctor;
     const { ConSec } = data?.exhibitionPages?.data?.[0].attributes || {};
-    const accordion = mainExhibitionconstroctor?.accordion?.ConFaq || [];
+    // const accordion = mainExhibitionconstroctor?.accordion?.ConFaq || [];
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const bannerImage = Conhead?.image?.data?.attributes?.url ? `${baseUrl}${Conhead.image.data.attributes.url}` : "/images/Banner.jpg";
 
@@ -118,7 +118,28 @@ export default function ContractorsAbuDhabi() {
                         </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
-                        {accordion.map((item: { question: string, answers: string }, index: number) => {
+                        {[
+                            {
+                                question: "What services do exhibition stand contractors in Abu Dhabi offer?",
+                                answers: "Exhibition stand contractors in Abu Dhabi offer a variety of services. These include design, fabrication, and construction of both custom and modular stands. Additionally, they also provide technical services such as  AV equipment rental, lighting, and graphic printing.Project management services for either logistical or administrative tasks can also be provided."
+                            },
+                            {
+                                question: "Why should I hire a professional exhibition stand contractor in Abu Dhabi for my event?",
+                                answers: "Hiring exhibition stand builders in Abu Dhabi offer several benefits. They already know of the customer base in the UAE and will know how to cater to their expectations. Their expertise, professionalism, design knowledge, time saving, and cost effective solutions are also some other benefits."
+                            },
+                            {
+                                question: "How early should I book my exhibition stand contractor in Abu Dhabi?",
+                                answers: "The recommended amount of time for you to book your exhibition would be 3-6 months before your event. It depends on the scope of your project but we do recommend that you book as early as possible for better results"
+                            },
+                            {
+                                question: "Can exhibition stand contractors in Abu Dhabi customize designs to match my brand?",
+                                answers: "Yes we can! We specialize in creating designs that both match and elevate your brand identity. A custom built stand will allow us to tailor every element of your design to both reflect your brand and make it stand out."
+                            },
+                            {
+                                question: "What is the cost of hiring an exhibition stand contractor in Abu Dhabi?",
+                                answers: "Usually, a high-end stand can cost upwards of AED 150,000. However, more modular and standard options can offer a more budget-friendly approach."
+                            }
+                        ].map((item: { question: string, answers: string }, index: number) => {
                             const isOpen = openIndex === index;
                             const contentRef = contentRefs[index];
 
