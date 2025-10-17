@@ -30,8 +30,8 @@ export default function ContractorsSaudiArabia() {
     const images = [
         ConSec?.image1?.data?.attributes?.url ? `${baseUrl}${ConSec.image1.data.attributes.url}` : "/images/exhibition1.png",
         ConSec?.image2?.data?.attributes?.url ? `${baseUrl}${ConSec.image2.data.attributes.url}` : "/images/exhibition2.png",
-        ConSec?.image3?.data?.attributes?.url ? `${baseUrl}${ConSec.image3.data.attributes.url}` : "/images/exhibition3.png",
-        ConSec?.image4?.data?.attributes?.url ? `${baseUrl}${ConSec.image4.data.attributes.url}` : "/images/exhibition4.png",
+        // ConSec?.image3?.data?.attributes?.url ? `${baseUrl}${ConSec.image3.data.attributes.url}` : "/images/exhibition3.png",
+        // ConSec?.image4?.data?.attributes?.url ? `${baseUrl}${ConSec.image4.data.attributes.url}` : "/images/exhibition4.png",
     ];
 
     const [, setHoveredIndex] = useState<number | null>(null);
@@ -64,14 +64,14 @@ export default function ContractorsSaudiArabia() {
                             <div>
                                 <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
                                     dangerouslySetInnerHTML={{
-                                        __html: mainExhibitionconstroctor?.ConSec?.heading || "Exhibition stand <br /> <span style='color: #EA2127;'>contractors</span>",
+                                        __html: mainExhibitionconstroctor?.ConSec?.heading || "Exhibition stand <br /> contractors <br /> <span style='color: #EA2127;'> in Saudi Arabia</span>",
                                     }}>
                                 </h2>
                                 <p className="pt-2 text-sm font-bold text-black uppercase lg:text-base">
-                                    {mainExhibitionconstroctor?.ConSec?.subheading || "Complete Exhibition Solutions Provided Globally"}
+                                    {mainExhibitionconstroctor?.ConSec?.subheading || "Creating High Quality Exhibition Stands in Saudi Arabia"}
                                 </p>
                                 <div className="lg:py-3 py-2 text-sm text-[#3E444A] 3xl:text-base" dangerouslySetInnerHTML={{
-                                    __html: mainExhibitionconstroctor?.ConSec?.description,
+                                    __html: mainExhibitionconstroctor?.ConSec?.description || "The Kingdom of Saudi Arabia is an ever-growing and wonderful place to hold any sort of event. And as an experienced exhibition stand company in the area, we believe that Saudi Arabia is an extremely important market and customer base to keep in touch with. <br/> <br/> As such, XESS Exhibitions and Events would be privileged to partner up with you at an event in Saudi Arabia.We aim to create unforgettable experiences with truly unique atmospheres that will leave an unforgettable impact on your attendees.",
                                 }}>
                                 </div>
                             </div>
@@ -92,15 +92,15 @@ export default function ContractorsSaudiArabia() {
             <section className="bg-[#d4d4d4] text-center lg:py-10 py-8">
                 <div className="container px-6 mx-auto">
                     <h2 className="text-xl text-center text-black md:text-3xl lg:text-4xl md:mx-20">
-                        {mainExhibitionconstroctor?.topic || "Trade Show Booth Rentals to Dominate European Shows"}
+                        {mainExhibitionconstroctor?.topic || "Unforgettable Trade Show Booths for You to Rent"}
                     </h2>
                     <p className="text-[#EA2127] md:text-base py-2 text-xs px-8 uppercase">
-                        {mainExhibitionconstroctor?.subTopic || "Complete Exhibition Solutions Provided Globally"}
+                        {mainExhibitionconstroctor?.subTopic || "Exhibition Stand Rental Services in Sharjah"}
                     </p>
                     <div className="lg:mx-48 md:mx-20 mx-10 3xl:mx-[6rem]">
                         <p className="text-xs text-gray-700 md:text-base"
                             dangerouslySetInnerHTML={{
-                                __html: mainExhibitionconstroctor?.description,
+                                __html: mainExhibitionconstroctor?.description || "You are welcome to look through our wide array of high-quality exhibition stands available for rent. Our extremely durable stands guarantee to last and wow your audience at the same time! XESS offers a wide and deep catalogue of high-quality exhibition stands that are available for rent. These exhibition stands are extremely durable and are guaranteed to both last and stun your audiences!",
                             }}>
                         </p>
                     </div>

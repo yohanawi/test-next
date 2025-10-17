@@ -23,15 +23,15 @@ export default function ContractorsDubai() {
     const mainExhibitionconstroctor = data?.constroctorInCity?.data?.attributes || {};
     const { Conhead } = mainExhibitionconstroctor;
     const { ConSec } = data?.exhibitionPages?.data?.[0].attributes || {};
-    const accordion = mainExhibitionconstroctor?.accordion?.ConFaq || [];
+    // const accordion = mainExhibitionconstroctor?.accordion?.ConFaq || [];
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const bannerImage = Conhead?.image?.data?.attributes?.url ? `${baseUrl}${Conhead.image.data.attributes.url}` : "/images/Banner.jpg";
 
     const images = [
         ConSec?.image1?.data?.attributes?.url ? `${baseUrl}${ConSec.image1.data.attributes.url}` : "/images/exhibition1.png",
         ConSec?.image2?.data?.attributes?.url ? `${baseUrl}${ConSec.image2.data.attributes.url}` : "/images/exhibition2.png",
-        ConSec?.image3?.data?.attributes?.url ? `${baseUrl}${ConSec.image3.data.attributes.url}` : "/images/exhibition3.png",
-        ConSec?.image4?.data?.attributes?.url ? `${baseUrl}${ConSec.image4.data.attributes.url}` : "/images/exhibition4.png",
+        // ConSec?.image3?.data?.attributes?.url ? `${baseUrl}${ConSec.image3.data.attributes.url}` : "/images/exhibition3.png",
+        // ConSec?.image4?.data?.attributes?.url ? `${baseUrl}${ConSec.image4.data.attributes.url}` : "/images/exhibition4.png",
     ];
 
     const [, setHoveredIndex] = useState<number | null>(null);
@@ -64,14 +64,14 @@ export default function ContractorsDubai() {
                             <div>
                                 <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
                                     dangerouslySetInnerHTML={{
-                                        __html: mainExhibitionconstroctor?.ConSec?.heading || "Exhibition stand <br /> <span style='color: #EA2127;'>contractors</span>",
+                                        __html: mainExhibitionconstroctor?.ConSec?.heading || "Exhibition stand <br /> contractors<span style='color: #EA2127;'> in Dubai</span>",
                                     }}>
                                 </h2>
                                 <p className="pt-2 text-sm font-bold text-black uppercase lg:text-base">
-                                    {mainExhibitionconstroctor?.ConSec?.subheading || "Complete Exhibition Solutions Provided Globally"}
+                                    {mainExhibitionconstroctor?.ConSec?.subheading || "Delivering High-Quality Exhibition Stands and Design Solutions"}
                                 </p>
                                 <div className="lg:py-3 py-2 text-sm text-[#3E444A] 3xl:text-base" dangerouslySetInnerHTML={{
-                                    __html: mainExhibitionconstroctor?.ConSec?.description,
+                                    __html: mainExhibitionconstroctor?.ConSec?.description || "XESS Exhibitions and Events is an exhibition stand company in Dubai that has your best interests at heart. With its striking skyline, luxury lifestyle, and ultramodern architecture, Dubai is the heart of a new global crossroads. And at XESS, we know that you have your eyes on the prize. And we’re prepared to help you get it. Our project managers and trade show booth design teams are driven to provide you with the best experience possible.Be it the construction process or on the trade show floor, XESS aims to create exhibition stands that attract audiences and stamp your mark at your exhibition or even Dubai itself.",
                                 }}>
                                 </div>
                             </div>
@@ -86,21 +86,21 @@ export default function ContractorsDubai() {
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
+                </div >
+            </section >
 
             <section className="bg-[#d4d4d4] text-center lg:py-10 py-8">
                 <div className="container px-6 mx-auto">
                     <h2 className="text-xl text-center text-black md:text-3xl lg:text-4xl md:mx-20">
-                        {mainExhibitionconstroctor?.topic || "Trade Show Booth Rentals to Dominate European Shows"}
+                        {mainExhibitionconstroctor?.topic || "Rental Trade Show Booths that Leave an Unforgettable Experience"}
                     </h2>
                     <p className="text-[#EA2127] md:text-base py-2 text-xs px-8 uppercase">
-                        {mainExhibitionconstroctor?.subTopic || "Complete Exhibition Solutions Provided Globally"}
+                        {mainExhibitionconstroctor?.subTopic || "Providing High Quality Exhibition Services in Dubai"}
                     </p>
                     <div className="lg:mx-48 md:mx-20 mx-10 3xl:mx-[6rem]">
                         <p className="text-xs text-gray-700 md:text-base"
                             dangerouslySetInnerHTML={{
-                                __html: mainExhibitionconstroctor?.description,
+                                __html: mainExhibitionconstroctor?.description || "Sometimes you don’t need to build an exhibition stand from scratch. Fortunately, at XESS, we have a wide array of stands for you to choose from. As an expert in trade show booth design, we produce durable and all-environment booths that have been produced in our own facility. Our exhibition stand rentals are guaranteed to leave a lasting impression on your audience.",
                             }}>
                         </p>
                     </div>
@@ -118,7 +118,28 @@ export default function ContractorsDubai() {
                         </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
-                        {accordion.map((item: { question: string, answers: string }, index: number) => {
+                        {[
+                            {
+                                question: "What services do exhibition stand builders in Dubai provide for international exhibitions?",
+                                answers: "Exhibition stand builders in Dubai offer a variety of services. These include design, fabrication, and construction of both custom and modular stands. Additionally, they also provide technical services such as AV equipment rental, lighting, and graphic printing. Project management services for either logistical or administrative tasks can also be provided."
+                            },
+                            {
+                                question: "Why should I choose Global Branding as my exhibition stand builder in UAE for international exhibitions?",
+                                answers: "One of the primary reasons to choose XESS is because of our experience within the exhibition and event industry in Dubai and the UAE as a whole. XESS events prides itself on being able to provide custom and innovative designs, specialized expertise, and strategic solutions with over 20 years of experience."
+                            },
+                            {
+                                question: "What makes an exhibition stand design in Dubai suitable for international exhibitions?",
+                                answers: "Dubai is at a major crossroads of the world. With brands from Europe, Asia, and Africa all using Dubai as a major hub due to its world-class infrastructure and venues like the Dubai World Trade Centre and Expo City. This, combined with their robust business ecosystem built to support major global events make it an ideal location for exhibitions and exhibition stand design."
+                            },
+                            {
+                                question: "How do exhibition companies in Dubai help prepare for international trade shows?",
+                                answers: "Exhibition companies help with Planning and strategy, Design and fabrication, On-site execution, and Post-show support. These companies handle the entire process from the initial planning, budgeting, scheduling, construction, delivery and on site support."
+                            },
+                            {
+                                question: "What are the benefits of hiring exhibition stand builders UAE for an international exhibition?",
+                                answers: "Hiring exhibition stand builders in the UAE offer several benefits.\nThey already know of the customer base in the UAE and will know how to cater to their expectations. Their expertise, professionalism, design knowledge, time saving, and cost effective solutions are also some other benefits."
+                            }
+                        ].map((item: { question: string, answers: string }, index: number) => {
                             const isOpen = openIndex === index;
                             const contentRef = contentRefs[index];
 
