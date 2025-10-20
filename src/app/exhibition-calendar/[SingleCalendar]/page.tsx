@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
         const canonical = `${SITE_URL}/exhibition-calendar/${slug}`;
 
-        // If no data is found, avoid indexing to prevent duplicate content issues
+        // If no data is found, fall back to generic SEO but keep the page indexable
         const noData = !data?.calenDetails?.data?.length;
         if (noData) {
             return {
@@ -37,8 +37,14 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
                 metadataBase: new URL(SITE_URL),
                 alternates: { canonical },
                 robots: {
-                    index: false,
-                    follow: false,
+                    index: true,
+                    follow: true,
+                    googleBot: {
+                        index: true,
+                        follow: true,
+                        "max-image-preview": "large",
+                        "max-snippet": -1,
+                    },
                 },
                 openGraph: {
                     title: fallbackTitle,
@@ -122,8 +128,14 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
             metadataBase: new URL(SITE_URL),
             alternates: { canonical },
             robots: {
-                index: false,
-                follow: false,
+                index: true,
+                follow: true,
+                googleBot: {
+                    index: true,
+                    follow: true,
+                    "max-image-preview": "large",
+                    "max-snippet": -1,
+                },
             },
             openGraph: {
                 title: fallbackTitle,
