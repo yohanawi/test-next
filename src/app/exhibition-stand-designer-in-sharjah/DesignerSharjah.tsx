@@ -48,7 +48,7 @@ export default function DesignerSharjah() {
                 <div className="absolute inset-0 bg-[#5a5a5a] opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-xl font-semibold text-white uppercase lg:text-5xl md:text-3xl">
-                        {DesHead?.heading || "exhibition stand design"}
+                        Exhibition Stand Designer in Sharjah
                     </h1>
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href={mainExhibitiondesign?.breadcrumb?.link1 || "/"} className="px-4 uppercase" >
@@ -56,7 +56,7 @@ export default function DesignerSharjah() {
                         </Link>
                         /
                         <Link href={mainExhibitiondesign?.breadcrumb?.link2 || "/exhibition-stand-designer-in-sharjah"} className="px-4 uppercase" >
-                            {DesHead?.breadcrumb?.SubHead2 || "exhibition stand design"}
+                            Exhibition Stand Designer in Sharjah
                         </Link>
                     </div>
                 </div>
@@ -67,18 +67,20 @@ export default function DesignerSharjah() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
                             <div className="3xl:pt-10">
-                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitiondesign?.DesSec2?.title || "Exhibition stand <br /> <span style='color: #EA2127;'>design</span>",
-                                    }}>
+                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl">
+                                    Exhibition Stand Design <span style={{ color: "#EA2127" }}>In Sharjah</span>
                                 </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">
-                                    {mainExhibitiondesign?.DesSec2?.subText || "Complete Exhibition Solutions Provided Globally"}
+                                    High Quality Exhibition Stand Designs that Stand Out
                                 </p>
-                                <div className="lg:py-8 pt-5 lg:pt-0 text-sm text-[#3E444A] 3xl:text-base"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitiondesign?.DesSec2?.description,
-                                    }}>
+                                <br />
+                                <div className="lg:py-8 pt-5 lg:pt-0 text-sm text-[#3E444A] 3xl:text-base">
+                                    We provide free exhibition stand designs for potential clients. But we do love exploring concepts and trying something new. And when it comes to trade show booths, the sky is the limit!
+                                    <br /><br />
+                                    We pride ourselves on building creative designs that can also be used in any environment. We are supported by our team of experts who are embedded in the design, development, building, implementation, and dismantling process. And they will always work efficiently and will be as attentive to your needs as possible.
+                                    <br /><br />
+                                    With over 25 years of experience in the exhibition and event industry in Sharjah, we are uniquely qualified to identify the needs of your brand and address them. We do this with a combination of our meticulous attention to detail, creativity and our ability to deliver efficiently and reliably on a consistent basis.
+
                                 </div>
                             </div>
 

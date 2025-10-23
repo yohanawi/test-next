@@ -16,40 +16,40 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "Exhibition Stand Designer in Dubai | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || "Exhibition Stand Design & Builder in Dubai | XESS Events",
+            description: seo.metaDescription || "XESS Events creates custom exhibition stand designs in Dubai. Unique, engaging booths crafted to captivate audiences and boost your brand presence.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: seo.metaTitle || "Exhibition Stand Designer in Dubai | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Exhibition Stand Design & Builder in Dubai | XESS Events",
+                description: seo.metaDescription || "XESS Events creates custom exhibition stand designs in Dubai. Unique, engaging booths crafted to captivate audiences and boost your brand presence.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "Exhibition Stand Designer in Dubai | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo.metaTitle || "Exhibition Stand Design & Builder in Dubai | XESS Events",
+                description: seo.metaDescription || "XESS Events creates custom exhibition stand designs in Dubai. Unique, engaging booths crafted to captivate audiences and boost your brand presence.",
                 images: [imageUrl],
             },
         };
     } catch (error) {
         console.error("SEO fetch failed:", error);
         return {
-            title: "Exhibition Stand Designer in Dubai | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            title: "Exhibition Stand Design & Builder in Dubai | XESS Events",
+            description: "XESS Events creates custom exhibition stand designs in Dubai. Unique, engaging booths crafted to captivate audiences and boost your brand presence.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: "Exhibition Stand Designer in Dubai | XESS Events",
-                description: "Learn more about XESS Events and our story.",
+                title: "Exhibition Stand Design & Builder in Dubai | XESS Events",
+                description: "XESS Events creates custom exhibition stand designs in Dubai. Unique, engaging booths crafted to captivate audiences and boost your brand presence.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: ["https://xessevents.com/images/default-og.jpg"],
             },
             twitter: {
                 card: "summary_large_image",
-                title: "Exhibition Stand Designer in Dubai | XESS Events",
-                description: "Learn more about XESS Events and our story.",
+                title: "Exhibition Stand Design & Builder in Dubai | XESS Events",
+                description: "XESS Events creates custom exhibition stand designs in Dubai. Unique, engaging booths crafted to captivate audiences and boost your brand presence.",
                 images: ["https://xessevents.com/images/default-og.jpg"],
             },
         };

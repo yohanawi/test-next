@@ -48,7 +48,7 @@ export default function DesignerAbuDhabi() {
                 <div className="absolute inset-0 bg-[#5a5a5a] opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-xl font-semibold text-white uppercase lg:text-5xl md:text-3xl">
-                        {DesHead?.heading || "exhibition stand design"}
+                        Exhibition Stand Design in Abu Dhabi
                     </h1>
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href={mainExhibitiondesign?.breadcrumb?.link1 || "/"} className="px-4 uppercase" >
@@ -56,7 +56,7 @@ export default function DesignerAbuDhabi() {
                         </Link>
                         /
                         <Link href={mainExhibitiondesign?.breadcrumb?.link2 || "/exhibition-stand-designer-in-abu-dhabi"} className="px-4 uppercase" >
-                            {DesHead?.breadcrumb?.SubHead2 || "exhibition stand design"}
+                            Exhibition Stand Design in Abu Dhabi
                         </Link>
                     </div>
                 </div>
@@ -67,18 +67,19 @@ export default function DesignerAbuDhabi() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
                             <div className="3xl:pt-10">
-                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitiondesign?.DesSec2?.title || "Exhibition stand <br /> <span style='color: #EA2127;'>design</span>",
-                                    }}>
+                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl">
+                                    Exhibition Stand Design  <span style={{ color: "#EA2127" }}>In Abu Dhabi</span>
                                 </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">
-                                    {mainExhibitiondesign?.DesSec2?.subText || "Complete Exhibition Solutions Provided Globally"}
+                                    High Quality Trade Show Booth Designs that Stand Out
                                 </p>
-                                <div className="lg:py-8 pt-5 lg:pt-0 text-sm text-[#3E444A] 3xl:text-base"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitiondesign?.DesSec2?.description,
-                                    }}>
+                                <br />
+                                <div className="lg:py-8 pt-5 lg:pt-0 text-sm text-[#3E444A] 3xl:text-base">
+                                    We focus on building creative designs. But they can also be used in any environment. Our team of experts who are embedded in the design, development, building, implementation, and dismantling process will always work efficiently and will be as attentive to your needs as possible.
+                                    <br /><br />
+                                    As an exhibition stand design company in Dubai with over 25 years of experience, we are able to identify the needs of your brand and address them. What we want your brand to do at an event is draw crowds and dazzle them. And we do this by focusing on delivering fast and reliable exhibition stand installation along with meticulous attention to detail.
+                                    <br /><br />
+                                    We also provide free exhibition stand designs. However, we also love experimenting with our stands and creating new designs that can stun the whole of Dubai.
                                 </div>
                             </div>
 
@@ -104,16 +105,16 @@ export default function DesignerAbuDhabi() {
             <section className="bg-[#D4D4D4] text-center py-5 md:py-10">
                 <div className="container px-6 mx-auto">
                     <h2 className="text-[#EA2127] text-center text-2xl md:text-3xl lg:text-4xl md:mx-20">
-                        {mainExhibitiondesign?.DescribsSec?.title || "GET YOUR OWN"}
+                        BUILD YOUR OWN
                     </h2>
                     <p className="text-2xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
-                        {mainExhibitiondesign?.DescribsSec?.subTitle || "CUSTOM 3D EXHIBITION STAND DESIGN"}
+                        CUSTOM 3D EXHIBITION STAND DESIGN
                     </p>
                     <div className=" lg:mx-44 md:mx-20 3xl:mx-[6rem] mx-10 3xl:py-5">
-                        <p className="mt-4 text-xs text-gray-700 md:text-base"
-                            dangerouslySetInnerHTML={{
-                                __html: mainExhibitiondesign?.DescribsSec?.description,
-                            }}>
+                        <p className="mt-4 text-xs text-gray-700 md:text-base">
+                            Establishing your brand identity and your message is our goal. And when we back it with our creativity, we believe that we can make your brand a high quality trade show booth. And we are always on the lookout for long term business partners who are willing to create something special with us!
+                            <br /><br />
+                            Forming long term partnerships with reputable businesses is something we’re highly committed to. We aim to accomplish this through a  collaborative process that combines your goals with our hallmark creativity!
                         </p>
                     </div>
                 </div>
@@ -149,11 +150,28 @@ export default function DesignerAbuDhabi() {
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
                         <h2 className="text-xl text-black md:text-3xl lg:text-5xl">
-                            Partner with the best exhibition stand contractors in Abu Dhabi
+                            Partner with the best exhibition stand designers in Abu Dhabi
                         </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
-                        {accordion.map((item: { question: string, answers: string }, index: number) => {
+                        {[
+                            {
+                                question: "Which providers offer exhibition stands with integrated digital displays?",
+                                answers: "While several Dubai-based providers specialize in creating exhibition stands with integrated digital displays with LED screens and interactive touchscreens. XESS Exhibitions is one of the most highly-regarded options in Dubai."
+                            },
+                            {
+                                question: "Who offers full-service exhibition stand management in Dubai?",
+                                answers: "Several Dubai providers offer comprehensive, full-service exhibition stand management, and handle the entire process. XESS Exhibitions is one of the highest rated options in Dubai."
+                            },
+                            {
+                                question: "Where to source high-quality materials for exhibition stands locally?",
+                                answers: "With XESS you won’t have to worry about sourcing materials since XESS can design and build your trade show booth stand for you."
+                            },
+                            {
+                                question: "Which companies provide exhibition stand storage and logistics in Dubai?",
+                                answers: "XESS Exhibitions and Events provide storage for exhibition stands in Dubai. This allows us to have a wide catalogue of exhibition stands for you to pick from."
+                            },
+                        ].map((item: { question: string, answers: string }, index: number) => {
                             const isOpen = openIndex === index;
                             const contentRef = contentRefs[index];
 

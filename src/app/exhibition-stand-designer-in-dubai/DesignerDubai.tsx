@@ -48,7 +48,7 @@ export default function DesignerDubai() {
                 <div className="absolute inset-0 bg-[#5a5a5a] opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-xl font-semibold text-white uppercase lg:text-5xl md:text-3xl">
-                        {DesHead?.heading || "exhibition stand design"}
+                        Exhibition Stand Design in Dubai
                     </h1>
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href={mainExhibitiondesign?.breadcrumb?.link1 || "/"} className="px-4 uppercase" >
@@ -56,7 +56,7 @@ export default function DesignerDubai() {
                         </Link>
                         /
                         <Link href={mainExhibitiondesign?.breadcrumb?.link2 || "/exhibition-stand-designer-in-dubai"} className="px-4 uppercase" >
-                            {DesHead?.breadcrumb?.SubHead2 || "exhibition stand design"}
+                            Exhibition Stand Design in Dubai
                         </Link>
                     </div>
                 </div>
@@ -67,18 +67,20 @@ export default function DesignerDubai() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
                             <div className="3xl:pt-10">
-                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitiondesign?.DesSec2?.title || "Exhibition stand <br /> <span style='color: #EA2127;'>design</span>",
-                                    }}>
+                                <h2 className="text-xl font-normal text-black uppercase md:text-4xl lg:text-5xl">
+                                    Exhibition stand Design <span style={{ color: "#EA2127" }}>In Dubai </span>
                                 </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">
-                                    {mainExhibitiondesign?.DesSec2?.subText || "Complete Exhibition Solutions Provided Globally"}
+                                    Stand Out with High Quality Trade Show Booth Designs
                                 </p>
-                                <div className="lg:py-8 pt-5 lg:pt-0 text-sm text-[#3E444A] 3xl:text-base"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitiondesign?.DesSec2?.description,
-                                    }}>
+                                <br />
+                                <div className="lg:py-8 pt-5 lg:pt-0 text-sm text-[#3E444A] 3xl:text-base">
+                                    We are an experienced exhibition stand design company in Dubai. This allows us to identify your needs as a brand and address them. When it comes to design, we want your brand to attract as many attendees as possible. And when it comes to delivery, we focus on delivering fast and reliable exhibition stand installation.
+                                    <br /><br />
+                                    We provide free exhibition stand designs but we also love creating experimental exhibition stands. Constantly innovating, developing and producing something new that Dubai’s crowds have never seen.
+                                    <br /><br />
+                                    But our designs are not only creative. They can be used in any environment. Our team of experienced experts who specialize in the design, development, building, implementation, and dismantling process will always work efficiently and will be as attentive to your needs as possible.
+
                                 </div>
                             </div>
 
@@ -104,16 +106,16 @@ export default function DesignerDubai() {
             <section className="bg-[#D4D4D4] text-center py-5 md:py-10">
                 <div className="container px-6 mx-auto">
                     <h2 className="text-[#EA2127] text-center text-2xl md:text-3xl lg:text-4xl md:mx-20">
-                        {mainExhibitiondesign?.DescribsSec?.title || "GET YOUR OWN"}
+                        BUILD YOUR OWN
                     </h2>
                     <p className="text-2xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
-                        {mainExhibitiondesign?.DescribsSec?.subTitle || "CUSTOM 3D EXHIBITION STAND DESIGN"}
+                        CUSTOM 3D EXHIBITION STAND DESIGN
                     </p>
                     <div className=" lg:mx-44 md:mx-20 3xl:mx-[6rem] mx-10 3xl:py-5">
-                        <p className="mt-4 text-xs text-gray-700 md:text-base"
-                            dangerouslySetInnerHTML={{
-                                __html: mainExhibitiondesign?.DescribsSec?.description,
-                            }}>
+                        <p className="mt-4 text-xs text-gray-700 md:text-base">
+                            At XESS, we want to combine your goal and message. And when backed by our creativity and passion, we believe that we can create stands that can create an unforgettable experience. And as a veteran of the trade show industry, we’re always on the look out for long term business partners who are willing to create something special with us!
+                            <br /><br />
+                            We’re committed to forming long-term business partnerships with reputable companies. We accomplish this through a collaborative process that combines your goals with our hallmark creativity, and a genuine passion for service, accountability, and measurement.
                         </p>
                     </div>
                 </div>
@@ -149,11 +151,28 @@ export default function DesignerDubai() {
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
                         <h2 className="text-xl text-black md:text-3xl lg:text-5xl">
-                            Partner with the best exhibition stand contractors in Dubai
+                            Partner with the best Exhibition stand design <br /> in Dubai
                         </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
-                        {accordion.map((item: { question: string, answers: string }, index: number) => {
+                        {[
+                            {
+                                question: "Which service offers quick exhibition stand installation in Dubai?",
+                                answers: "For quick exhibition stand installations Dubai, companies like XESS Exhibitions offer modular and quick production helped along by our in-house ability to produce custom exhibition stands."
+                            },
+                            {
+                                question: "Where can I get creative exhibition stand concepts for upcoming events?",
+                                answers: "At XESS, you can not only get creative exhibition stand concepts, you can get creative exhibition stand designs for free as well."
+                            },
+                            {
+                                question: "Who specializes in eco-friendly exhibition stand designs in Dubai?",
+                                answers: "We at XESS not only focus on eco-friendly stands but also on all-environment designs as well."
+                            },
+                            {
+                                question: "Where to find exhibition stand builders with experience in tech industry events?",
+                                answers: "We at XESS not only focus on eco-friendly stands but also on all-environment designs as well."
+                            },
+                        ].map((item: { question: string, answers: string }, index: number) => {
                             const isOpen = openIndex === index;
                             const contentRef = contentRefs[index];
 
