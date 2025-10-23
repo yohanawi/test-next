@@ -178,6 +178,11 @@ const ContactForm: React.FC = () => {
               <source src="/videos/Xess_Exhibitions_And_Stands.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <meta itemProp="name" content="Xess Exhibitions And Stands" />
+            <meta itemProp="description" content="Watch our video showcasing Xess Exhibitions and Stands." />
+            <meta itemProp="thumbnailUrl" content="/images/video-thumbnail.jpg" />
+            <meta itemProp="uploadDate" content="2023-10-01" />
+            <meta itemProp="contentUrl" content="/videos/Xess_Exhibitions_And_Stands.mp4" />
           </div>
         </div>
       </div>

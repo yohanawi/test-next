@@ -170,12 +170,25 @@ export default function Calendar() {
         }
     }, [swiperInstance]);
 
-    // Sort by latest event first
-    const sortedCalendar = [...filteredCalendar].sort(
-        (a: CalendarItem, b: CalendarItem) =>
-            new Date(b.attributes.CalenCrd.startDate).getTime() -
-            new Date(a.attributes.CalenCrd.startDate).getTime()
-    );
+    // Sort so that current-month events come first (latest within the month first),
+    // then all other events by latest date.
+    const sortedCalendar = [...filteredCalendar].sort((a: CalendarItem, b: CalendarItem) => {
+        const dateA = new Date(a.attributes.CalenCrd.startDate);
+        const dateB = new Date(b.attributes.CalenCrd.startDate);
+        const now = new Date();
+
+        const isCurrentMonth = (d: Date) => d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+
+        const aCurrent = isCurrentMonth(dateA);
+        const bCurrent = isCurrentMonth(dateB);
+
+        // Current month first
+        if (aCurrent && !bCurrent) return -1;
+        if (!aCurrent && bCurrent) return 1;
+
+        // Within the same group, latest (newest) first
+        return dateB.getTime() - dateA.getTime();
+    });
 
 
     return (

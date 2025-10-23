@@ -50,7 +50,7 @@ export default function CalendarDetails() {
                 <div className="max-w-5xl p-4 mx-auto">
                     <div className="flex flex-col items-center justify-between gap-6 p-6 bg-white shadow-lg rounded-xl md:flex-row lg:-mt-24">
                         <div className="flex items-start w-full gap-4 md:w-2/3">
-                            <Image src={calendarDetail?.CalenCrd?.logo?.data?.attributes?.url ? `${baseUrl}${calendarDetail.CalenCrd.logo.data.attributes.url}` : "/images/Footer_logo.png"} alt="AI Journal Logo" className="object-contain w-16 h-16" width={64} height={64} />
+                            <Image src={calendarDetail?.CalenCrd?.logo?.data?.attributes?.url ? `${baseUrl}${calendarDetail.CalenCrd.logo.data.attributes.url}` : "/images/Banner.jpg"} alt="AI Journal Logo" className="object-contain w-16 h-16" width={64} height={64} />
                             <div>
                                 <div className="flex items-center gap-2 mb-1">
                                     {calendarDetail?.CalenCrd?.Lebel?.map((label: { name: string }, index: number) => (
@@ -66,11 +66,11 @@ export default function CalendarDetails() {
                                     {calendarDetail?.CalenCrd?.startDate && calendarDetail?.CalenCrd?.endDate && formatDateRange(calendarDetail.CalenCrd.startDate, calendarDetail.CalenCrd.endDate)}
                                 </p>
 
-                                <Link href={calendarDetail?.Link || "#"} target="_blank" rel="noopener noreferrer">
-                                    <h1 className="text-xl font-bold text-gray-900 cursor-pointer hover:underline">
-                                        {calendarDetail?.CalenCrd?.title || "AI Jundi journal 2025"}
-                                    </h1>
-                                </Link>
+                                {/* <Link href={calendarDetail?.Link || "#"} target="_blank" rel="noopener noreferrer"> */}
+                                <h1 className="text-xl font-bold text-gray-900 cursor-pointer hover:underline">
+                                    {calendarDetail?.CalenCrd?.title || "AI Jundi journal 2025"}
+                                </h1>
+                                {/* </Link> */}
                                 <div className="flex items-center mt-1 text-sm text-gray-600">
                                     {ratingValue && (
                                         <span className="flex">
@@ -97,12 +97,19 @@ export default function CalendarDetails() {
                             </div>
                         </div>
 
-                        <div className="w-full text-center md:w-auto">
+                        <div className="flex flex-col w-full gap-2 text-center md:w-auto">
                             <Link href="/free-design">
                                 <button className="px-6 py-2 text-sm font-semibold text-white bg-gray-800 rounded-md md:text-base hover:bg-gray-700">
                                     Request a Booth
                                 </button>
                             </Link>
+                            {calendarDetail?.Link && (
+                                <Link href={calendarDetail.Link} target="_blank" rel="noopener noreferrer">
+                                    <button className="px-6 py-1 text-sm font-semibold text-white bg-teal-600 rounded-md md:text-base hover:bg-teal-500">
+                                        Visit Website
+                                    </button>
+                                </Link>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -112,8 +119,9 @@ export default function CalendarDetails() {
                 <div className="max-w-5xl px-10 py-8 mx-auto lg:px-4">
                     <h2 className="mb-4 text-2xl font-bold text-black">About</h2>
                     <p className="mb-2 font-semibold text-black">{calendarDetail?.topic}</p>
-                    <p className="mb-6 text-gray-700" dangerouslySetInnerHTML={{ __html: calendarDetail?.description }}>
-                    </p>
+                    <div className="mb-6 text-gray-700"
+                        dangerouslySetInnerHTML={{ __html: calendarDetail?.description || "" }}>
+                    </div>
 
                     <div className="p-4 mb-6 bg-gray-100 rounded-md">
                         <h3 className="mb-2 font-semibold text-black">Highlights</h3>
