@@ -49,7 +49,7 @@ export default function BuildersDubai() {
                 <div className="absolute inset-0 bg-[#5a5a5a] opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-xl font-semibold text-white uppercase lg:text-5xl md:text-3xl">
-                        {BuildHead?.heading || "exhibition stand builders"}
+                        Exhibition Stand Builders in Dubai
                     </h1>
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href={mainExhibitionbuilder?.breadcrumb?.link1 || "/"} className="px-4 uppercase" >
@@ -57,7 +57,7 @@ export default function BuildersDubai() {
                         </Link>
                         /
                         <Link href={mainExhibitionbuilder?.breadcrumb?.link2 || "/exhibition-stand-builders-in-dubai"} className="px-4 uppercase" >
-                            {BuildHead?.breadcrumb?.SubHead2 || "exhibition stand builder"}
+                            exhibition stand builders in dubai
                         </Link>
                     </div>
                 </div>
@@ -68,18 +68,20 @@ export default function BuildersDubai() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8">
                             <div className="3xl:pt-10">
-                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitionbuilder?.BuildSec?.heading || "Exhibition stand  <span style='color: #EA2127;'>builders</span>",
-                                    }}>
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl">
+                                    Exhibition Stand Builders <span style={{ color: "#EA2127" }}>in Dubai</span> that Elevate You
                                 </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">
-                                    {mainExhibitionbuilder?.BuildSec?.subText || "Complete Exhibition Solutions Provided Globally"}
+                                    The Top Exhibition Stand Contractor in the UAE
                                 </p>
-                                <div className="py-5 text-sm text-[#3E444A] 3xl:text-base"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitionbuilder?.BuildSec?.description,
-                                    }}>
+                                <div className="py-5 text-sm text-[#3E444A] 3xl:text-base">
+                                    Exhibitions and trade shows are important events for your brand. They provide you with an unparalleled opportunity to reach a vast and new audience. You can meet customers, partners and generate sales. And we at XESS are here to help make the most of your trade show booth.
+                                    <br /><br />
+                                    A high quality, well designed exhibition stand can leave an unforgettable mark on attendees. At XESS Exhibitions and Events, our goal is to create that long lasting experience. As custom exhibition stand contractor, we can create a stand that can meet your specific requirements and stand out from the crowd.
+                                    <br /><br />
+                                    <span className="text-sm font-bold text-black uppercase lg:text-base">What We Do</span>
+                                    <br /><br />
+                                    A stand builder, in layman's terms, is someone who plans, builds, and assembles exhibition stands. They are skilled consultants , construction specialists and project managers who offer expert advice and assistance on all aspects of show stand design. Generally, the role of an expert exhibition stand builder is to weave a solid stand concept, offer a range of stand designs, build and manufacture the stand, install the booth, and help during the dismantling process.
                                 </div>
                             </div>
 
@@ -101,14 +103,11 @@ export default function BuildersDubai() {
                         {mainExhibitionbuilder?.BuildDes?.title || "GET YOUR OWN"}
                     </h2>
                     <p className="text-xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
-                        {mainExhibitionbuilder?.BuildDes?.subTitle ||
-                            "CUSTOM 3D EXHIBITION STAND DESIGN"}
+                        Exhibition stand builders in Dubai
                     </p>
                     <div className=" lg:mx-44 md:mx-20 3xl:mx-[6rem] mx-10 3xl:py-5">
-                        <p className="mt-4 text-xs text-gray-700 md:text-base"
-                            dangerouslySetInnerHTML={{
-                                __html: mainExhibitionbuilder?.BuildDes?.description,
-                            }}>
+                        <p className="mt-4 text-xs text-gray-700 md:text-base">
+                            If you need a custom exhibition stand, you need to consider a few things. One of the major ones being choosing the right builder. And with 25 years of experience, XESS Exhibitions is  the place to go!
                         </p>
                     </div>
                 </div>

@@ -49,7 +49,7 @@ export default function BuildersDubai() {
                 <div className="absolute inset-0 bg-[#5a5a5a] opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-xl font-semibold text-white uppercase lg:text-5xl md:text-3xl">
-                        {BuildHead?.heading || "exhibition stand builders"}
+                        exhibition stand builders in saudi arabia
                     </h1>
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href={mainExhibitionbuilder?.breadcrumb?.link1 || "/"} className="px-4 uppercase" >
@@ -57,7 +57,7 @@ export default function BuildersDubai() {
                         </Link>
                         /
                         <Link href={mainExhibitionbuilder?.breadcrumb?.link2 || "/exhibition-stand-builders-in-saudi-arabia"} className="px-4 uppercase" >
-                            {BuildHead?.breadcrumb?.SubHead2 || "exhibition stand builder"}
+                            exhibition stand builders in saudi arabia
                         </Link>
                     </div>
                 </div>
@@ -68,18 +68,20 @@ export default function BuildersDubai() {
                     <div className="container mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 md:gap-8">
                             <div className="3xl:pt-10">
-                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitionbuilder?.BuildSec?.heading || "Exhibition stand  <span style='color: #EA2127;'>builders</span>",
-                                    }}>
+                                <h2 className="text-2xl font-normal text-black uppercase md:text-4xl lg:text-5xl">
+                                    Exhibition Stand Builders <br /><span style={{ color: "#EA2127" }}>in Saudi Arabia</span>
                                 </h2>
                                 <p className="pt-5 text-sm font-bold text-black uppercase lg:text-base">
-                                    {mainExhibitionbuilder?.BuildSec?.subText || "Complete Exhibition Solutions Provided Globally"}
+                                    Highlight Your Brand with A Top Exhibition Stand Building Company
                                 </p>
-                                <div className="py-5 text-sm text-[#3E444A] 3xl:text-base"
-                                    dangerouslySetInnerHTML={{
-                                        __html: mainExhibitionbuilder?.BuildSec?.description,
-                                    }}>
+                                <div className="py-5 text-sm text-[#3E444A] 3xl:text-base">
+                                    We believe that Exhibitions and Trade Shows are a vital component when it comes to establishing your brand and your message. The opportunity that they provide to meet new audiences and partners as well as generate new leads. And we believe that XESS is the best option for you in that regard.
+                                    <br /><br />
+                                    The best exhibition stands are the ones that leave an unforgettable mark on the minds of the audience. And as an exhibition stand company that can create stunning trade show booths, we believe that we can establish your brand on the trade show floor.
+                                    <br /><br />
+                                    <span className="text-sm font-bold text-black uppercase lg:text-base">What We Do</span>
+                                    <br /><br />
+                                    We at XESS take pride in our process. We plan, build, and assemble exhibition stands. At XESS, we are skilled consultants , construction specialists and project managers who offer expert advice and assistance on all aspects of show stand design. As an expert exhibition stand builder, our responsibility is to weave a solid stand concept, offers a range of stand designs, build and manufacture the stand, install the booth, and help during the dismantling process.
                                 </div>
                             </div>
 
@@ -101,14 +103,11 @@ export default function BuildersDubai() {
                         {mainExhibitionbuilder?.BuildDes?.title || "GET YOUR OWN"}
                     </h2>
                     <p className="text-xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
-                        {mainExhibitionbuilder?.BuildDes?.subTitle ||
-                            "CUSTOM 3D EXHIBITION STAND DESIGN"}
+                        exhibition stand builders in saudi arabia
                     </p>
                     <div className=" lg:mx-44 md:mx-20 3xl:mx-[6rem] mx-10 3xl:py-5">
-                        <p className="mt-4 text-xs text-gray-700 md:text-base"
-                            dangerouslySetInnerHTML={{
-                                __html: mainExhibitionbuilder?.BuildDes?.description,
-                            }}>
+                        <p className="mt-4 text-xs text-gray-700 md:text-base">
+                            Our in-house production and our 25 years of experience make us a veteran of the exhibition stand industry in the gulf region. And for those reasons, we believe that XESS should be your go to choice when choosing an exhibition stand builder in Saudi Arabia.
                         </p>
                     </div>
                 </div>
