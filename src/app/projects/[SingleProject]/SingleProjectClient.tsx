@@ -175,8 +175,8 @@ export default function SingleProject() {
             </section>
 
             {bannerSec && (bannerSec.bgImg?.data?.attributes?.url || bannerSec?.title || bannerSec?.description) ? (
-                <section className="bg-[#f6f6f6] text-center lg:py-20 md:py-16 py-10  bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `url('${bgImageUrl}')` }}>
-                    <div className="container px-10 mx-auto">
+                <section className="bg-[#f6f6f6] text-center lg:py-20 md:py-16 py-10 bg-cover bg-center bg-no-repeat relative" style={{ backgroundImage: `url('${bgImageUrl}')` }}>
+                    <div className="container relative z-50 px-10 mx-auto">
                         <h2 className="text-2xl text-center text-white uppercase md:text-3xl lg:text-4xl md:mx-20">{bannerSec?.title}</h2>
                         <div className="mx-10 lg:mx-32 md:mx-20 3xl:mx-24">
                             <p className="mt-8 text-xs text-white md:text-base" dangerouslySetInnerHTML={{
@@ -185,6 +185,7 @@ export default function SingleProject() {
                             </p>
                         </div>
                     </div>
+                    <div className="absolute inset-0 bg-black opacity-60"></div>
                 </section >
             ) : null}
 

@@ -5,7 +5,12 @@
 import fs from "fs";
 import path from "path";
 import client from "@/lib/apolloClient";
-import { GET_ALL_BLOGS, GET_ALL_CALENDAR } from "@/lib/queries";
+import {
+  GET_ALL_BLOGS,
+  GET_ALL_CALENDAR,
+  GET_ALL_STANDS,
+  GET_ALL_PROJECTS,
+} from "@/lib/queries";
 
 // If you deploy on an Edge runtime, 'fs' is not available. Force Node.js.
 export const runtime = "nodejs";
@@ -122,6 +127,10 @@ interface CalendarDetailsResponse {
   };
 }
 
+type StandEntry = { slug: string };
+
+type ProjectEntry = { slug: string; createdAt?: string };
+
 async function getDynamicBlogSlugs(): Promise<BlogEntry[]> {
   try {
     const { data } = await client.query({
@@ -151,6 +160,8 @@ function priorityFor(pathname: string): number {
   if (pathname === "/") return 1.0;
   if (/^\/blog(\/|$)/.test(pathname)) return 0.8;
   if (/^\/exhibition-calendar(\/|$)/.test(pathname)) return 0.8;
+  if (/^\/projects(\/|$)/.test(pathname)) return 0.7;
+  if (/^\/exhibition-sub(\/|$)/.test(pathname)) return 0.7;
   if (/contact|request-quotation|about/.test(pathname)) return 0.7;
   return 0.6;
 }
@@ -199,10 +210,28 @@ export async function GET() {
     mtime: c.lastmod ? new Date(c.lastmod) : new Date(),
   }));
 
+  // Dynamic stand detail routes (/exhibition-sub/[stand])
+  const standEntries = await getDynamicStandSlugs();
+  const dynamicStandRoutes: DiscoveredRoute[] = standEntries.map((s) => ({
+    path: `/exhibition-sub/${s.slug}`,
+    file: "dynamic",
+    mtime: new Date(),
+  }));
+
+  // Dynamic project detail routes (/projects/[slug])
+  const projectEntries = await getDynamicProjectSlugs();
+  const dynamicProjectRoutes: DiscoveredRoute[] = projectEntries.map((p) => ({
+    path: `/projects/${p.slug}`,
+    file: "dynamic",
+    mtime: p.createdAt ? new Date(p.createdAt) : new Date(),
+  }));
+
   const allRoutes = [
     ...staticRoutes,
     ...dynamicBlogRoutes,
     ...dynamicCalendarRoutes,
+    ...dynamicStandRoutes,
+    ...dynamicProjectRoutes,
   ];
 
   const urlEntries = allRoutes.map((r) => {
@@ -243,6 +272,52 @@ async function getDynamicCalendarSlugs(): Promise<CalendarEntry[]> {
     return filtered;
   } catch (e) {
     console.error("Sitemap calendar fetch failed", e);
+    return [];
+  }
+}
+
+async function getDynamicStandSlugs(): Promise<StandEntry[]> {
+  try {
+    const { data } = await client.query({
+      query: GET_ALL_STANDS,
+      variables: { locale: "en" },
+    });
+    const items =
+      (data?.standDetails?.data as { attributes?: { slug?: string } }[]) || [];
+    const slugs: StandEntry[] = items
+      .map((i) => i?.attributes?.slug)
+      .filter((s): s is string => typeof s === "string" && s.length > 0)
+      .map((slug) => ({ slug }));
+    return slugs;
+  } catch (e) {
+    console.error("Sitemap stand fetch failed", e);
+    return [];
+  }
+}
+
+async function getDynamicProjectSlugs(): Promise<ProjectEntry[]> {
+  try {
+    const { data } = await client.query({
+      query: GET_ALL_PROJECTS,
+      variables: { locale: "en" },
+    });
+    const items =
+      (data?.projects?.data as {
+        attributes?: { slug?: string; createdAt?: string };
+      }[]) || [];
+    const interim: { slug?: string; createdAt?: string }[] = items.map((i) => ({
+      slug: i?.attributes?.slug,
+      createdAt: i?.attributes?.createdAt,
+    }));
+    const filtered: ProjectEntry[] = interim
+      .filter(
+        (p): p is { slug: string; createdAt?: string } =>
+          typeof p.slug === "string" && p.slug.length > 0
+      )
+      .map((p) => ({ slug: p.slug, createdAt: p.createdAt }));
+    return filtered;
+  } catch (e) {
+    console.error("Sitemap projects fetch failed", e);
     return [];
   }
 }

@@ -100,7 +100,7 @@ export const GET_PARTNER_DATA = gql`
     }
   }
 `;
- 
+
 export const GET_HOME_PAGE_DATA = gql`
   query getHomePageData($locale: I18NLocaleCode) {
     homePages(locale: $locale) {
@@ -2299,6 +2299,33 @@ export const GET_ALL_BLOGS = gql`
               }
             }
           }
+        }
+      }
+    }
+  }
+`;
+
+// Stand list (for sitemap)
+export const GET_ALL_STANDS = gql`
+  query getAllStands($locale: I18NLocaleCode) {
+    standDetails(locale: $locale, pagination: { limit: -1 }) {
+      data {
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`;
+
+// Project list (for sitemap)
+export const GET_ALL_PROJECTS = gql`
+  query getAllProjects($locale: I18NLocaleCode) {
+    projects(locale: $locale, pagination: { limit: -1 }) {
+      data {
+        attributes {
+          slug
+          createdAt
         }
       }
     }

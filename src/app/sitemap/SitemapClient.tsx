@@ -77,6 +77,8 @@ const HTMLSitemap = () => {
         const isLegal = (p: string) => p === "/privacy" || p === "/terms";
         const isBlog = (p: string) => p.startsWith("/blog/");
         const isCalendar = (p: string) => p.startsWith("/exhibition-calendar/");
+        const isProject = (p: string) => p.startsWith("/projects/");
+        const isStand = (p: string) => p.startsWith("/exhibition-sub/");
         const isSelf = (p: string) => p === "/sitemap" || p === "/sitemap.xml";
 
         // Depth helps pick "main" pages (e.g., /about-us), avoid deep pages
@@ -86,8 +88,10 @@ const HTMLSitemap = () => {
         const legal = normalized.filter((i) => isLegal(i.path));
         const blogs = normalized.filter((i) => isBlog(i.path));
         const calendars = normalized.filter((i) => isCalendar(i.path));
+        const projects = normalized.filter((i) => isProject(i.path));
+        const stands = normalized.filter((i) => isStand(i.path));
         const mains = normalized.filter(
-            (i) => !isSelf(i.path) && !isLegal(i.path) && !isBlog(i.path) && !isCalendar(i.path) && depth(i.path) <= 1
+            (i) => !isSelf(i.path) && !isLegal(i.path) && !isBlog(i.path) && !isCalendar(i.path) && !isProject(i.path) && !isStand(i.path) && depth(i.path) <= 1
         );
 
         // Sort for nicer UX
@@ -96,8 +100,10 @@ const HTMLSitemap = () => {
         legal.sort(sortByPath);
         blogs.sort(sortByPath);
         calendars.sort(sortByPath);
+        projects.sort(sortByPath);
+        stands.sort(sortByPath);
 
-        return { homeItem, mains, legal, blogs, calendars };
+        return { homeItem, mains, legal, blogs, calendars, projects, stands };
     }, [items]);
 
     return (
@@ -158,6 +164,36 @@ const HTMLSitemap = () => {
                                         <li key={i.path}>
                                             <Link href={i.path} className="text-blue-600 hover:underline">
                                                 {decodeURIComponent(i.path.replace("/exhibition-calendar/", "")).replace(/-/g, " ").trim()}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
+
+                        {groups.projects.length > 0 && (
+                            <section className="mb-10">
+                                <h2 className="mb-2 text-xl font-semibold text-black">Projects</h2>
+                                <ul className="grid gap-2 pl-5 list-disc sm:grid-cols-2">
+                                    {groups.projects.map((i) => (
+                                        <li key={i.path}>
+                                            <Link href={i.path} className="text-blue-600 hover:underline">
+                                                {decodeURIComponent(i.path.replace("/projects/", "")).replace(/-/g, " ").trim()}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </section>
+                        )}
+
+                        {groups.stands.length > 0 && (
+                            <section className="mb-10">
+                                <h2 className="mb-2 text-xl font-semibold text-black">Exhibition Stands</h2>
+                                <ul className="grid gap-2 pl-5 list-disc sm:grid-cols-2">
+                                    {groups.stands.map((i) => (
+                                        <li key={i.path}>
+                                            <Link href={i.path} className="text-blue-600 hover:underline">
+                                                {decodeURIComponent(i.path.replace("/exhibition-sub/", "")).replace(/-/g, " ").trim()}
                                             </Link>
                                         </li>
                                     ))}
