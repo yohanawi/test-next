@@ -1,5 +1,6 @@
 'use client';
 
+import CanonicalLink from "@/components/CanonicalLink";
 import ClientHeader from "@/components/ClientHeader";
 import { ApolloWrapper } from "@/lib/ApolloWrapper";
 import { Work_Sans } from "next/font/google";
@@ -10,7 +11,7 @@ import { Sora } from "next/font/google";
 import { Provider } from 'react-redux';
 import { store } from '@/redux/store';
 import Chat from "@/components/Chat";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Script from "next/script";
 import Head from "next/head";
 import './globals.css';
@@ -44,19 +45,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  useEffect(() => {
-    const disableRightClick = (event: MouseEvent) => {
-      event.preventDefault();
-    };
-    document.addEventListener("contextmenu", disableRightClick);
-    return () => document.removeEventListener("contextmenu", disableRightClick);
-  }, []);
+  // useEffect(() => {
+  //   const disableRightClick = (event: MouseEvent) => {
+  //     event.preventDefault();
+  //   };
+  //   document.addEventListener("contextmenu", disableRightClick);
+  //   return () => document.removeEventListener("contextmenu", disableRightClick);
+  // }, []);
 
   return (
     <html lang="en">
       <Head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="shortcut icon" href="/favicon.ico" />
+        <CanonicalLink />
       </Head>
       <body className={`${inter.variable} ${workSans.variable} ${sora.variable} antialiased`}>
         {/* ✅ Google Tag Manager Script */}

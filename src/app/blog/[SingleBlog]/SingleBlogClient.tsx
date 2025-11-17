@@ -79,9 +79,9 @@ export default function SingleBlog() {
             <section className="bg-white">
                 <div className="grid py-10 lg:grid-cols-3 lg:px-48 3xl:px-72 md:px-28 px-14 md:py-12 lg:py-20 lg:gap-10 md:gap-14">
                     <div className="lg:col-span-2">
-                        <h2 className="text-2xl font-semibold text-gray-900 uppercase md:text-3xl">
+                        <h3 className="text-2xl font-semibold text-gray-900 uppercase md:text-3xl">
                             {blogDetail?.title}
-                        </h2>
+                        </h3>
                         <div className="mt-4 space-y-4 text-gray-600 lg:max-w-3xl 3xl:max-w-5xl 3xl:text-lg">
                             <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(blogDetail?.description) || "<p>No content available.</p>" }}>
                             </p>

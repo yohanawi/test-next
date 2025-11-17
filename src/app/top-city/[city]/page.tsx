@@ -8,8 +8,6 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata(props: unknown): Promise<Metadata> {
     const params = (props as { params: { city: string } }).params;
     const citySlug = params.city;
-
-    console.log(citySlug);
     const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
     try {
         const { data } = await client.query({ query: GET_CITY_DETAIL, variables: { slug: citySlug, locale: "en" }, });

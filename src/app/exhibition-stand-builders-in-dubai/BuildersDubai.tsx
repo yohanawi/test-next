@@ -81,7 +81,7 @@ export default function BuildersDubai() {
                                     <br /><br />
                                     <span className="text-sm font-bold text-black uppercase lg:text-base">What We Do</span>
                                     <br /><br />
-                                    A stand builder, in layman's terms, is someone who plans, builds, and assembles exhibition stands. They are skilled consultants , construction specialists and project managers who offer expert advice and assistance on all aspects of show stand design. Generally, the role of an expert exhibition stand builder is to weave a solid stand concept, offer a range of stand designs, build and manufacture the stand, install the booth, and help during the dismantling process.
+                                    A stand builder, in layman&apos;s terms, is someone who plans, builds, and assembles exhibition stands. They are skilled consultants , construction specialists and project managers who offer expert advice and assistance on all aspects of show stand design. Generally, the role of an expert exhibition stand builder is to weave a solid stand concept, offer a range of stand designs, build and manufacture the stand, install the booth, and help during the dismantling process.
                                 </div>
                             </div>
 

@@ -18,7 +18,6 @@ export async function generateMetadata(): Promise<Metadata> {
         return {
             title: seo.metaTitle || "Exhibition Stand Contractors in Saudi Arabia | XESS Events",
             description: seo.metaDescription || "Discover top exhibition stand contractors in Saudi Arabia. XESS Events delivers innovative booth designs and turnkey solutions for your events.",
-            metadataBase: new URL("https://xessevents.com"),
             openGraph: {
                 title: seo.metaTitle || "Exhibition Stand Contractors in Saudi Arabia | XESS Events",
                 description: seo.metaDescription || "Discover top exhibition stand contractors in Saudi Arabia. XESS Events delivers innovative booth designs and turnkey solutions for your events.",

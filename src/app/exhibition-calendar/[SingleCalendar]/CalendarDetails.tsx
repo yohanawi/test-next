@@ -119,9 +119,8 @@ export default function CalendarDetails() {
                 <div className="max-w-5xl px-10 py-8 mx-auto lg:px-4">
                     <h2 className="mb-4 text-2xl font-bold text-black">About</h2>
                     <p className="mb-2 font-semibold text-black">{calendarDetail?.topic}</p>
-                    <div className="mb-6 text-gray-700"
-                        dangerouslySetInnerHTML={{ __html: calendarDetail?.description || "" }}>
-                    </div>
+                    <p className="mb-6 text-gray-700" dangerouslySetInnerHTML={{ __html: calendarDetail?.description }}>
+                    </p>
 
                     <div className="p-4 mb-6 bg-gray-100 rounded-md">
                         <h3 className="mb-2 font-semibold text-black">Highlights</h3>

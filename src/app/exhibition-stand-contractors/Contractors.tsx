@@ -183,7 +183,7 @@ export default function Contractors() {
                         </p>
                     </div>
                     <div className="relative w-full lg:w-[40rem] md:h-[20rem] h-[12rem] lg:h-96 lg:-ms-20">
-                        <Image src="/images/XESS-Process-Road-map.png" layout="fill" alt="Event 1" />
+                        <Image src="/images/XESS-Process-Road-map.png" layout="fill" alt="Event 1" className="rounded-3xl" />
                     </div>
                 </div>
             </section>

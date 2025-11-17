@@ -64,7 +64,7 @@ export default function TradeShowClient() {
                             {TradeHead?.breadcrumb?.SubHead1 || "Home"}
                         </Link>
                         /
-                        <Link href={TradeHead?.breadcrumb?.link2 || "/trade-show"} className="px-4 uppercase">
+                        <Link href={TradeHead?.breadcrumb?.link2 || "/trade-show-booth"} className="px-4 uppercase">
                             {TradeHead?.breadcrumb?.SubHead2 || "trade show booth"}
                         </Link>
                     </div>

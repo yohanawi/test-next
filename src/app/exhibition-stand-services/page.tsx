@@ -37,7 +37,7 @@ export async function generateMetadata(): Promise<Metadata> {
                 title: seo.metaTitle || "Exhibition | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
                 images: [imageUrl],
-            },            
+            },
             other: {
                 ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
                 "author": "Xess Events Team",

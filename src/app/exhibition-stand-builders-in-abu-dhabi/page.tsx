@@ -13,43 +13,51 @@ export async function generateMetadata(): Promise<Metadata> {
         const json = await res.json();
         const seo = json?.data?.attributes?.seo || {};
 
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/Footer_logo.png";
 
         return {
-            title: seo.metaTitle || "exhibition-stand-builders-in-abu-dhabi | XESS Events",
-            description: seo.metaDescription || "Discover top exhibition stand builders in Abu Dhabi with XESS Events. Innovative designs, quality construction, and turnkey solutions for your next event.",            
+            title: seo.metaTitle || "Exhibition Stand Builders in Abu Dhabi | XESS Events",
+            description: seo.metaDescription || "XESS Events plans, builds, and assembles high-quality exhibition stands in Abu Dhabi. Custom booth designs that attract attention and boost your brand.",
+            metadataBase: new URL("https://xessevents.com"),
+            alternates: {
+                canonical: "https://xessevents.com/exhibition-stand-builders-in-abu-dhabi",
+                languages: {
+                    "en-US": "https://xessevents.com/exhibition-stand-builders-in-abu-dhabi",
+                },
+            },
             openGraph: {
-            title: seo.metaTitle || "exhibition-stand-builders-in-abu-dhabi | XESS Events",
-            description: seo.metaDescription || "Discover top exhibition stand builders in Abu Dhabi with XESS Events. Innovative designs, quality construction, and turnkey solutions for your next event.",
-            url: "https://xessevents.com/exhibition-stand-builders-in-abu-dhabi",
-            type: "website",
-            images: [imageUrl],
+                title: seo.metaTitle || "Exhibition Stand Builders in Abu Dhabi | XESS Events",
+                description: seo.metaDescription || "XESS Events plans, builds, and assembles high-quality exhibition stands in Abu Dhabi. Custom booth designs that attract attention and boost your brand.",
+                url: "https://xessevents.com/exhibition-stand-builders-in-abu-dhabi",
+                type: "website",
+                images: [imageUrl],
             },
             twitter: {
-            card: "summary_large_image",
-            title: seo.metaTitle || "exhibition-stand-builders-in-abu-dhabi | XESS Events",
-            description: seo.metaDescription || "Discover top exhibition stand builders in Abu Dhabi with XESS Events. Innovative designs, quality construction, and turnkey solutions for your next event.",
-            images: [imageUrl],
+                card: "summary_large_image",
+                site: "@xessevents",
+                title: seo.metaTitle || "Exhibition Stand Builders in Abu Dhabi | XESS Events",
+                description: seo.metaDescription || "XESS Events plans, builds, and assembles high-quality exhibition stands in Abu Dhabi. Custom booth designs that attract attention and boost your brand.",
+                images: [imageUrl],
             },
         };
     } catch (error) {
         console.error("SEO fetch failed:", error);
         return {
-            title: "exhibition-stand-branding-services-in-abu-dhabi | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            title: "Exhibition Stand Builders in Abu Dhabi | XESS Events",
+            description: "XESS Events plans, builds, and assembles high-quality exhibition stands in Abu Dhabi. Custom booth designs that attract attention and boost your brand.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: "exhibition-stand-branding-services-in-abu-dhabi | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                title: "Exhibition Stand Builders in Abu Dhabi | XESS Events",
+                description: "XESS Events plans, builds, and assembles high-quality exhibition stands in Abu Dhabi. Custom booth designs that attract attention and boost your brand.",
+                url: "https://xessevents.com/exhibition-stand-builders-in-abu-dhabi",
                 type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
             twitter: {
                 card: "summary_large_image",
-                title: "exhibition-stand-branding-services-in-abu-dhabi | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                title: "Exhibition Stand Builders in Abu Dhabi | XESS Events",
+                description: "XESS Events plans, builds, and assembles high-quality exhibition stands in Abu Dhabi. Custom booth designs that attract attention and boost your brand.",
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
         };
     }

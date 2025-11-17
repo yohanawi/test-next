@@ -20,17 +20,17 @@ export async function generateMetadata(props: unknown): Promise<Metadata> {
             description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-            title: seo.metaTitle || `Stand: ${standSlug} | XESS Events`,
-            description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
-            url: `https://xessevents.com/exhibition-sub/${standSlug}`,
-            type: "website",
-            images: [imageUrl],
+                title: seo.metaTitle || `Stand: ${standSlug} | XESS Events`,
+                description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
+                url: `https://xessevents.com/exhibition-sub/${standSlug}`,
+                type: "website",
+                images: [imageUrl],
             },
             twitter: {
-            card: "summary_large_image",
-            title: seo.metaTitle || `Stand: ${standSlug} | XESS Events`,
-            description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
-            images: [imageUrl],
+                card: "summary_large_image",
+                title: seo.metaTitle || `Stand: ${standSlug} | XESS Events`,
+                description: seo.metaDescription || `Details and information about exhibition stand ${standSlug} at XESS Events.`,
+                images: [imageUrl],
             },
         };
     } catch (error) {

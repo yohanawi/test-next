@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
                         <div className="col-span-4 pt-10 3xl:col-span-3 ms-4 lg:ms-40 3xl:ms-0">
                             <div className="flex flex-col items-start text-left space-y-3 min-h-[300px]">
                                 <div style={{ width: 191, height: 87 }}>
-                                    <Image src="/images/Footer logo.png" width={191} height={87} alt="Footer Logo" quality={80} sizes="(max-width: 768px) 100vw, 191px" loading="lazy" />
+                                    <Link href="/" aria-label="Go to homepage"> <Image src="/images/Footer logo.png" width={191} height={87} alt="Footer Logo" quality={80} sizes="(max-width: 768px) 100vw, 191px" loading="lazy" /></Link>
                                 </div>
                                 <div className="flex flex-col pt-5 text-left">
                                     <div className="flex items-center gap-10 py-5 justify-left">
@@ -99,6 +99,24 @@ const Footer: React.FC = () => {
                                                 </Link>
                                             </li>
                                         ))}
+                                        <li className="opacity-0">
+                                            <Link href="/commercial-interior-fit-out-in-dubai">Commercial Interior Fit out</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="/commercial-interior-fit-out-in-dubai" >Commercial Interior Fit out</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="/commercial-interior-fit-out-in-dubai" >Commercial Interior Fit out</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="/">Home</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="/" >Home</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="/" >Home</Link>
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -118,6 +136,21 @@ const Footer: React.FC = () => {
                                                 </li>
                                             )
                                         )}
+                                        <li className="opacity-0">
+                                            <Link href="https://xessevents.com">Home</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="https://xessevents.com">Home</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="https://xessevents.com">Home</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="/Profile/XessExhibitions-Profile.pdf" >PDF</Link>
+                                        </li>
+                                        <li className="opacity-0">
+                                            <Link href="/Profile/XessExhibitions-Profile.pdf" >PDF</Link>
+                                        </li>
                                     </ul>
                                 </div>
 
@@ -285,7 +318,7 @@ const Footer: React.FC = () => {
                             </ul>
                         </div>
                         <div>
-                            <Link href="#">
+                            <Link href="/#">
                                 <h3 className="text-[22px] font-semibold hover:text-[#e21f2c]">
                                     {mainFooter?.footerP?.title || "Partners"}
                                 </h3>

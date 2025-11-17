@@ -83,8 +83,7 @@ export default function BuildersAbuDhabi() {
                                     <br /><br />
                                     <span className="text-sm font-bold text-black uppercase lg:text-base">What We Do</span>
                                     <br /><br />
-                                    A stand builder, in layman's terms, is someone who plans, builds, and assembles exhibition stands. At XESS, we are skilled consultants , construction specialists and project managers who offer expert advice and assistance on all aspects of show stand design. Our role is that of an expert exhibition stand builder who  weaves a solid stand concept, offers a range of stand designs, builds and manufactures the stand, installs the booth, and helps during the dismantling process.
-
+                                    A stand builder, in layman&apos;s terms, is someone who plans, builds, and assembles exhibition stands. At XESS, we are skilled consultants , construction specialists and project managers who offer expert advice and assistance on all aspects of show stand design. Our role is that of an expert exhibition stand builder who  weaves a solid stand concept, offers a range of stand designs, builds and manufactures the stand, installs the booth, and helps during the dismantling process.
                                 </div>
                             </div>
 
@@ -106,7 +105,7 @@ export default function BuildersAbuDhabi() {
                         {mainExhibitionbuilder?.BuildDes?.title || "GET YOUR OWN"}
                     </h2>
                     <p className="text-xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
-                         Exhibition stand builders in Abu Dhabi
+                        Exhibition stand builders in Abu Dhabi
                     </p>
                     <div className=" lg:mx-44 md:mx-20 3xl:mx-[6rem] mx-10 3xl:py-5">
                         <p className="mt-4 text-xs text-gray-700 md:text-base">

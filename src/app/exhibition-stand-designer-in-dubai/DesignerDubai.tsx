@@ -23,7 +23,7 @@ export default function DesignerDubai() {
     const { locale } = useSelector((state: RootState) => state.locale);
     const { data } = useQuery(GET_EXHIBITION_DESIGN_DATA, { variables: { locale }, });
     const mainExhibitiondesign = data?.exhiDesPage?.data?.attributes || {};
-    const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
+    // const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
     const { DesHead } = mainExhibitiondesign;
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const bannerImage = DesHead?.image?.data?.attributes?.url ? `${baseUrl}${DesHead.image.data.attributes.url}` : "/images/Banner.jpg";

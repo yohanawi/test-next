@@ -2,40 +2,25 @@ import { Metadata } from "next";
 import SitemapClient from "./SitemapClient";
 
 export async function generateMetadata(): Promise<Metadata> {
+
     return {
-        title: "Sitemap | XESS Events",
-        description:
-            "Browse the complete list of pages on XESS Events. Use our sitemap to quickly navigate the website.",
-        metadataBase: new URL("https://xessevents.com"),
-        alternates: {
-            canonical: "https://xessevents.com/sitemap",
-            languages: {
-                en: "https://xessevents.com/sitemap",
-            },
-        },
-        keywords: ["sitemap", "site map", "XESS Events pages", "website index"],
-        robots: "noindex, follow",
+        title: "Site Map | XESS Events",
+        description: "Site Map Learn more about XESS Events and our story.",
         openGraph: {
-            title: "Sitemap | XESS Events",
-            description:
-                "Browse the complete list of pages on XESS Events. Use our sitemap to quickly navigate the website.",
+            title: "Site Map | XESS Events",
+            description: "Site Map Learn more about XESS Events and our story.",
             url: "https://xessevents.com/sitemap",
             type: "website",
-            images: ["/images/Footer_logo.png"],
+            images: "https://xessevents.com/images/default-og.jpg",
         },
         twitter: {
             card: "summary_large_image",
-            site: "@xessevents",
-            title: "Sitemap | XESS Events",
-            description:
-                "Browse the complete list of pages on XESS Events. Use our sitemap to quickly navigate the website.",
-            images: ["/images/Footer_logo.png"],
-        },
-        other: {
-            author: "Xess Events Team",
-            publisher: "Xess Events",
+            title: "Site Map | XESS Events",
+            description: "Site Map Learn more about XESS Events and our story.",
+            images: "https://xessevents.com/images/default-og.jpg",
         },
     };
+
 }
 
 export default function SiteMap() {

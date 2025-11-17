@@ -23,7 +23,7 @@ export default function DesignerSaudiArabia() {
     const { locale } = useSelector((state: RootState) => state.locale);
     const { data } = useQuery(GET_EXHIBITION_DESIGN_DATA, { variables: { locale }, });
     const mainExhibitiondesign = data?.exhiDesPage?.data?.attributes || {};
-    const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
+    // const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
     const { DesHead } = mainExhibitiondesign;
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const bannerImage = DesHead?.image?.data?.attributes?.url ? `${baseUrl}${DesHead.image.data.attributes.url}` : "/images/Banner.jpg";
@@ -48,7 +48,7 @@ export default function DesignerSaudiArabia() {
                 <div className="absolute inset-0 bg-[#5a5a5a] opacity-70"></div>
                 <div className="absolute mt-32 lg:mt-40">
                     <h1 className="mb-2 font-sans text-xl font-semibold text-white uppercase lg:text-5xl md:text-3xl">
-                        {DesHead?.heading || "exhibition stand design"}
+                        Exhibition Stand Designer in Saudi Arabia
                     </h1>
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href={mainExhibitiondesign?.breadcrumb?.link1 || "/"} className="px-4 uppercase" >
@@ -56,7 +56,7 @@ export default function DesignerSaudiArabia() {
                         </Link>
                         /
                         <Link href={mainExhibitiondesign?.breadcrumb?.link2 || "/exhibition-stand-designer-in-saudi-arabia"} className="px-4 uppercase" >
-                            {DesHead?.breadcrumb?.SubHead2 || "exhibition stand design"}
+                            Exhibition Stand Designer in Saudi Arabia
                         </Link>
                     </div>
                 </div>
@@ -150,15 +150,27 @@ export default function DesignerSaudiArabia() {
                 <div className="grid lg:grid-cols-2 lg:mx-48 md:mx-32 3xl:mx-56">
                     <div className="pt-8 mx-14 md:mx-0 3xl:mx-20">
                         <h2 className="text-xl text-black md:text-3xl lg:text-5xl">
-                            Partner with the best exhibition stand designers in Saudi Arabia
+                            Partner with the best exhibition stand contractors in Saudi Arabia
                         </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
                         {[
                             {
-                                question: "",
-                                answers: ""
+                                question: "Who provides turnkey exhibition stand solutions in Saudi Arabia?",
+                                answers: "Among several exhibition stand companies in Saudi Arabia that offer turnkey solutions, XESS Exhibitions will handle every step of your exhibition stand project from concept design to production, to installation and dismantling."
                             },
+                            {
+                                question: "Who specializes in eco-friendly exhibition stand designs in Saudi Arabia?",
+                                answers: "We at XESS not only focus on eco-friendly stands but also on all-environment designs as well."
+                            },
+                            {
+                                question: "Where to source high-quality materials for exhibition stands locally?",
+                                answers: "With XESS you won’t have to worry about sourcing materials since XESS can design and build your trade show booth stand for you."
+                            },
+                            {
+                                question: "Where can I hire exhibition stand designers for luxury brand showcases?",
+                                answers: "If you need an exhibition stand designer for a luxury brand showcase, XESS Events can provide for all your luxury design needs."
+                            }
                         ].map((item: { question: string, answers: string }, index: number) => {
                             const isOpen = openIndex === index;
                             const contentRef = contentRefs[index];

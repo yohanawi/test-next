@@ -76,7 +76,7 @@ export default function Exhibition() {
                             {HeadSec?.breadcrumb?.SubHead1 || "Home"}
                         </Link>
                         /
-                        <Link href={mainExhibition?.breadcrumb?.link2 || "/exhibition"} className="px-4 uppercase" >
+                        <Link href={mainExhibition?.breadcrumb?.link2 || "/exhibition-stand-services"} className="px-4 uppercase" >
                             {HeadSec?.breadcrumb?.SubHead2 || "Exhibition Services"}
                         </Link>
                     </div>

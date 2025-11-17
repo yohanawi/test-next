@@ -23,7 +23,7 @@ export default function DesignerSharjah() {
     const { locale } = useSelector((state: RootState) => state.locale);
     const { data } = useQuery(GET_EXHIBITION_DESIGN_DATA, { variables: { locale }, });
     const mainExhibitiondesign = data?.exhiDesPage?.data?.attributes || {};
-    const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
+    // const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
     const { DesHead } = mainExhibitiondesign;
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const bannerImage = DesHead?.image?.data?.attributes?.url ? `${baseUrl}${DesHead.image.data.attributes.url}` : "/images/Banner.jpg";
@@ -106,16 +106,16 @@ export default function DesignerSharjah() {
             <section className="bg-[#D4D4D4] text-center py-5 md:py-10">
                 <div className="container px-6 mx-auto">
                     <h2 className="text-[#EA2127] text-center text-2xl md:text-3xl lg:text-4xl md:mx-20">
-                        {mainExhibitiondesign?.DescribsSec?.title || "GET YOUR OWN"}
+                        BUILD YOUR OWN
                     </h2>
                     <p className="text-2xl text-center text-black uppercase md:text-2xl lg:text-3xl md:mx-20">
-                        {mainExhibitiondesign?.DescribsSec?.subTitle || "CUSTOM 3D EXHIBITION STAND DESIGN"}
+                        CUSTOM 3D EXHIBITION STAND DESIGN
                     </p>
                     <div className=" lg:mx-44 md:mx-20 3xl:mx-[6rem] mx-10 3xl:py-5">
-                        <p className="mt-4 text-xs text-gray-700 md:text-base"
-                            dangerouslySetInnerHTML={{
-                                __html: mainExhibitiondesign?.DescribsSec?.description,
-                            }}>
+                        <p className="mt-4 text-xs text-gray-700 md:text-base">
+                            At every exhibition or trade show you attend, it is vital that you establish your brand and your brand&apos;s message out into the public. And helping you with that process is our goal. And creating detail-oriented, high quality trade show booths to elevate your brand is our mission.
+                            <br />
+                            Forming long term partnerships with reputable businesses is something we’re highly committed to. We aim to accomplish this through a  collaborative process that combines your goals with our hallmark creativity!
                         </p>
                     </div>
                 </div>
@@ -155,7 +155,24 @@ export default function DesignerSharjah() {
                         </h2>
                     </div>
                     <div className="w-full mt-5 space-y-2 lg:-mt-8 md:mt-10 md:mx-0 px-9 md:px-0">
-                        {accordion.map((item: { question: string, answers: string }, index: number) => {
+                        {[
+                            {
+                                question: "Who offers exhibition stand design and branding services in Dubai?",
+                                answers: "XESS Events offers design and branding services for exhibition stands in Dubai."
+                            },
+                            {
+                                question: "Where can I hire exhibition stand designers for luxury brand showcases?",
+                                answers: "If you need an exhibition stand designer for a luxury brand showcase, XESS Events can provide for all your luxury design needs."
+                            },
+                            {
+                                question: "Which firms handle exhibition stand dismantling and disposal after events?",
+                                answers: "XESS Exhibitions will be with you every step of the exhibition stand process including the dismantling and disposing or storage."
+                            },
+                            {
+                                question: "Who offers exhibition stand design consultations in Dubai?",
+                                answers: "You can book an exhibition stand design consultation with XESS Events and go over designs and concepts."
+                            },
+                        ].map((item: { question: string, answers: string }, index: number) => {
                             const isOpen = openIndex === index;
                             const contentRef = contentRefs[index];
 

@@ -77,7 +77,7 @@ export default function Stands() {
                     <div className="flex items-center justify-center py-2 text-xs text-center text-white lg:text-sm lg:py-5">
                         <Link href="/" className="px-4 uppercase">Home</Link>
                         /
-                        <Link href="/exhibition-stand-services" className="px-4 uppercase">Exhibition Stand Services</Link>
+                        <Link href="/exhibition-stand-services" className="px-4 uppercase">Exhibition Services</Link>
                         /
                         <Link href={`/exhibition-sub/${standDetail?.slug}`} className="px-4 uppercase">{standDetail?.HeroSec?.title} Page</Link>
                     </div>

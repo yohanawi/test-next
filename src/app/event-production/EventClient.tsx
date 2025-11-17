@@ -24,6 +24,7 @@ type EventSection = {
     SubDesc?: string;
 };
 
+
 export default function EventProduction() {
 
     const { locale } = useSelector((state: RootState) => state.locale);
@@ -85,7 +86,7 @@ export default function EventProduction() {
                     <div key={index} className={`grid lg:grid-cols-2 ${index % 2 === 0 ? "bg-[#d8dde0] 3xl:-ms-20 lg:-ms-10" : "bg-white py-10"} lg:px-36 md:px-24 px-5 3xl:px-64`} >
                         <div className={`flex justify-center 3xl:justify-end items-center 3xl:pr-5  ${index % 2 === 0 ? "" : "lg:order-1"}`}>
                             <div className="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] 3xl:w-[600px]">
-                                <Image src={section?.SectionImg?.data?.attributes?.url ? `${baseUrl}${section.SectionImg.data.attributes.url}` : "/images/event-production2.webp"} layout="fill" objectFit="cover" alt={section?.SectionImg?.data?.attributes?.alternativeText || "Event Section Image"} />
+                                <Image src={section?.SectionImg?.data?.attributes?.url ? `${baseUrl}${section.SectionImg.data.attributes.url}` : ""} layout="fill" objectFit="cover" alt={section?.SectionImg?.data?.attributes?.alternativeText || "Event Section Image"} />
                             </div>
                         </div>
                         <div className="p-8">

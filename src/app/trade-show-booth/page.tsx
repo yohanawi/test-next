@@ -18,9 +18,9 @@ export async function generateMetadata(): Promise<Metadata> {
             description: seo.metaDescription || "Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
             alternates: {
-                canonical: seo.canonicalURL || "https://xessevents.com/trade-show",
+                canonical: seo.canonicalURL || "https://xessevents.com/trade-show-booth",
                 languages: {
-                    "en": "https://xessevents.com/trade-show",
+                    "en": "https://xessevents.com/trade-show-booth",
                 },
             },
             keywords: seo.keywords || [],
@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
             openGraph: {
                 title: seo.metaTitle || "Trade Show | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/trade-show",
+                url: "https://xessevents.com/trade-show-booth",
                 type: "website",
                 images: [imageUrl],
             },
@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
                 title: seo.metaTitle || "Trade Show | XESS Events",
                 description: seo.metaDescription || "Learn more about XESS Events and our story.",
                 images: [imageUrl],
-            },            
+            },
             other: {
                 ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
                 "author": "Xess Events Team",
@@ -54,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
             openGraph: {
                 title: "Trade Show | XESS Events",
                 description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                url: "https://xessevents.com/trade-show-booth",
                 type: "website",
                 images: ["https://xessevents.com/images/default-og.jpg"],
             },

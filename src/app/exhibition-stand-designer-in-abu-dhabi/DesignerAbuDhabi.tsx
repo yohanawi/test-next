@@ -23,7 +23,7 @@ export default function DesignerAbuDhabi() {
     const { locale } = useSelector((state: RootState) => state.locale);
     const { data } = useQuery(GET_EXHIBITION_DESIGN_DATA, { variables: { locale }, });
     const mainExhibitiondesign = data?.exhiDesPage?.data?.attributes || {};
-    const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
+    // const accordion = mainExhibitiondesign?.DesFaq?.ConFaq || [];
     const { DesHead } = mainExhibitiondesign;
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const bannerImage = DesHead?.image?.data?.attributes?.url ? `${baseUrl}${DesHead.image.data.attributes.url}` : "/images/Banner.jpg";
@@ -157,19 +157,19 @@ export default function DesignerAbuDhabi() {
                         {[
                             {
                                 question: "Which providers offer exhibition stands with integrated digital displays?",
-                                answers: "While several Dubai-based providers specialize in creating exhibition stands with integrated digital displays with LED screens and interactive touchscreens. XESS Exhibitions is one of the most highly-regarded options in Dubai."
+                                answers: "While several Abu Dhabi-based providers specialize in creating exhibition stands with integrated digital displays with LED screens and interactive touchscreens. XESS Exhibitions is one of the most highly-regarded options in Abu Dhabi."
                             },
                             {
-                                question: "Who offers full-service exhibition stand management in Dubai?",
-                                answers: "Several Dubai providers offer comprehensive, full-service exhibition stand management, and handle the entire process. XESS Exhibitions is one of the highest rated options in Dubai."
+                                question: "Who offers full-service exhibition stand management in Abu Dhabi?",
+                                answers: "Several Abu Dhabi providers offer comprehensive, full-service exhibition stand management, and handle the entire process. XESS Exhibitions is one of the highest rated options in Abu Dhabi."
                             },
                             {
                                 question: "Where to source high-quality materials for exhibition stands locally?",
                                 answers: "With XESS you won’t have to worry about sourcing materials since XESS can design and build your trade show booth stand for you."
                             },
                             {
-                                question: "Which companies provide exhibition stand storage and logistics in Dubai?",
-                                answers: "XESS Exhibitions and Events provide storage for exhibition stands in Dubai. This allows us to have a wide catalogue of exhibition stands for you to pick from."
+                                question: "Which companies provide exhibition stand storage and logistics in Abu Dhabi?",
+                                answers: "XESS Exhibitions and Events provide storage for exhibition stands in Abu Dhabi. This allows us to have a wide catalogue of exhibition stands for you to pick from."
                             },
                         ].map((item: { question: string, answers: string }, index: number) => {
                             const isOpen = openIndex === index;

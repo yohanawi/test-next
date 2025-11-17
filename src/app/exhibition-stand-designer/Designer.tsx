@@ -4,13 +4,13 @@ import { GET_EXHIBITION_DESIGN_DATA } from "@/lib/queries";
 import { AnimatePresence, motion } from "framer-motion";
 import ContactForm from "@/components/Contactform";
 import { ArrowDown, ArrowUp } from "lucide-react";
+import Resources from "@/components/Resources";
 import { useQuery } from "@apollo/client";
 import { RootState } from "@/redux/store";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Resources from "@/components/Resources";
 
 type AccordionItem = {
     question: string;

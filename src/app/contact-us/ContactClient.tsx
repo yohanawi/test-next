@@ -39,8 +39,6 @@ export default function Contact() {
     const addresses = infoSection?.address || [];
     const headquarter = infoSection?.headquarter;
 
-    console.log(heroBgImage);
-
     const sanitizeHtml = (html: string) => {
         return html?.replace(/font-family:[^;"]*;?/gi, "");
     };

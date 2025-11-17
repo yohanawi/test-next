@@ -170,8 +170,7 @@ export default function Calendar() {
         }
     }, [swiperInstance]);
 
-    // Sort so that current-month events come first (latest within the month first),
-    // then all other events by latest date.
+    // Sort by latest event first
     const sortedCalendar = [...filteredCalendar].sort((a: CalendarItem, b: CalendarItem) => {
         const dateA = new Date(a.attributes.CalenCrd.startDate);
         const dateB = new Date(b.attributes.CalenCrd.startDate);
@@ -189,7 +188,6 @@ export default function Calendar() {
         // Within the same group, latest (newest) first
         return dateB.getTime() - dateA.getTime();
     });
-
 
     return (
         <>

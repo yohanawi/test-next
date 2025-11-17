@@ -13,44 +13,51 @@ export async function generateMetadata(): Promise<Metadata> {
         const json = await res.json();
         const seo = json?.data?.attributes?.seo || {};
 
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/Footer_logo.png";
 
         return {
-            title: seo.metaTitle || "Exhibition Stand Designer in Saudi Arabia | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || "Exhibition Stand Builder & Design in Saudi Arabia | XESS Events",
+            description: seo.metaDescription || "XESS Events creates innovative exhibition stand designs in Saudi Arabia. Custom-built booths crafted to engage audiences and elevate your brand presence.",
             metadataBase: new URL("https://xessevents.com"),
+            alternates: {
+                canonical: "https://xessevents.com/exhibition-stand-designer-in-saudi-arabia",
+                languages: {
+                    "en-US": "https://xessevents.com/exhibition-stand-designer-in-saudi-arabia",
+                },
+            },
             openGraph: {
-                title: seo.metaTitle || "Exhibition Stand Designer in Saudi Arabia | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                title: seo.metaTitle || "Exhibition Stand Builder & Design in Saudi Arabia | XESS Events",
+                description: seo.metaDescription || "XESS Events creates innovative exhibition stand designs in Saudi Arabia. Custom-built booths crafted to engage audiences and elevate your brand presence.",
+                url: "https://xessevents.com/exhibition-stand-designer-in-saudi-arabia",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "Exhibition Stand Designer in Saudi Arabia | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                site: "@xessevents",
+                title: seo.metaTitle || "Exhibition Stand Builder & Design in Saudi Arabia | XESS Events",
+                description: seo.metaDescription || "XESS Events creates innovative exhibition stand designs in Saudi Arabia. Custom-built booths crafted to engage audiences and elevate your brand presence.",
                 images: [imageUrl],
             },
         };
     } catch (error) {
         console.error("SEO fetch failed:", error);
         return {
-            title: "Exhibition Stand Designer in Saudi Arabia | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            title: "Exhibition Stand Builder & Design in Saudi Arabia | XESS Events",
+            description: "XESS Events creates innovative exhibition stand designs in Saudi Arabia. Custom-built booths crafted to engage audiences and elevate your brand presence.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: "Exhibition Stand Designer in Saudi Arabia | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                title: "Exhibition Stand Builder & Design in Saudi Arabia | XESS Events",
+                description: "XESS Events creates innovative exhibition stand designs in Saudi Arabia. Custom-built booths crafted to engage audiences and elevate your brand presence.",
+                url: "https://xessevents.com/exhibition-stand-designer-in-saudi-arabia",
                 type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
             twitter: {
                 card: "summary_large_image",
-                title: "Exhibition Stand Designer in Saudi Arabia | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                title: "Exhibition Stand Builder & Design in Saudi Arabia | XESS Events",
+                description: "XESS Events creates innovative exhibition stand designs in Saudi Arabia. Custom-built booths crafted to engage audiences and elevate your brand presence.",
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
         };
     }

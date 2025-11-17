@@ -161,7 +161,7 @@ export default function Header() {
                     <Link href="/exhibition-calendar" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/exhibition-calendar") ? "text-red-600" : "text-white"}`}>
                         {mainHeader?.calendar || "Exhibition Calendar"}
                     </Link>
-                    <Link href="/about" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/about") ? "text-red-600" : "text-white"}`}>
+                    <Link href="/about-us" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/about-us") ? "text-red-600" : "text-white"}`}>
                         {mainHeader?.about || "About"}
                     </Link>
                     <Link href="/contact-us" onClick={() => setIsOpen(false)} className={`block hover:text-red-500 ${isActive("/contact-us") ? "text-red-600" : "text-white"}`}>

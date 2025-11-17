@@ -13,44 +13,51 @@ export async function generateMetadata(): Promise<Metadata> {
         const json = await res.json();
         const seo = json?.data?.attributes?.seo || {};
 
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/Footer_logo.png";
 
         return {
             title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
-            description: seo.metaDescription || "Discover top exhibition stand builders in Dubai. XESS Events delivers innovative, high-quality stand design and build services for your brand.",
+            description: seo.metaDescription || "XESS Events plans, builds, and assembles high-quality exhibition stands in Dubai. Custom designs that attract attention and boost your brand impact.",
             metadataBase: new URL("https://xessevents.com"),
+            alternates: {
+                canonical: "https://xessevents.com/exhibition-stand-builders-in-dubai",
+                languages: {
+                    "en-US": "https://xessevents.com/exhibition-stand-builders-in-dubai",
+                },
+            },
             openGraph: {
-            title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
-            description: seo.metaDescription || "Discover top exhibition stand builders in Dubai. XESS Events delivers innovative, high-quality stand design and build services for your brand.",
-            url: "https://xessevents.com/exhibition-stand-builders-in-dubai",
-            type: "website",
-            images: [imageUrl],
+                title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
+                description: seo.metaDescription || "XESS Events plans, builds, and assembles high-quality exhibition stands in Dubai. Custom designs that attract attention and boost your brand impact.",
+                url: "https://xessevents.com/exhibition-stand-builders-in-dubai",
+                type: "website",
+                images: [imageUrl],
             },
             twitter: {
-            card: "summary_large_image",
-            title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
-            description: seo.metaDescription || "Discover top exhibition stand builders in Dubai. XESS Events delivers innovative, high-quality stand design and build services for your brand.",
-            images: [imageUrl],
+                card: "summary_large_image",
+                site: "@xessevents",
+                title: seo.metaTitle || "Exhibition Stand Builders in Dubai | XESS Events",
+                description: seo.metaDescription || "XESS Events plans, builds, and assembles high-quality exhibition stands in Dubai. Custom designs that attract attention and boost your brand impact.",
+                images: [imageUrl],
             },
         };
     } catch (error) {
         console.error("SEO fetch failed:", error);
         return {
-            title: "exhibition-stand-branding-services-in-dubai | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            title: "Exhibition Stand Builders in Dubai | XESS Events",
+            description: "XESS Events plans, builds, and assembles high-quality exhibition stands in Dubai. Custom designs that attract attention and boost your brand impact.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: "exhibition-stand-branding-services-in-dubai | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                title: "Exhibition Stand Builders in Dubai | XESS Events",
+                description: "XESS Events plans, builds, and assembles high-quality exhibition stands in Dubai. Custom designs that attract attention and boost your brand impact.",
+                url: "https://xessevents.com/exhibition-stand-builders-in-dubai",
                 type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
             twitter: {
                 card: "summary_large_image",
-                title: "exhibition-stand-branding-services-in-dubai | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                title: "Exhibition Stand Builders in Dubai | XESS Events",
+                description: "XESS Events plans, builds, and assembles high-quality exhibition stands in Dubai. Custom designs that attract attention and boost your brand impact.",
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
         };
     }

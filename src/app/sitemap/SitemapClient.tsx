@@ -91,7 +91,7 @@ const HTMLSitemap = () => {
         const projects = normalized.filter((i) => isProject(i.path));
         const stands = normalized.filter((i) => isStand(i.path));
         const mains = normalized.filter(
-            (i) => !isSelf(i.path) && !isLegal(i.path) && !isBlog(i.path) && !isCalendar(i.path) && !isProject(i.path) && !isStand(i.path) && depth(i.path) <= 1
+            (i) => !isSelf(i.path) && !isLegal(i.path) && !isBlog(i.path) && !isCalendar(i.path) && depth(i.path) <= 1
         );
 
         // Sort for nicer UX

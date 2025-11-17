@@ -1,10 +1,10 @@
+import StructuredData from "@/components/StructuredData";
 import { GET_HOME_PAGE_DATA } from "@/lib/queries";
 import client from "@/lib/apolloClient";
 import dynamic from "next/dynamic";
 import { Metadata } from 'next';
-import StructuredData from "@/components/StructuredData";
 
-const HeroSection = dynamic(() => import("@/components/HeroSection"), { loading: () => <p>Loading...</p>, ssr: true, });
+import HeroSection from "@/components/HeroSection";
 const HomeSection4 = dynamic(() => import("@/components/HomeSection4"), { loading: () => <p>Loading...</p>, ssr: true, });
 const HomeSection5 = dynamic(() => import("@/components/HomeSection5"), { loading: () => <p>Loading...</p>, ssr: true, });
 const Resources = dynamic(() => import("@/components/Resources"), { loading: () => <p>Loading...</p>, ssr: true, });
@@ -17,6 +17,7 @@ const ContactForm = dynamic(() => import("@/components/Contactform"), { loading:
 
 export async function generateMetadata(): Promise<Metadata> {
   const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+
 
   try {
 
@@ -53,7 +54,6 @@ export async function generateMetadata(): Promise<Metadata> {
       },
       other: {
         ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
-       
       },
     };
   } catch (error) {
@@ -87,8 +87,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 
 export default async function Home() {
+
   const { data } = await client.query({ query: GET_HOME_PAGE_DATA, variables: { locale: "en" }, });
   const structuredData = data?.homePages?.data?.[0]?.attributes?.meta_data?.structuredData || null;
+
   return (
     <>
       <main>

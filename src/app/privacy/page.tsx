@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
         const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
             next: { revalidate: 60 },
             cache: "force-cache",
-        }); 
+        });
 
         const json = await res.json();
         const seo = json?.data?.attributes?.seo || {};
@@ -16,12 +16,12 @@ export async function generateMetadata(): Promise<Metadata> {
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
 
         return {
-            title: seo.metaTitle || "Privacy policy | XESS Event",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
+            title: seo.metaTitle || "Privacy policy | XESS Events",
+            description: seo.metaDescription || "Privacy policy Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
                 title: seo.metaTitle || "Privacy policy | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                description: seo.metaDescription || "Privacy policy Learn more about XESS Events and our story.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: [imageUrl],
@@ -29,7 +29,7 @@ export async function generateMetadata(): Promise<Metadata> {
             twitter: {
                 card: "summary_large_image",
                 title: seo.metaTitle || "Privacy policy | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                description: seo.metaDescription || "Privacy policy Learn more about XESS Events and our story.",
                 images: [imageUrl],
             },
         };
@@ -37,11 +37,11 @@ export async function generateMetadata(): Promise<Metadata> {
         console.error("SEO fetch failed:", error);
         return {
             title: "Privacy policy | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            description: "Privacy policy Learn more about XESS Events and our story.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
                 title: "Privacy policy | XESS Events",
-                description: "Learn more about XESS Events and our story.",
+                description: "Privacy policy Learn more about XESS Events and our story.",
                 url: "https://xessevents.com/about-us",
                 type: "website",
                 images: ["https://xessevents.com/images/default-og.jpg"],
@@ -49,7 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
             twitter: {
                 card: "summary_large_image",
                 title: "Privacy policy | XESS Events",
-                description: "Learn more about XESS Events and our story.",
+                description: "Privacy policy Learn more about XESS Events and our story.",
                 images: ["https://xessevents.com/images/default-og.jpg"],
             },
         };

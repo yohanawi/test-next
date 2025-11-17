@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import SingleBlogClient from "./SingleBlogClient";
 import { GET_BLOG_DETAIL } from "@/lib/queries";
 import client from "@/lib/apolloClient";
+import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
@@ -69,6 +70,20 @@ export async function generateMetadata(props: unknown): Promise<Metadata> {
     }
 }
 
-export default function SingleBlog() {
+export default async function SingleBlogPage(props: unknown) {
+    const params = (props as { params: { SingleBlog: string } }).params;
+    const blogSlug = params?.SingleBlog;
+    if (!blogSlug || blogSlug === "undefined") {
+        notFound();
+    }
+    try {
+        const { data } = await client.query({ query: GET_BLOG_DETAIL, variables: { slug: blogSlug, locale: "en" } });
+        const hasData = Array.isArray(data?.blogDetails?.data) && data.blogDetails.data.length > 0;
+        if (!hasData) {
+            notFound();
+        }
+    } catch {
+        notFound();
+    }
     return <SingleBlogClient />;
 }

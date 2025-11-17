@@ -46,19 +46,19 @@ export async function generateMetadata(): Promise<Metadata> {
         return {
             title: "Blogs | XESS Events",
             description: "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            metadataBase: new URL("https://xessevents.com/"),
             openGraph: {
                 title: "Blogs | XESS Events",
                 description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                url: "https://xessevents.com/blog/",
                 type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
             twitter: {
                 card: "summary_large_image",
                 title: "Blogs | XESS Events",
                 description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
         };
     }

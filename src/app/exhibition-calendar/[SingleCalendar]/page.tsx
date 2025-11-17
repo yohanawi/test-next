@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import client from "@/lib/apolloClient";
 import { GET_CALENDAR_DETAIL } from "@/lib/queries";
 import CalendarDetails from "./CalendarDetails";
+import { notFound } from "next/navigation";
 
 // Next.js 15 PageProps has params as a Promise in the App Router
 type RouteParams = { params: Promise<{ SingleCalendar: string }> };
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
 
         const canonical = `${SITE_URL}/exhibition-calendar/${slug}`;
 
-        // If no data is found, fall back to generic SEO but keep the page indexable
+        // If no data is found, avoid indexing to prevent duplicate content issues
         const noData = !data?.calenDetails?.data?.length;
         if (noData) {
             return {
@@ -128,14 +129,8 @@ export async function generateMetadata({ params }: RouteParams): Promise<Metadat
             metadataBase: new URL(SITE_URL),
             alternates: { canonical },
             robots: {
-                index: true,
-                follow: true,
-                googleBot: {
-                    index: true,
-                    follow: true,
-                    "max-image-preview": "large",
-                    "max-snippet": -1,
-                },
+                index: false,
+                follow: false,
             },
             openGraph: {
                 title: fallbackTitle,
@@ -160,6 +155,21 @@ export default async function Page({ params }: RouteParams) {
     const normalized = slugRaw.toLowerCase();
     if (slugRaw !== normalized) {
         redirect(`/exhibition-calendar/${normalized}`);
+    }
+    // Verify the slug exists; if not, 404 to avoid indexing placeholders like /null
+    try {
+        const { data } = await client.query({
+            query: GET_CALENDAR_DETAIL,
+            variables: { slug: normalized, locale: "en" },
+            fetchPolicy: "no-cache",
+        });
+        const hasData = Array.isArray(data?.calenDetails?.data) && data.calenDetails.data.length > 0;
+        if (!hasData) {
+            notFound();
+        }
+    } catch {
+        // On error assume not found to be safe for SEO
+        notFound();
     }
     return <CalendarDetails />;
 }

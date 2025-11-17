@@ -13,44 +13,51 @@ export async function generateMetadata(): Promise<Metadata> {
         const json = await res.json();
         const seo = json?.data?.attributes?.seo || {};
 
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
+        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/Footer_logo.png";
 
         return {
-            title: seo.metaTitle || "Builders in Sharjah | Exhibition Stand Branding | XESS Events",
-            description: seo.metaDescription || "Discover top exhibition stand builders and branding services in Sharjah with XESS Events.",
+            title: seo.metaTitle || "Exhibition Stand Builders in Sharjah | XESS Events",
+            description: seo.metaDescription || "XESS Events plans, builds, and assembles premium exhibition stands in Sharjah . Creative booth designs that attract audiences and elevate your brand.",
             metadataBase: new URL("https://xessevents.com"),
+            alternates: {
+                canonical: "https://xessevents.com/exhibition-stand-builders-in-sharjah",
+                languages: {
+                    "en-US": "https://xessevents.com/exhibition-stand-builders-in-sharjah",
+                },
+            },
             openGraph: {
-                title: seo.metaTitle || "Builders in Sharjah | Exhibition Stand Branding | XESS Events",
-                description: seo.metaDescription || "Discover top exhibition stand builders and branding services in Sharjah with XESS Events.",
-                url: "https://xessevents.com/about-us",
+                title: seo.metaTitle || "Exhibition Stand Builders in Sharjah | XESS Events",
+                description: seo.metaDescription || "XESS Events plans, builds, and assembles premium exhibition stands in Sharjah . Creative booth designs that attract audiences and elevate your brand.",
+                url: "https://xessevents.com/exhibition-stand-builders-in-sharjah",
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "Builders in Sharjah | Exhibition Stand Branding | XESS Events",
-                description: seo.metaDescription || "Discover top exhibition stand builders and branding services in Sharjah with XESS Events.",
+                site: "@xessevents",
+                title: seo.metaTitle || "Exhibition Stand Builders in Sharjah | XESS Events",
+                description: seo.metaDescription || "XESS Events plans, builds, and assembles premium exhibition stands in Sharjah . Creative booth designs that attract audiences and elevate your brand.",
                 images: [imageUrl],
             },
         };
     } catch (error) {
         console.error("SEO fetch failed:", error);
         return {
-            title: "exhibition-stand-branding-services-in-sharjah | XESS Events",
-            description: "Learn more about XESS Events and our story.",
+            title: "Exhibition Stand Builders in Sharjah | XESS Events",
+            description: "XESS Events plans, builds, and assembles premium exhibition stands in Sharjah . Creative booth designs that attract audiences and elevate your brand.",
             metadataBase: new URL("https://xessevents.com"),
             openGraph: {
-                title: "exhibition-stand-branding-services-in-sharjah | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                title: "Exhibition Stand Builders in Sharjah | XESS Events",
+                description: "XESS Events plans, builds, and assembles premium exhibition stands in Sharjah . Creative booth designs that attract audiences and elevate your brand.",
+                url: "https://xessevents.com/exhibition-stand-builders-in-sharjah",
                 type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
             twitter: {
                 card: "summary_large_image",
-                title: "exhibition-stand-branding-services-in-sharjah | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
+                title: "Exhibition Stand Builders in Sharjah | XESS Events",
+                description: "XESS Events plans, builds, and assembles premium exhibition stands in Sharjah . Creative booth designs that attract audiences and elevate your brand.",
+                images: ["https://xessevents.com/images/Footer_logo.png"],
             },
         };
     }
