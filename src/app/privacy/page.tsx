@@ -1,61 +1,34 @@
 import { Metadata } from "next";
 import PrivacyClient from "./PrivacyClient";
+import client from "@/lib/apolloClient";
+import { GET_PRIVACY_POLICY } from "@/lib/queries";
+
+export const revalidate = 60;
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://xessevents.com";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+    const title = "Privacy Policy | XESS Events";
+    const description = "Discover how XESS Events handles your data responsibly. Read our privacy policy to learn about data collection, usage, protection, and your rights.";
+    const imageUrl = `${SITE_URL}/images/Footer_logo.png`;
 
-    try {
-        const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
-            next: { revalidate: 60 },
-            cache: "force-cache",
-        });
-
-        const json = await res.json();
-        const seo = json?.data?.attributes?.seo || {};
-
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
-
-        return {
-            title: seo.metaTitle || "Privacy policy | XESS Events",
-            description: seo.metaDescription || "Privacy policy Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: seo.metaTitle || "Privacy policy | XESS Events",
-                description: seo.metaDescription || "Privacy policy Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: [imageUrl],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: seo.metaTitle || "Privacy policy | XESS Events",
-                description: seo.metaDescription || "Privacy policy Learn more about XESS Events and our story.",
-                images: [imageUrl],
-            },
-        };
-    } catch (error) {
-        console.error("SEO fetch failed:", error);
-        return {
-            title: "Privacy policy | XESS Events",
-            description: "Privacy policy Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: "Privacy policy | XESS Events",
-                description: "Privacy policy Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: "Privacy policy | XESS Events",
-                description: "Privacy policy Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-        };
-    }
+    return {
+        title,
+        description,
+        metadataBase: new URL(SITE_URL),
+        alternates: {
+            canonical: `${SITE_URL}/privacy`,
+            languages: { en: `${SITE_URL}/privacy` }
+        },
+        robots: "index, follow",
+        openGraph: { title, description, url: `${SITE_URL}/privacy`, type: "website", images: [imageUrl] },
+        twitter: { card: "summary_large_image", site: "@xessevents", title, description, images: [imageUrl] },
+        other: { author: "Xess Events Team", publisher: "Xess Events" },
+    };
 }
 
-export default function Privacy() {
-    return <PrivacyClient />;
+export default async function Privacy() {
+    const { data } = await client.query({ query: GET_PRIVACY_POLICY, variables: { locale: "en" } });
+    const privacyData = data?.privacyPolicy?.data?.attributes || {};
+    return <PrivacyClient privacyData={privacyData} />;
 }

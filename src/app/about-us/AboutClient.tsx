@@ -1,32 +1,17 @@
-"use client";
-
-import { useEffect, useRef, useState } from "react";
 import ContactForm from "@/components/Contactform";
 import TeamSection from "@/components/TeamSection";
-import { GET_ABOUT_DATA } from "@/lib/queries";
-import { useQuery } from "@apollo/client";
-import { RootState } from "@/redux/store";
-import { useSelector } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
 
-type CounterItem = {
-    count: number;
-    label: string;
-};
+import type { AboutData, ServiceItem } from "@/types/about";
+import AboutCounters from "./AboutCounters";
 
-type ServiceItem = {
-    name: string;
-    description: string;
-};
+export type AboutClientProps = { aboutData: AboutData };
 
-export default function About() {
-
+export default function AboutClient({ aboutData }: AboutClientProps) {
+    
     const sanitizeHtml = (html: string) => { return html?.replace(/font-family:[^;"]*;?/gi, ""); };
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
-    const { locale } = useSelector((state: RootState) => state.locale);
-    const { data } = useQuery(GET_ABOUT_DATA, { variables: { locale }, });
-    const aboutData = data?.aboutPages?.data?.[0]?.attributes || {};
     const serviceSec = aboutData?.serviceSec || {};
     const missionSec = aboutData?.missionSec || {};
     const missionCard = missionSec?.missionCard || {};
@@ -34,35 +19,6 @@ export default function About() {
     const services = serviceSec?.serviceCrd || [];
     const sectionImageUrl = aboutData?.SecImage2?.data?.attributes?.url ? `${baseUrl}${aboutData.SecImage2.data.attributes.url}` : "/images/About_banner.png";
     const counters = aboutData?.CounterSec?.listCount || [];
-
-    const sectionRef = useRef(null);
-    const Counter = ({ value }: { value: number }) => {
-        const [count, setCount] = useState(0);
-
-        useEffect(() => {
-            let start = 0;
-            const duration = 2000;
-            const increment = value / (duration / 16);
-
-            const interval = setInterval(() => {
-                start += increment;
-                if (start >= value) {
-                    setCount(value);
-                    clearInterval(interval);
-                } else {
-                    setCount(Math.ceil(start));
-                }
-            }, 16);
-
-            return () => clearInterval(interval);
-        }, [value]);
-
-        return (
-            <span className="text-xl md:text-2xl lg:text-3xl text-[#D13239]">
-                {count}+
-            </span>
-        );
-    };
 
     return (
         <>
@@ -90,18 +46,7 @@ export default function About() {
                 </div>
             </section>
 
-            <section ref={sectionRef} className="relative bg-[#f6f6f6] lg:pt-16 pt-10" >
-                <div className="grid items-center justify-center grid-cols-2 gap-4 mx-10 font-sans font-normal lg:grid-cols-4 lg:p-4 lg:mx-52 md:mx-40">
-                    {counters.map((item: CounterItem, index: number) => (
-                        <div key={index} className="flex flex-col items-start justify-start w-48 p-4 text-left border-t-2" >
-                            <Counter value={item.count} />
-                            <span className="text-sm lg:text-[16px] py-2 lg:py-5 text-[#080B0F]">
-                                {item.label}
-                            </span>
-                        </div>
-                    ))}
-                </div>
-            </section>
+            <AboutCounters counters={counters} />
 
             <section className="bg-[#f6f6f6]">
                 <div className="py-5 md:py-5 lg:py-0">

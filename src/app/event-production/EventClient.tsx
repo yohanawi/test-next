@@ -1,10 +1,4 @@
-"use client";
-
-import { GET_EVENT_PRODUCTION_DATA } from "@/lib/queries";
 import ContactForm from "@/components/Contactform";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { useQuery } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -24,13 +18,8 @@ type EventSection = {
     SubDesc?: string;
 };
 
-
-export default function EventProduction() {
-
-    const { locale } = useSelector((state: RootState) => state.locale);
-    const { data: eventProductionData, } = useQuery(GET_EVENT_PRODUCTION_DATA, { variables: { locale }, });
+export default function EventClient({ eventProduction }: { eventProduction: any }) {
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
-    const eventProduction = eventProductionData?.eventProductionPages?.data?.[0]?.attributes || {};
     const heroSec = eventProduction?.HeroSec || {};
     const secndSec = eventProduction?.SecndSec || {};
     const eventSections = eventProduction?.EventSections || [];
@@ -120,5 +109,5 @@ export default function EventProduction() {
                 <ContactForm />
             </section>
         </>
-    )
+    );
 }

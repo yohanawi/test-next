@@ -1,72 +1,102 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { cache } from "react";
 import client from "@/lib/apolloClient";
-import ContactClient from "./ContactClient";
 import { GET_CONTACT_PAGE_DATA } from "@/lib/queries";
+import ContactClient from "./ContactClient";
+
+export const revalidate = 60;
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://xessevents.com";
+const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+
+const fetchContactPageData = cache(async (): Promise<any | null> => {
+    const { data } = await client.query({
+        query: GET_CONTACT_PAGE_DATA,
+        variables: { locale: "en" },
+    });
+
+    return data?.contactPages?.data?.[0]?.attributes || null;
+});
+
+const safeParseStructuredData = (payload: unknown) => {
+    if (!payload) {
+        return null;
+    }
+
+    if (typeof payload === "string") {
+        try {
+            return JSON.parse(payload);
+        } catch (error) {
+            console.warn("Unable to parse structured data for Contact page", error);
+            return null;
+        }
+    }
+
+    if (typeof payload === "object") {
+        return payload;
+    }
+
+    return null;
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-    const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
-
     try {
-
-        const { data } = await client.query({ query: GET_CONTACT_PAGE_DATA, variables: { locale: "en" }, });
-        const seo = data?.contactPages?.data?.[0]?.attributes?.meta_data || {};
+        const contactPage = await fetchContactPageData();
+        const seo = contactPage?.meta_data;
+        const defaultTitle = "Contact Us | XESS Events";
+        const defaultDescription = "Get in touch with XESS Events for your event needs.";
+        const canonical = seo?.canonicalURL || `${SITE_URL}/contact-us`;
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
-        const structuredDataJson = seo.structuredData || null;
+        const structuredDataJson = safeParseStructuredData(seo?.structuredData);
 
         return {
-            title: seo.metaTitle || "Contact us | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            title: seo?.metaTitle || defaultTitle,
+            description: seo?.metaDescription || defaultDescription,
+            metadataBase: new URL(SITE_URL),
             alternates: {
-                canonical: seo.canonicalURL || "https://xessevents.com/contact-us",
+                canonical,
                 languages: {
-                    "en": "https://xessevents.com/contact-us",
+                    en: canonical,
                 },
             },
-            keywords: seo.keywords || [],
-            robots: seo.metaRobots || "index, follow",
+            keywords: seo?.keywords?.length ? seo.keywords : undefined,
+            robots: seo?.metaRobots || "index, follow",
             openGraph: {
-                title: seo.metaTitle || "Contact us | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/contact-us",
+                title: seo?.metaTitle || defaultTitle,
+                description: seo?.metaDescription || defaultDescription,
+                url: canonical,
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
-                title: seo.metaTitle || "Contact us | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                site: "@xessevents",
+                title: seo?.metaTitle || defaultTitle,
+                description: seo?.metaDescription || defaultDescription,
                 images: [imageUrl],
             },
             other: {
-                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
-                "author": "Xess Events Team",
-                "publisher": "Xess Events",
+                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson) }),
+                author: "Xess Events Team",
+                publisher: "Xess Events",
             },
         };
     } catch (error) {
         console.error("SEO fetch failed:", error);
         return {
-            title: "Contact us | XESS Events",
-            description: "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: "Contact us | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/contact-us",
-                type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: "Contact us | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
+            title: "Contact Us | XESS Events",
+            description: "Get in touch with XESS Events for your event needs.",
         };
     }
 }
 
-export default function ContactUs() {
-    return <ContactClient />;
+export default async function ContactUs() {
+    const contactPage = await fetchContactPageData();
+
+    if (!contactPage) {
+        notFound();
+    }
+
+    return <ContactClient contactPage={contactPage} />;
 }

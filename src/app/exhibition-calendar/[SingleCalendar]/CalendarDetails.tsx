@@ -1,21 +1,18 @@
-"use client";
-
+// CalendarDetails.tsx
 import { GET_CALENDAR_DETAIL } from "@/lib/queries";
 import ContactForm from "@/components/Contactform";
 import { NavigationIcon } from "lucide-react";
-import { useParams } from "next/navigation";
-import { RootState } from "@/redux/store";
-import { useQuery } from "@apollo/client";
-import { useSelector } from "react-redux";
 import Image from "next/image";
 import Link from "next/link";
+import client from "@/lib/apolloClient";
 
-export default function CalendarDetails() {
+export default async function CalendarDetails({ slug, locale }: { slug: string, locale: string }) {
+    const { data } = await client.query({
+        query: GET_CALENDAR_DETAIL,
+        variables: { slug, locale },
+        fetchPolicy: "no-cache",
+    });
 
-    const params = useParams();
-    const SingleCalendar = params?.SingleCalendar;
-    const { locale } = useSelector((state: RootState) => state.locale);
-    const { data } = useQuery(GET_CALENDAR_DETAIL, { variables: { slug: SingleCalendar, locale }, skip: !SingleCalendar, });
     const calendarDetail = data?.calenDetails?.data?.[0]?.attributes || {};
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
 
@@ -25,7 +22,7 @@ export default function CalendarDetails() {
         const startDay = startDate.getDate();
         const endDay = endDate.getDate();
         const options: Intl.DateTimeFormatOptions = { month: 'short', year: 'numeric' };
-        const endFormatted = endDate.toLocaleDateString('en-GB', options); // "Apr 2025"
+        const endFormatted = endDate.toLocaleDateString('en-GB', options);
         return `${startDay} - ${endDay} ${endFormatted}`;
     };
 
@@ -66,11 +63,10 @@ export default function CalendarDetails() {
                                     {calendarDetail?.CalenCrd?.startDate && calendarDetail?.CalenCrd?.endDate && formatDateRange(calendarDetail.CalenCrd.startDate, calendarDetail.CalenCrd.endDate)}
                                 </p>
 
-                                {/* <Link href={calendarDetail?.Link || "#"} target="_blank" rel="noopener noreferrer"> */}
                                 <h1 className="text-xl font-bold text-gray-900 cursor-pointer hover:underline">
                                     {calendarDetail?.CalenCrd?.title || "AI Jundi journal 2025"}
                                 </h1>
-                                {/* </Link> */}
+
                                 <div className="flex items-center mt-1 text-sm text-gray-600">
                                     {ratingValue && (
                                         <span className="flex">
@@ -119,7 +115,9 @@ export default function CalendarDetails() {
                 <div className="max-w-5xl px-10 py-8 mx-auto lg:px-4">
                     <h2 className="mb-4 text-2xl font-bold text-black">About</h2>
                     <p className="mb-2 font-semibold text-black">{calendarDetail?.topic}</p>
-                    <p className="mb-6 text-gray-700" dangerouslySetInnerHTML={{ __html: calendarDetail?.description }}>
+                    <p className="mb-6 text-gray-700"
+                        dangerouslySetInnerHTML={{ __html: calendarDetail?.description }}
+                    >
                     </p>
 
                     <div className="p-4 mb-6 bg-gray-100 rounded-md">

@@ -1,17 +1,8 @@
-"use client";
-
-import { GET_PRIVACY_POLICY } from "@/lib/queries";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { useQuery } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function PrivacyClient() {
-
-    const locale = useSelector((state: RootState) => state.locale.locale);
-    const { data } = useQuery(GET_PRIVACY_POLICY, { variables: { locale }, });
-    const { title, description } = data?.privacyPolicy?.data?.attributes || {};
+export default function PrivacyClient({ privacyData }: { privacyData: { title?: string; description?: string } }) {
+    const { title, description } = privacyData || {};
     const sanitizeHtml = (html: string) => {
         return html?.replace(/font-family:[^;"]*;?/gi, "");
     };

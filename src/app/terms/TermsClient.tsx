@@ -1,17 +1,8 @@
-"use client";
-
-import { GET_TERMS_AND_CONDITIONS } from "@/lib/queries";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import { useQuery } from "@apollo/client";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function TermsClient() {
-
-    const locale = useSelector((state: RootState) => state.locale.locale);
-    const { data } = useQuery(GET_TERMS_AND_CONDITIONS, { variables: { locale }, });
-    const { title, description } = data?.termsAndCondition?.data?.attributes || {};
+export default function TermsClient({ termsData }: { termsData: { title?: string; description?: string } }) {
+    const { title, description } = termsData || {};
 
     const sanitizeHtml = (html: string) => {
         return html?.replace(/font-family:[^;"]*;?/gi, "");

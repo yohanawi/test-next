@@ -3,8 +3,7 @@ import CommercialInteriorClient from "./CommercialInteriorClient";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function CommercialInterior({ mainFitOut }: { mainFitOut: any }) {
-
+export default function CommercialInteriorServer({ mainFitOut }: { mainFitOut: any }) {
     const { FitOutHead } = mainFitOut;
     const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://cms.xessevents.com";
     const bannerImage = FitOutHead?.image?.data?.attributes?.url ? `${baseUrl}${FitOutHead.image.data.attributes.url}` : "/images/Banner.jpg";

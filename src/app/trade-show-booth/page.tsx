@@ -1,73 +1,88 @@
 import { Metadata } from "next";
-import TradeShowClient from "./TradeShowClient";
-import { GET_TRADESHOW_DATA } from "@/lib/queries";
 import client from "@/lib/apolloClient";
+import { GET_TRADESHOW_DATA } from "@/lib/queries";
+import TradeShowServer from "./TradeShowServer";
+import { cache } from "react";
+
+export const revalidate = 60;
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://xessevents.com";
+const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+
+// Cached SSR GraphQL fetch
+const fetchTradeShowData = cache(async () => {
+    const { data } = await client.query({
+        query: GET_TRADESHOW_DATA,
+        variables: { locale: "en" },
+    });
+    return data?.tradeShows?.data?.[0]?.attributes || null;
+});
+
+const safeJSON = (value: unknown) => {
+    if (!value) return null;
+    if (typeof value === "string") {
+        try {
+            return JSON.parse(value);
+        } catch {
+            return null;
+        }
+    }
+    return value;
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-    const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
-
     try {
-        const { data } = await client.query({ query: GET_TRADESHOW_DATA, variables: { locale: "en" }, });
-        const seo = data?.tradeShows?.data?.[0]?.attributes?.meta_data || {};
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
-        const structuredDataJson = seo.structuredData || null;
+        const page = await fetchTradeShowData();
+        const seo = page?.meta_data || {};
 
+        const title = seo.metaTitle || "Trade Show Booth | XESS Events";
+        const description = seo.metaDescription || "Trade show booth design and production in Dubai.";
+        const canonical = seo.canonicalURL || `${SITE_URL}/trade-show-booth`;
+
+        const ogImage =
+            seo?.metaImage?.data?.attributes?.url
+                ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}`
+                : `${SITE_URL}/images/default-og.jpg`;
+
+        const structured = safeJSON(seo.structuredData);
 
         return {
-            title: seo.metaTitle || "Trade Show | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            alternates: {
-                canonical: seo.canonicalURL || "https://xessevents.com/trade-show-booth",
-                languages: {
-                    "en": "https://xessevents.com/trade-show-booth",
-                },
-            },
-            keywords: seo.keywords || [],
-            robots: seo.metaRobots || "index, follow",
+            title,
+            description,
+            metadataBase: new URL(SITE_URL),
+            alternates: { canonical },
             openGraph: {
-                title: seo.metaTitle || "Trade Show | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/trade-show-booth",
+                title,
+                description,
+                url: canonical,
                 type: "website",
-                images: [imageUrl],
+                images: [ogImage],
             },
             twitter: {
                 card: "summary_large_image",
-                site: "@xessevents",
-                title: seo.metaTitle || "Trade Show | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                images: [imageUrl],
+                title,
+                description,
+                images: [ogImage],
             },
+            robots: seo.metaRobots || "index, follow",
+            keywords: seo.keywords || [],
             other: {
-                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
-                "author": "Xess Events Team",
-                "publisher": "Xess Events",
+                ...(structured && {
+                    "application/ld+json": JSON.stringify(structured),
+                }),
+                author: "XESS Events Team",
+                publisher: "XESS Events",
             },
         };
-    } catch (error) {
-        console.error("SEO fetch failed:", error);
+    } catch (e) {
         return {
-            title: "Trade Show | XESS Events",
-            description: "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: "Trade Show | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/trade-show-booth",
-                type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: "Trade Show | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
+            title: "Trade Show Booth | XESS Events",
+            description: "Trade show booth design and production in Dubai.",
         };
     }
 }
 
-export default function TradeShow() {
-    return <TradeShowClient />;
+export default async function TradeShowPage() {
+    const pageData = await fetchTradeShowData();
+    return <TradeShowServer data={pageData} />;
 }

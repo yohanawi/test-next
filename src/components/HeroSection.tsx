@@ -134,11 +134,10 @@ export default function HeroSection() {
           <SwiperSlide key={index}>
             <div className="relative w-full md:h-[800px] lg:h-[570px] 3xl:h-[700px] h-[500px] mt-20 md:mt-28 lg:mt-28">
               {index === 0 ? (
-                <Image src={isMobile ? slide.mobileImage || slide.image : slide.image} alt={`Slide ${index + 1}`} width={1200} height={675} quality={100} loading={index === 0 ? "eager" : "lazy"} priority={index === 0} style={{ objectFit: "cover", width: "100%", height: "auto" }} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1000px" />
+                <Image src={isMobile ? slide.mobileImage || slide.image : slide.image} alt={`Slide ${index + 1}`} width={1200} height={800} layout="responsive" quality={90} objectFit="cover" />
               ) : (
-                <Image src={isMobile ? slide.mobileImage || slide.image : slide.image} alt={`Slide ${index + 1}`} fill style={{ objectFit: "cover" }} quality={30} loading="lazy" priority={false} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 800px, 1000px" />
+                <Image src={isMobile ? slide.mobileImage || slide.image : slide.image} alt={`Slide ${index + 1}`} width={1200} height={800} layout="responsive" quality={90} objectFit="cover" />
               )}
-
               <div className="absolute inset-0 flex justify-start mt-16 lg:items-center md:mt-28 lg:mt-0">
                 <div className="max-w-lg mx-auto text-center text-white lg:text-left md:text-center lg:max-w-2xl 3xl:max-w-4xl md:max-w-2xl md:mx-auto lg:mx-32">
                   <h2 className="text-[20px] md:text-[40px] lg:text-[40px] font-bold 3xl:text-[52px]" style={{ fontFamily: "Work Sans, sans-serif" }} >

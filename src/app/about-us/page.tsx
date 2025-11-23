@@ -1,47 +1,87 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { cache } from "react";
+
 import client from "@/lib/apolloClient";
-import AboutClient from "./AboutClient";
 import { GET_ABOUT_DATA } from "@/lib/queries";
+import type { AboutData } from "@/types/about";
+import AboutClient from "./AboutClient";
+
+export const revalidate = 60;
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://xessevents.com";
+const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+
+const fetchAboutPageData = cache(async (): Promise<AboutData | null> => {
+    const { data } = await client.query({
+        query: GET_ABOUT_DATA,
+        variables: { locale: "en" },
+    });
+
+    return data?.aboutPages?.data?.[0]?.attributes || null;
+});
+
+const safeParseStructuredData = (payload: unknown) => {
+    if (!payload) {
+        return null;
+    }
+
+    if (typeof payload === "string") {
+        try {
+            return JSON.parse(payload);
+        } catch (error) {
+            console.warn("Unable to parse structured data for About page", error);
+            return null;
+        }
+    }
+
+    if (typeof payload === "object") {
+        return payload;
+    }
+
+    return null;
+};
 
 export async function generateMetadata(): Promise<Metadata> {
-    const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
-
     try {
-        const { data } = await client.query({ query: GET_ABOUT_DATA, variables: { locale: "en" }, });
-        const seo = data?.aboutPages?.data?.[0]?.attributes?.meta_data || {};
+        const aboutData = await fetchAboutPageData();
+        const seo = aboutData?.meta_data;
+        const defaultTitle = "About Us | XESS Events";
+        const defaultDescription = "Learn more about XESS Events and our story.";
+        const canonical = seo?.canonicalURL || `${SITE_URL}/about-us`;
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
-        const structuredDataJson = seo.structuredData || null;
+        const structuredDataJson = safeParseStructuredData(seo?.structuredData);
 
         return {
-            title: seo.metaTitle || "About Us | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            title: seo?.metaTitle || defaultTitle,
+            description: seo?.metaDescription || defaultDescription,
+            metadataBase: new URL(SITE_URL),
             alternates: {
-                canonical: seo.canonicalURL || "https://xessevents.com/about-us",
+                canonical,
                 languages: {
-                    "en": "https://xessevents.com/about-us",
+                    en: canonical,
                 },
             },
-            keywords: seo.keywords || [],
-            robots: seo.metaRobots || "index, follow",
+            keywords: seo?.keywords?.length ? seo.keywords : undefined,
+            robots: seo?.metaRobots || "index, follow",
             openGraph: {
-                title: seo.metaTitle || "About Us | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
+                title: seo?.metaTitle || defaultTitle,
+                description: seo?.metaDescription || defaultDescription,
+                url: canonical,
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
                 site: "@xessevents",
-                title: seo.metaTitle || "About Us | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo?.metaTitle || defaultTitle,
+                description: seo?.metaDescription || defaultDescription,
                 images: [imageUrl],
-            },            
+            },
             other: {
-                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
-                "author": "Xess Events Team",
-                "publisher": "Xess Events",
+                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson) }),
+                author: "Xess Events Team",
+                publisher: "Xess Events",
             },
         };
     } catch (error) {
@@ -49,24 +89,16 @@ export async function generateMetadata(): Promise<Metadata> {
         return {
             title: "About Us | XESS Events",
             description: "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: "About Us | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: "About Us | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
         };
     }
 }
 
-export default function AboutUs() {
-    return <AboutClient />;
+export default async function AboutUs() {
+    const aboutData = await fetchAboutPageData();
+
+    if (!aboutData) {
+        notFound();
+    }
+
+    return <AboutClient aboutData={aboutData} />;
 }

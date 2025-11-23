@@ -1,16 +1,21 @@
-// app/robots.txt/route.ts
+// src/app/robots.txt/route.ts
 
-export async function GET() {
+export function GET() {
   const isProduction = process.env.NODE_ENV === "production";
 
+  // In production → allow Google to crawl everything
+  // In development  → block crawling
   const content = ` 
-        User-agent: * ${isProduction ? "Disallow:" : "Disallow: /"}
-        Sitemap: https://xessevents.com/sitemap.xml 
-    `.trim();
+                    User-agent: * 
+                    ${isProduction ? "Allow: /" : "Disallow: /"}
+
+                    Sitemap: https://xessevents.com/sitemap.xml
+                    Host: https://xessevents.com
+  `.trim();
 
   return new Response(content, {
     headers: {
-      "Content-Type": "text/plain",
+      "Content-Type": "text/plain; charset=utf-8",
     },
   });
 }

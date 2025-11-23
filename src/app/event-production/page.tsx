@@ -1,72 +1,102 @@
+import { cache } from "react";
 import { Metadata } from "next";
 import EventClient from "./EventClient";
 import client from "@/lib/apolloClient";
+import { notFound } from "next/navigation";
 import { GET_EVENT_PRODUCTION_DATA } from "@/lib/queries";
 
-export async function generateMetadata(): Promise<Metadata> {
-    const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+export const revalidate = 60;
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://xessevents.com";
+const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
+
+const fetchEventProductionData = cache(async (): Promise<any | null> => {
+    const { data } = await client.query({
+        query: GET_EVENT_PRODUCTION_DATA,
+        variables: { locale: "en" },
+    });
+
+    return data?.eventProductionPages?.data?.[0]?.attributes || null;
+});
+
+const safeParseStructuredData = (payload: unknown) => {
+    if (!payload) {
+        return null;
+    }
+
+    if (typeof payload === "string") {
+        try {
+            return JSON.parse(payload);
+        } catch (error) {
+            console.warn("Unable to parse structured data for Event Production page", error);
+            return null;
+        }
+    }
+
+    if (typeof payload === "object") {
+        return payload;
+    }
+
+    return null;
+};
+
+export async function generateMetadata(): Promise<Metadata> {
     try {
-        const { data } = await client.query({ query: GET_EVENT_PRODUCTION_DATA, variables: { locale: "en" }, });
-        const seo = data?.eventProductionPages?.data?.[0]?.attributes?.meta_data || {};
+        const eventProduction = await fetchEventProductionData();
+        const seo = eventProduction?.meta_data;
+        const defaultTitle = "Event Production | XESS Events";
+        const defaultDescription = "Explore XESS Events' event production services in Dubai.";
+        const canonical = seo?.canonicalURL || `${SITE_URL}/event-production`;
         const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
-        const structuredDataJson = seo.structuredData || null;
+        const structuredDataJson = safeParseStructuredData(seo?.structuredData);
 
         return {
-            title: seo.metaTitle || "Event Production | XESS Events",
-            description: seo.metaDescription || "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
+            title: seo?.metaTitle || defaultTitle,
+            description: seo?.metaDescription || defaultDescription,
+            metadataBase: new URL(SITE_URL),
             alternates: {
-                canonical: seo.canonicalURL || "https://xessevents.com/event-production",
+                canonical,
                 languages: {
-                    "en": "https://xessevents.com/event-production",
+                    en: canonical,
                 },
             },
-            keywords: seo.keywords || [],
-            robots: seo.metaRobots || "index, follow",
+            keywords: seo?.keywords?.length ? seo.keywords : undefined,
+            robots: seo?.metaRobots || "index, follow",
             openGraph: {
-                title: seo.metaTitle || "Event Production | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/event-production",
+                title: seo?.metaTitle || defaultTitle,
+                description: seo?.metaDescription || defaultDescription,
+                url: canonical,
                 type: "website",
                 images: [imageUrl],
             },
             twitter: {
                 card: "summary_large_image",
                 site: "@xessevents",
-                title: seo.metaTitle || "Event Production | XESS Events",
-                description: seo.metaDescription || "Learn more about XESS Events and our story.",
+                title: seo?.metaTitle || defaultTitle,
+                description: seo?.metaDescription || defaultDescription,
                 images: [imageUrl],
-            },            
+            },
             other: {
-                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson), }),
-                "author": "Xess Events Team",
-                "publisher": "Xess Events",
+                ...(structuredDataJson && { "application/ld+json": JSON.stringify(structuredDataJson) }),
+                author: "Xess Events Team",
+                publisher: "Xess Events",
             },
         };
     } catch (error) {
         console.error("SEO fetch failed:", error);
         return {
             title: "Event Production | XESS Events",
-            description: "Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: "Event Production | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/event-production",
-                type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: "Event Production | XESS Events",
-                description: "Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
+            description: "Explore XESS Events' event production services in Dubai.",
         };
     }
 }
 
-export default function EventProduction() {
-    return <EventClient />;
+export default async function EventProduction() {
+    const eventProduction = await fetchEventProductionData();
+
+    if (!eventProduction) {
+        notFound();
+    }
+
+    return <EventClient eventProduction={eventProduction} />;
 }

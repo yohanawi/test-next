@@ -1,61 +1,34 @@
 import { Metadata } from "next";
 import TermsClient from "./TermsClient";
+import client from "@/lib/apolloClient";
+import { GET_TERMS_AND_CONDITIONS } from "@/lib/queries";
+
+export const revalidate = 60;
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://xessevents.com";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const STRAPI_URL = process.env.STRAPI_URL || "https://cms.xessevents.com";
-
-    try {
-        const res = await fetch(`${STRAPI_URL}/api/about-page?populate=seo.metaImage`, {
-            next: { revalidate: 60 },
-            cache: "force-cache",
-        });
-
-        const json = await res.json();
-        const seo = json?.data?.attributes?.seo || {};
-
-        const imageUrl = seo?.metaImage?.data?.attributes?.url ? `${STRAPI_URL}${seo.metaImage.data.attributes.url}` : "https://xessevents.com/images/default-og.jpg";
-
-        return {
-            title: seo.metaTitle || "Terms & Conditions | XESS Events",
-            description: seo.metaDescription || "Terms & Conditions Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: seo.metaTitle || "Terms & Conditions | XESS Events",
-                description: seo.metaDescription || "Terms & Conditions Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: [imageUrl],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: seo.metaTitle || "Terms & Conditions | XESS Events",
-                description: seo.metaDescription || "Terms & Conditions Learn more about XESS Events and our story.",
-                images: [imageUrl],
-            },
-        };
-    } catch (error) {
-        console.error("SEO fetch failed:", error);
-        return {
-            title: "Terms & Conditions | XESS Events",
-            description: "Terms & Conditions Learn more about XESS Events and our story.",
-            metadataBase: new URL("https://xessevents.com"),
-            openGraph: {
-                title: "Terms & Conditions | XESS Events",
-                description: "Terms & Conditions Learn more about XESS Events and our story.",
-                url: "https://xessevents.com/about-us",
-                type: "website",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-            twitter: {
-                card: "summary_large_image",
-                title: "Terms & Conditions | XESS Events",
-                description: "Terms & Conditions Learn more about XESS Events and our story.",
-                images: ["https://xessevents.com/images/default-og.jpg"],
-            },
-        };
-    }
+    const title = "Terms & Conditions | XESS Events";
+    const description = "Read the Terms & Conditions of XESS Events to understand our policies, guidelines, and how we ensure a seamless experience for our users.";
+    const imageUrl = `${SITE_URL}/uploads/Footer_logo_0d3a81376a.png`;
+ 
+    return {
+        title,
+        description,
+        metadataBase: new URL(SITE_URL),
+        alternates: {
+            canonical: `${SITE_URL}/terms`,
+            languages: { en: `${SITE_URL}/terms` }
+        },
+        robots: "index, follow",
+        openGraph: { title, description, url: `${SITE_URL}/terms`, type: "website", images: [imageUrl] },
+        twitter: { card: "summary_large_image", site: "@xessevents", title, description, images: [imageUrl] },
+        other: { author: "Xess Events Team", publisher: "Xess Events" },
+    };
 }
 
-export default function Terms() {
-    return <TermsClient />;
+export default async function Terms() {
+    const { data } = await client.query({ query: GET_TERMS_AND_CONDITIONS, variables: { locale: "en" } });
+    const termsData = data?.termsAndCondition?.data?.attributes || {};
+    return <TermsClient termsData={termsData} />;
 }
